@@ -22,9 +22,19 @@ public class Video {
 
 	@Column(nullable = false)
 	private String title;
+	
+	@Column(nullable = false)
+	private String author;
 
 	@Column(nullable = false)
-	private Integer year;
+	private Integer nlikes;
+	
+	@Column(nullable = false)
+	private Integer ndislikes;
+	
+	@Column(nullable = false)
+	private Integer nviews;
+	
 
 //	@JsonIgnore
 //	@ManyToMany
@@ -45,13 +55,37 @@ public class Video {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public Integer getYear() {
-		return year;
+	
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public Integer getNlikes() {
+		return nlikes;
+	}
+
+	public void setNlikes(Integer nlikes) {
+		this.nlikes = nlikes;
+	}
+	
+	public Integer getNdislikes() {
+		return ndislikes;
+	}
+
+	public void setNdislikes(Integer ndislikes) {
+		this.ndislikes = ndislikes;
+	}
+	
+	public Integer getNviews() {
+		return nviews;
+	}
+
+	public void setNviews(Integer nviews) {
+		this.nviews = nviews;
 	}
 
 //	public Set<User> getReaders() {
