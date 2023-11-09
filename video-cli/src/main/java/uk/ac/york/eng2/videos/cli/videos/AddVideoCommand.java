@@ -6,7 +6,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
-@Command(name="add-video", description="Adds a video", mixinStandardHelpOptions = true)
+@Command(name="post-video", description="Posts a video", mixinStandardHelpOptions = true)
 public class AddVideoCommand implements Runnable {
 
 	@Inject

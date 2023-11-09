@@ -34,10 +34,10 @@ public class VideosController {
 	}
 
 	@Post("/")
-	public HttpResponse<Void> add(@Body VideoDTO bookDetails) {
+	public HttpResponse<Void> add(@Body VideoDTO videoDetails) {
 		Video video = new Video();
-		video.setTitle(bookDetails.getTitle());
-		video.setAuthor(bookDetails.getAuthor());
+		video.setTitle(videoDetails.getTitle());
+		video.setAuthor(videoDetails.getAuthor());
 		video.setNlikes(0);
 		video.setNdislikes(0);
 		video.setNviews(0);
@@ -48,71 +48,41 @@ public class VideosController {
 	}
 	
 	@Get("/{id}")
-	public VideoDTO getBook(long id) {
+	public VideoDTO getVideo(long id) {
 		return repo.findOne(id).orElse(null);
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@Transactional
-//	@Put("/{id}")
-//	public HttpResponse<Void> updateBook(long id, @Body BookDTO bookDetails) {
-//		Optional<Book> book = repo.findById(id);
-//		if (book.isEmpty()) {
-//			return HttpResponse.notFound();
-//		}
-//
-//		Book b = book.get();
-//		if (bookDetails.getTitle() != null) {
-//			b.setTitle(bookDetails.getTitle());
-//		}
-//		if (bookDetails.getYear() != null) {
-//			b.setYear(bookDetails.getYear());
-//		}
-//		repo.update(b);
-//		return HttpResponse.ok();
-//	}
+	@Transactional
+	@Put("/{id}")
+	public HttpResponse<Void> updateVideo(long id, @Body VideoDTO videoDetails) {
+		Optional<Video> video = repo.findById(id);
+		if (video.isEmpty()) {
+			return HttpResponse.notFound();
+		}
 
-//	@Transactional
-//	@Delete("/{id}")
-//	public HttpResponse<Void> deleteBook(long id) {
-//		Optional<Book> book = repo.findById(id);
-//		if (book.isEmpty()) {
-//			return HttpResponse.notFound();
-//		}
-//
-//		repo.delete(book.get());
-//		return HttpResponse.ok();
-//	}
+		Video v = video.get(); //v is of type Video, contains the received id thing
+		if (videoDetails.getTitle() != null) { //if the http argument provided...
+			v.setTitle(videoDetails.getTitle());
+		}
+		if (videoDetails.getAuthor() != null) { //if the http argument provided...
+			v.setAuthor(videoDetails.getAuthor()); //set the author of the fetched v
+		}
+		repo.update(v); //update the repo - will look at ID and put in correct place accordingly
+		return HttpResponse.ok();
+	}
+
+	@Transactional
+	@Delete("/{id}")
+	public HttpResponse<Void> deleteVideo(long id) {
+		Optional<Video> video = repo.findById(id);
+		if (video.isEmpty()) {
+			return HttpResponse.notFound();
+		}
+
+		repo.delete(video.get());
+		return HttpResponse.ok();
+	}
 
 //	@Get("/{id}/readers")
 //	public Iterable<User> getReaders(long id) {

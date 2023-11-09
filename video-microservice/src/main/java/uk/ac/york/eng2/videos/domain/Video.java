@@ -87,6 +87,12 @@ public class Video {
 	public void setNviews(Integer nviews) {
 		this.nviews = nviews;
 	}
+	
+	@Override
+	public String toString() {
+		return "id=" + id + ", title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + "]";
+	}
 
 //	public Set<User> getReaders() {
 //		return readers;
