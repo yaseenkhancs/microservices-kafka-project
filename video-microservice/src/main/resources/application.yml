@@ -9,10 +9,6 @@ datasources:
     driver-class-name: org.mariadb.jdbc.Driver
     db-type: mariadb
     dialect: MYSQL
-netty:
-  default:
-    allocator:
-      max-order: 3
 jpa:
   default:
     entity-scan:
@@ -24,3 +20,7 @@ jpa:
           auto: update
 kafka:
   enabled: false
+netty:
+  default:
+    allocator:
+      max-order: 3
