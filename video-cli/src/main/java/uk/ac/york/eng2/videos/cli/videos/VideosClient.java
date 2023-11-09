@@ -18,5 +18,8 @@ public interface VideosClient {
 
 	@Post("/")
 	public HttpResponse<Void> add(@Body VideoDTO bookDetails);
+	
+	@Get("/{id}")
+	VideoDTO getVideo(long id);
 
 }

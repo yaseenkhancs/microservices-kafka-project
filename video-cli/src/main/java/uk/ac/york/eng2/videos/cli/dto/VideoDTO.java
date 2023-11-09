@@ -51,5 +51,11 @@ public class VideoDTO {
 	public void setNviews(Integer nviews) {
 		this.nviews = nviews;
 	}
+	
+	@Override
+	public String toString() {
+		return "title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + "]";
+	}
 
 }

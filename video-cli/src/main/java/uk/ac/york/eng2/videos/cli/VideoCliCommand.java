@@ -8,9 +8,11 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.videos.AddVideoCommand;
+import uk.ac.york.eng2.videos.cli.videos.GetVideoCommand;
 import uk.ac.york.eng2.videos.cli.videos.GetVideosCommand;
 
-@Command(name = "video-cli", description = "...", mixinStandardHelpOptions = true, subcommands = {GetVideosCommand.class, AddVideoCommand.class})
+@Command(name = "video-cli", description = "...", mixinStandardHelpOptions = true, 
+		subcommands = {GetVideosCommand.class, AddVideoCommand.class, GetVideoCommand.class})
 public class VideoCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")

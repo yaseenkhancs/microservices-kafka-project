@@ -47,52 +47,42 @@ public class VideosController {
 		return HttpResponse.created(URI.create("/videos/" + video.getId()));
 	}
 	
-//	@Get("/{id}")
-//	public Book getBook (Long id) {		
-//		return repo.findById(id).orElse(null);
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Get("/{id}")
+	public VideoDTO getBook(long id) {
+		return repo.findOne(id).orElse(null);
+	}
 
-//	@Get("/{id}")
-//	public BookDTO getBook(long id) {
-//		return repo.findOne(id).orElse(null);
-//	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@Transactional
 //	@Put("/{id}")
 //	public HttpResponse<Void> updateBook(long id, @Body BookDTO bookDetails) {
