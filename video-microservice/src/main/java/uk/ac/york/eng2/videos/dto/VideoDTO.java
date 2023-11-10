@@ -1,5 +1,7 @@
 package uk.ac.york.eng2.videos.dto;
 
+import java.util.HashSet;
+
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
@@ -7,6 +9,7 @@ public class VideoDTO {
 
 	private String title;
 	private String author;
+	private HashSet<String> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
@@ -26,6 +29,14 @@ public class VideoDTO {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	
+	public HashSet<String> getTags() {
+		return tags;
+	}
+	
+	public void setTags(HashSet<String> tags) {
+		this.tags = tags;
 	}
 
 	public Integer getNlikes() {

@@ -1,14 +1,15 @@
 package uk.ac.york.eng2.videos.domain;
 
-import java.util.Set;
+import java.util.HashSet;
+//import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.micronaut.serde.annotation.Serdeable;
 
@@ -25,6 +26,9 @@ public class Video {
 	
 	@Column(nullable = false)
 	private String author;
+	
+	@Column(nullable = false)
+	private HashSet<String> tags;
 
 	@Column(nullable = false)
 	private Integer nlikes;
@@ -63,6 +67,23 @@ public class Video {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	public HashSet<String> getTags() {
+		return tags;
+	}
+	
+	public void setTags(HashSet<String> tags) {
+		this.tags = tags;
+	}
+	
+	private String tagsString() {
+		String output = "[";
+		for (String s : tags) {			
+			output = output.concat(s + ", ");
+		}
+		output = output.concat("]");
+		return output;
+	}
 
 	public Integer getNlikes() {
 		return nlikes;
@@ -90,8 +111,8 @@ public class Video {
 	
 	@Override
 	public String toString() {
-		return "id=" + id + ", title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + "]";
+		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
 	}
 
 //	public Set<User> getReaders() {

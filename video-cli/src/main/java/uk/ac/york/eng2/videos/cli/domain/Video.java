@@ -1,5 +1,6 @@
 package uk.ac.york.eng2.videos.cli.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 //import javax.persistence.Column;
@@ -18,6 +19,7 @@ public class Video {
 	private Long id;
 	private String title;
 	private String author;
+	private HashSet<String> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
@@ -50,6 +52,14 @@ public class Video {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+	
+	public HashSet<String> getTags() {
+		return tags;
+	}
+	
+	public void setTags(HashSet<String> tags) {
+		this.tags = tags;
+	}
 
 	public Integer getNlikes() {
 		return nlikes;
@@ -74,11 +84,21 @@ public class Video {
 	public void setNviews(Integer nviews) {
 		this.nviews = nviews;
 	}
+	
+	private String tagsString() {
+		String output = "[";
+		for (String s : tags) {			
+			output = output.concat(s + ", ");
+		}
+		output = output.substring(0,output.length() - 2);
+		output = output.concat("]");
+		return output;
+	}
 
 	@Override
 	public String toString() {
-		return "Video [id=" + id + ", title=" + title + ", author=" + author + ", likes="
-				+ nlikes + ", dislikes=" + ndislikes + ", views=" +nviews + "]";
+		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
 	}
 
 //	public Set<User> getReaders() {

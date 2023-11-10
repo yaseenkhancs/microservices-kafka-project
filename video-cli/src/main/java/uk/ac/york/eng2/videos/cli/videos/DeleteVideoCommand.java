@@ -19,5 +19,4 @@ public class DeleteVideoCommand implements Runnable {
 		HttpResponse<Void> response = client.deleteVideo(id);
 		System.out.println("Server responded with: " + response.getStatus());
 	}
-
 }

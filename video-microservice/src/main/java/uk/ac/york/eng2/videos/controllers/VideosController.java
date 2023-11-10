@@ -38,6 +38,7 @@ public class VideosController {
 		Video video = new Video();
 		video.setTitle(videoDetails.getTitle());
 		video.setAuthor(videoDetails.getAuthor());
+		video.setTags(videoDetails.getTags());
 		video.setNlikes(0);
 		video.setNdislikes(0);
 		video.setNviews(0);
@@ -68,6 +69,13 @@ public class VideosController {
 		if (videoDetails.getAuthor() != null) { //if the http argument provided...
 			v.setAuthor(videoDetails.getAuthor()); //set the author of the fetched v
 		}
+		if (videoDetails.getTags() != null) { //if the http argument provided...
+			v.setTags(videoDetails.getTags()); //set the author of the fetched v
+		}
+		
+		if (videoDetails.getNviews() != null) { //if the http argument provided...
+			v.setNviews(videoDetails.getNviews()); //set the author of the fetched v
+		}
 		repo.update(v); //update the repo - will look at ID and put in correct place accordingly
 		return HttpResponse.ok();
 	}
@@ -84,6 +92,20 @@ public class VideosController {
 		return HttpResponse.ok();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@Get("/{id}/readers")
 //	public Iterable<User> getReaders(long id) {
 //		Optional<Book> oBook = repo.findById(id);
