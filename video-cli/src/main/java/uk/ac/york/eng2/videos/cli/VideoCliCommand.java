@@ -9,17 +9,19 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.videos.AddVideoCommand;
 import uk.ac.york.eng2.videos.cli.videos.DeleteVideoCommand;
+import uk.ac.york.eng2.videos.cli.videos.DislikeVideo;
 import uk.ac.york.eng2.videos.cli.videos.GetAuthorsVideosCommand;
 import uk.ac.york.eng2.videos.cli.videos.GetTagsVideos;
 import uk.ac.york.eng2.videos.cli.videos.GetVideoCommand;
 import uk.ac.york.eng2.videos.cli.videos.GetVideosCommand;
+import uk.ac.york.eng2.videos.cli.videos.LikeVideo;
 import uk.ac.york.eng2.videos.cli.videos.UpdateVideoCommand;
 import uk.ac.york.eng2.videos.cli.videos.WatchVideo;
 
 @Command(name = "video-cli", description = "...", mixinStandardHelpOptions = true, 
 		subcommands = {GetVideosCommand.class, AddVideoCommand.class, GetVideoCommand.class,
 						UpdateVideoCommand.class, DeleteVideoCommand.class, GetAuthorsVideosCommand.class,
-						GetTagsVideos.class, WatchVideo.class})
+						GetTagsVideos.class, WatchVideo.class, LikeVideo.class, DislikeVideo.class})
 public class VideoCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")

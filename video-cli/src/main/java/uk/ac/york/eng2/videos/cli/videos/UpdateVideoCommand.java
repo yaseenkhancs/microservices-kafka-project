@@ -62,7 +62,7 @@ public class UpdateVideoCommand implements Runnable {
 			videoDetails.setNlikes(likes);
 		}
 		
-		HttpResponse<Void> response = client.updateBook(id, videoDetails);
+		HttpResponse<Void> response = client.updateVideo(id, videoDetails);
 		System.out.println("Server responded with: " + response.getStatus());
 	}
 

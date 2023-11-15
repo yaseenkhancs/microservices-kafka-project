@@ -1,6 +1,7 @@
 package uk.ac.york.eng2.videos.controllers;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -13,9 +14,11 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
+import javafx.util.Pair;
 //import uk.ac.york.eng2.books.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
+import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 //import uk.ac.york.eng2.books.repositories.UsersRepository;
 
@@ -27,6 +30,9 @@ public class VideosController {
 
 //	@Inject
 //	UsersRepository userRepo;
+	
+	@Inject
+	VideosProducer producer;
 
 	@Get("/")
 	public Iterable<Video> list() {
@@ -42,8 +48,10 @@ public class VideosController {
 		video.setNlikes(0);
 		video.setNdislikes(0);
 		video.setNviews(0);
-
+		
 		repo.save(video);
+		
+		producer.postVideo(video.getId(), video);
 
 		return HttpResponse.created(URI.create("/videos/" + video.getId()));
 	}
@@ -70,11 +78,19 @@ public class VideosController {
 			v.setAuthor(videoDetails.getAuthor()); //set the author of the fetched v
 		}
 		if (videoDetails.getTags() != null) { //if the http argument provided...
-			v.setTags(videoDetails.getTags()); //set the author of the fetched v
+			v.setTags(videoDetails.getTags()); //set the tags of the fetched v
 		}
-		
 		if (videoDetails.getNviews() != null) { //if the http argument provided...
-			v.setNviews(videoDetails.getNviews()); //set the author of the fetched v
+			v.setNviews(videoDetails.getNviews()); //set the views of the fetched v
+			producer.watchVideo(id, "Username");			
+		}
+		if (videoDetails.getNlikes() != null) { //if the http argument provided...
+			v.setNlikes(videoDetails.getNlikes()); //set the views of the fetched v
+			producer.likeVideo(id, v);
+		}
+		if (videoDetails.getNdislikes() != null) { //if the http argument provided...
+			v.setNdislikes(videoDetails.getNdislikes()); //set the views of the fetched v
+			producer.dislikeVideo(id, v);
 		}
 		repo.update(v); //update the repo - will look at ID and put in correct place accordingly
 		return HttpResponse.ok();

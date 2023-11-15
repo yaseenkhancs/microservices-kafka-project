@@ -25,7 +25,7 @@ public interface VideosClient {
 	VideoDTO getVideo(long id);
 
 	@Put("/{id}")
-	HttpResponse<Void> updateBook(long id, @Body VideoDTO videoDetails);
+	HttpResponse<Void> updateVideo(long id, @Body VideoDTO videoDetails);
 	
 	@Delete("/{id}")
 	HttpResponse<Void> deleteVideo(long id);

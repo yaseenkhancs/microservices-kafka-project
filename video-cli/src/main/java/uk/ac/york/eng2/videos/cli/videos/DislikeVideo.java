@@ -6,8 +6,8 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
-@Command(name="watch-video", description="watches a video", mixinStandardHelpOptions = true)
-public class WatchVideo implements Runnable {
+@Command(name="dislike-video", description="dislikes a video", mixinStandardHelpOptions = true)
+public class DislikeVideo implements Runnable {
 
 	@Parameters(index="0")
 	private Long id;
@@ -23,7 +23,7 @@ public class WatchVideo implements Runnable {
 			System.err.println("Video not found!");
 			System.exit(1);
 		} else {
-			videoDetails.setNviews(currentDetails.getNviews()+1);
+			videoDetails.setNdislikes(currentDetails.getNdislikes()+1);
 		}
 		HttpResponse<Void> response = client.updateVideo(id, videoDetails);
 		System.out.println("Server responded with: " + response.getStatus());
