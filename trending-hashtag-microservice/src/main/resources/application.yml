@@ -1,6 +1,11 @@
 micronaut:
   application:
     name: trendingHashtagMicroservice
+  server:
+    port: -1
+kafka:
+  bootstrap:
+    servers: ${KAFKA_BOOTSTRAP_SERVERS:`localhost:9094`}
 netty:
   default:
     allocator:

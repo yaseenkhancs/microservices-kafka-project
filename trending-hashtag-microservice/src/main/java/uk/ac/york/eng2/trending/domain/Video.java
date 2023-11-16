@@ -2,43 +2,21 @@ package uk.ac.york.eng2.trending.domain;
 
 import java.util.HashSet;
 //import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.micronaut.serde.annotation.Serdeable;
 
-@Entity
 @Serdeable
 public class Video {
-
-	@Id
-	@GeneratedValue
 	private Long id;
-
-	@Column(nullable = false)
 	private String title;
-	
-	@Column(nullable = false)
 	private String author;
-	
-	@Column(nullable = false)
 	private HashSet<String> tags;
-
-	@Column(nullable = false)
 	private Integer nlikes;
-	
-	@Column(nullable = false)
 	private Integer ndislikes;
-	
-	@Column(nullable = false)
 	private Integer nviews;
-	
 
 //	@JsonIgnore
 //	@ManyToMany
