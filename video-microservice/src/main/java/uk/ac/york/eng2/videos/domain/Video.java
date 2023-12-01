@@ -2,16 +2,21 @@ package uk.ac.york.eng2.videos.domain;
 
 import java.util.HashSet;
 //import java.util.Set;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.micronaut.serde.annotation.Serdeable;
+import uk.ac.york.eng2.videos.controllers.VideosController;
 
 @Entity
 @Serdeable
@@ -38,11 +43,10 @@ public class Video {
 	
 	@Column(nullable = false)
 	private Integer nviews;
-	
 
-//	@JsonIgnore
-//	@ManyToMany
-//	private Set<User> readers;
+	@JsonIgnore
+	@ManyToMany
+	private Set<User> watchers;
 
 	public Long getId() {
 		return id;
@@ -108,19 +112,33 @@ public class Video {
 	public void setNviews(Integer nviews) {
 		this.nviews = nviews;
 	}
+
+	public Set<User> getWatchers() {
+		return watchers;
+	}
+
+	public void setWatchers(Set<User> watchers) {
+		this.watchers = watchers;
+	}
+	
+	private String watchersString() {
+		if (watchers == null) {
+			return "NONE";
+		}
+		String output = "[";
+		for (User s : watchers) {			
+			output = output.concat(s.getUsername() + ", ");
+		}
+		output = output.substring(0,output.length() - 2);
+		output = output.concat("]");
+		return output;
+	}
 	
 	@Override
 	public String toString() {
+		VideosController vc = new VideosController();
 		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
 	}
-
-//	public Set<User> getReaders() {
-//		return readers;
-//	}
-
-//	public void setReaders(Set<User> readers) {
-//		this.readers = readers;
-//	}
 
 }

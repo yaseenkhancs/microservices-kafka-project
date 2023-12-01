@@ -21,7 +21,7 @@ import uk.ac.york.eng2.videos.domain.Video;
 @Factory
 public class VideosStreams {
 
-	public static final String TOPIC_WATCHED_BY_HOUR = "video-watched-by-hour";
+	public static final String TOPIC_LIKED_BY_HOUR = "video-liked-by-hour";
 
 	@Inject
 	private SerdeRegistry serdeRegistry;
@@ -39,18 +39,17 @@ public class VideosStreams {
 		props.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
 
 		KStream<Long, Video> videosStream = builder
-			.stream(VideosProducer.TOPIC_WATCHED, Consumed.with(Serdes.Long(), serdeRegistry.getSerde(Video.class)));
+			.stream(VideosProducer.TOPIC_LIKED, Consumed.with(Serdes.Long(), serdeRegistry.getSerde(Video.class)));
 
 //		KStream<WindowedIdentifier, Long> stream = videosStream.groupByKey()
 //			.windowedBy(TimeWindows.of(Duration.ofHours(1)).advanceBy(Duration.ofHours(1)))
-//			.count(Materialized.as("watched-by-hour"))
+//			.count(Materialized.as("liked-by-hour"))
 //			.toStream()
 //			.selectKey((k, v) -> new WindowedIdentifier(k.key(), k.window().start(), k.window().end()));
 //
-//		stream.to(TOPIC_WATCHED_BY_HOUR,
+//		stream.to(TOPIC_LIKED_BY_HOUR,
 //			Produced.with(serdeRegistry.getSerde(WindowedIdentifier.class), Serdes.Long()));
 
 		return videosStream;
 	}
-
 }

@@ -15,10 +15,12 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
 import javafx.util.Pair;
+import uk.ac.york.eng2.videos.domain.User;
 //import uk.ac.york.eng2.books.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.events.VideosProducer;
+import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 //import uk.ac.york.eng2.books.repositories.UsersRepository;
 
@@ -28,8 +30,8 @@ public class VideosController {
 	@Inject
 	VideosRepository repo;
 
-//	@Inject
-//	UsersRepository userRepo;
+	@Inject
+	UsersRepository userRepo;
 	
 	@Inject
 	VideosProducer producer;
@@ -48,6 +50,7 @@ public class VideosController {
 		video.setNlikes(0);
 		video.setNdislikes(0);
 		video.setNviews(0);
+		video.setWatchers(null);
 		
 		repo.save(video);
 		
@@ -58,6 +61,7 @@ public class VideosController {
 	
 	@Get("/{id}")
 	public VideoDTO getVideo(long id) {
+		System.out.println(repo.findOne(1));
 		return repo.findOne(id).orElse(null);
 	}
 
@@ -106,50 +110,36 @@ public class VideosController {
 
 		repo.delete(video.get());
 		return HttpResponse.ok();
+	}	
+	
+	@Get("/{id}/watchers")
+	public Iterable<User> getWatchers(long id) {
+		Optional<Video> oVideo = repo.findById(id);
+		if (oVideo.isEmpty()) {
+			return null;
+		}
+		return oVideo.get().getWatchers();
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@Get("/{id}/readers")
-//	public Iterable<User> getReaders(long id) {
-//		Optional<Book> oBook = repo.findById(id);
-//		if (oBook.isEmpty()) {
-//			return null;
-//		}
-//		return oBook.get().getReaders();
-//	}
+	@Transactional
+	@Put("/{videoId}/watchers/{videoId}")
+	public HttpResponse<String> addWatcher(long videoId, long userId) {
+		Optional<Video> oVideo = repo.findById(videoId);
+		if (oVideo.isEmpty()) {
+			return HttpResponse.notFound(String.format("Video %d not found", videoId));
+		}
 
-//	@Transactional
-//	@Put("/{bookId}/readers/{userId}")
-//	public HttpResponse<String> addReader(long bookId, long userId) {
-//		Optional<Book> oBook = repo.findById(bookId);
-//		if (oBook.isEmpty()) {
-//			return HttpResponse.notFound(String.format("Book %d not found", bookId));
-//		}
-//
-//		Optional<User> oUser = userRepo.findById(userId);
-//		if (oUser.isEmpty()) {
-//			return HttpResponse.notFound(String.format("User %d not found", userId));
-//		}
-//
-//		Book book = oBook.get();
-//		book.getReaders().add(oUser.get());
-//		repo.update(book);
-//
-//		return HttpResponse.ok(String.format("User %d added as reader of book %d", userId, bookId));
-//	}
+		Optional<User> oUser = userRepo.findById(userId);
+		if (oUser.isEmpty()) {
+			return HttpResponse.notFound(String.format("User %d not found", userId));
+		}
+
+		Video video = oVideo.get();
+		video.getWatchers().add(oUser.get());
+		repo.update(video);		
+
+		return HttpResponse.ok(String.format("User %d added as watcher of video %d", userId, videoId));
+	}
 
 //	@Transactional
 //	@Delete("/{bookId}/readers/{userId}")

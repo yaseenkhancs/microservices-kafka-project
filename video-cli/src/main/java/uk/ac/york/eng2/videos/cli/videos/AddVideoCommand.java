@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="post-video", description="Posts a video", mixinStandardHelpOptions = true)
@@ -35,6 +37,11 @@ public class AddVideoCommand implements Runnable {
 
 	@Override
 	public void run() {
+		User newUser = new User();
+		newUser.setId((long) 10);
+		newUser.setUsername("bob");
+		Set<User> myset = new HashSet<>();
+		myset.add(newUser);
 		VideoDTO dto = new VideoDTO();
 		dto.setTitle(title);
 		dto.setAuthor(author);
@@ -42,6 +49,7 @@ public class AddVideoCommand implements Runnable {
 		dto.setNlikes(0);
 		dto.setNdislikes(0);
 		dto.setNviews(0);
+		dto.setWatchers(myset);
 
 		HttpResponse<Void> response = client.add(dto);
 		System.out.println("Server responded with: " + response.getStatus());

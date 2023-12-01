@@ -1,8 +1,10 @@
 package uk.ac.york.eng2.videos.cli.dto;
 
 import java.util.HashSet;
+import java.util.Set;
 
 import io.micronaut.serde.annotation.Serdeable;
+import uk.ac.york.eng2.videos.cli.domain.User;
 
 @Serdeable
 public class VideoDTO {
@@ -13,6 +15,7 @@ public class VideoDTO {
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
+	private Set<User> watchers;
 
 
 	public String getTitle() {
@@ -39,6 +42,16 @@ public class VideoDTO {
 		this.tags = tags;
 	}
 
+	private String tagsString() {
+		String output = "[";
+		for (String s : tags) {			
+			output = output.concat(s + ", ");
+		}
+		output = output.substring(0,output.length() - 2);
+		output = output.concat("]");
+		return output;
+	}
+
 	public Integer getNlikes() {
 		return nlikes;
 	}
@@ -63,13 +76,23 @@ public class VideoDTO {
 		this.nviews = nviews;
 	}
 	
-	private String tagsString() {
-		String output = "[";
-		for (String s : tags) {			
-			output = output.concat(s + ", ");
+	public Set<User> getWatchers() {
+		return watchers;
+	}
+
+	public void setWatchers(Set<User> watchers) {
+		this.watchers = watchers;
+	}
+	
+	private String watchersString() {
+		if (watchers == null) {
+			return "NONE";
 		}
-		output = output.stripTrailing();
-		output = output.substring(0,output.length() - 1);
+		String output = "[";
+		for (User s : watchers) {			
+			output = output.concat(s.getUsername() + ", ");
+		}
+		output = output.substring(0,output.length() - 2);
 		output = output.concat("]");
 		return output;
 	}
@@ -77,7 +100,7 @@ public class VideoDTO {
 	@Override
 	public String toString() {
 		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
 	}
 
 }

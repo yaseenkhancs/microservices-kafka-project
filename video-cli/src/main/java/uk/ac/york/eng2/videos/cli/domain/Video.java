@@ -9,9 +9,8 @@ import java.util.Set;
 //import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import io.micronaut.serde.annotation.Serdeable;
+import uk.ac.york.eng2.videos.cli.videos.VideosClient;
 
 @Serdeable
 public class Video {
@@ -23,11 +22,7 @@ public class Video {
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
-	
-
-//	@JsonIgnore
-//	@ManyToMany
-//	private Set<User> readers;
+	private Set<User> watchers;
 
 	public Long getId() {
 		return id;
@@ -95,18 +90,31 @@ public class Video {
 		return output;
 	}
 
-	@Override
-	public String toString() {
-		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
+	public Set<User> getWatchers() {
+		return watchers;
 	}
 
-//	public Set<User> getReaders() {
-//		return readers;
-//	}
+	public void setWatchers(Set<User> watchers) {
+		this.watchers = watchers;
+	}
+	
+	private String watchersString() {
+		if (watchers == null) {
+			return "NONE";
+		}
+		String output = "[";
+		for (User s : watchers) {			
+			output = output.concat(s.getUsername() + ", ");
+		}
+		output = output.substring(0,output.length() - 2);
+		output = output.concat("]");
+		return output;
+	}
 
-//	public void setReaders(Set<User> readers) {
-//		this.readers = readers;
-//	}
+	@Override
+	public String toString() {
+		return "[{mainvidcli}title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
+	}
 
 }
