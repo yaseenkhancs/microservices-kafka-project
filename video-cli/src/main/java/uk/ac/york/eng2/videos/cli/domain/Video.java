@@ -113,7 +113,7 @@ public class Video {
 
 	@Override
 	public String toString() {
-		return "[{mainvidcli}title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
 				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
 	}
 

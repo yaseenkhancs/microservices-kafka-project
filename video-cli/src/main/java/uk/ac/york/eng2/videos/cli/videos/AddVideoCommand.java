@@ -37,11 +37,6 @@ public class AddVideoCommand implements Runnable {
 
 	@Override
 	public void run() {
-		User newUser = new User();
-		newUser.setId((long) 10);
-		newUser.setUsername("bob");
-		Set<User> myset = new HashSet<>();
-		myset.add(newUser);
 		VideoDTO dto = new VideoDTO();
 		dto.setTitle(title);
 		dto.setAuthor(author);
@@ -49,7 +44,7 @@ public class AddVideoCommand implements Runnable {
 		dto.setNlikes(0);
 		dto.setNdislikes(0);
 		dto.setNviews(0);
-		dto.setWatchers(myset);
+		dto.setWatchers(null);
 
 		HttpResponse<Void> response = client.add(dto);
 		System.out.println("Server responded with: " + response.getStatus());
