@@ -60,7 +60,7 @@ public class VideosController {
 	}
 	
 	@Get("/{id}")
-	public VideoDTO getVideo(long id) {
+	public Video getVideo(long id) {
 //		System.out.println(repo.findOne(1));
 		return repo.findOne(id).orElse(null);
 	}

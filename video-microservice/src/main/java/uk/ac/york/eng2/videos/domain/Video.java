@@ -34,6 +34,7 @@ public class Video {
 	
 	@ElementCollection
 	@JsonIgnore
+	@ManyToMany
 	private Collection<Hashtag> tags;
 
 	@Column(nullable = false)
@@ -85,14 +86,14 @@ public class Video {
 		this.tags = tags;
 	}
 	
-	private String tagsString() {
-		String output = "[";
-		for (Hashtag s : tags) {			
-			output = output.concat(s + ", ");
-		}
-		output = output.concat("]");
-		return output;
-	}
+//	private String tagsString() {
+//		String output = "[";
+//		for (Hashtag s : tags) {			
+//			output = output.concat(s + ", ");
+//		}
+//		output = output.concat("]");
+//		return output;
+//	}
 
 	public Integer getNlikes() {
 		return nlikes;
@@ -142,7 +143,7 @@ public class Video {
 	@Override
 	public String toString() {
 		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tags + ", watchers: " + watchers + "]";
 	}
 
 }

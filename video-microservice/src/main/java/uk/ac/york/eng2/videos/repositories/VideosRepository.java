@@ -20,6 +20,6 @@ public interface VideosRepository extends CrudRepository<Video, Long> {
 	@Override
 	Optional<Video> findById(@NotNull Long id);
 
-	Optional<VideoDTO> findOne(long id);
+	Optional<Video> findOne(long id);
 
 }
