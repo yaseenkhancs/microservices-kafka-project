@@ -20,7 +20,7 @@ public class GetHashtag implements Runnable {
 			System.err.println("Tag not found!");
 			System.exit(1);
 		} else {
-			System.out.println(tag);
+			System.out.println(tag.getName());
 		}
 	}
 	
