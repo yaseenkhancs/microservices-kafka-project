@@ -39,4 +39,7 @@ public interface VideosClient {
 	
 	@Get("/{id}/author")
 	public User getVideoAuthor(long id);
+	
+	@Get("/{id}/hashtags")
+	public User getVideoHashtags(long id);
 }

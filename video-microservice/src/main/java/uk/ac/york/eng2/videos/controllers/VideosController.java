@@ -1,6 +1,7 @@
 package uk.ac.york.eng2.videos.controllers;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
 import javafx.util.Pair;
+import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 //import uk.ac.york.eng2.books.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
@@ -137,6 +139,17 @@ public class VideosController {
 		}
 		System.out.println(repo.findOne(id).get().getAuthor());
 		return repo.findOne(id).get().getAuthor();
+	}
+	
+	@Transactional
+	@Get("/{id}/hashtags")
+	public Collection<Hashtag> getVideoHashtags(long id) {
+		Optional<Video> oVideo = repo.findById(id);
+		if (oVideo.isEmpty()) {
+			return null;
+		}
+		System.out.println(repo.findOne(id).get().getTags());
+		return repo.findOne(id).get().getTags();
 	}
 
 	@Transactional
