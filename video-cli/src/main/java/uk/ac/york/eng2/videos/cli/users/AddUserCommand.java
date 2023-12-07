@@ -18,7 +18,7 @@ public class AddUserCommand implements Runnable {
 	@Override
 	public void run() {
 		UserDTO dto = new UserDTO();
-		dto.setUsername(username);
+		dto.setUsername(username.toLowerCase());
 
 		HttpResponse<Void> response = client.add(dto);
 		System.out.println("Server responded with: " + response.getStatus());

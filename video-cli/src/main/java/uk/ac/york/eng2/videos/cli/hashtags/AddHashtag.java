@@ -20,7 +20,7 @@ public class AddHashtag implements Runnable {
 	@Override
 	public void run() {
 		HashtagDTO dto = new HashtagDTO();
-		dto.setName(name);
+		dto.setName(name.toLowerCase());
 
 		HttpResponse<Void> response = client.add(dto);
 		System.out.println("Server responded with: " + response.getStatus());
