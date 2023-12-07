@@ -33,6 +33,7 @@ public class Video {
 	private String title;
 	
 	@ElementCollection
+	@JsonIgnore
 	private Collection<Hashtag> tags;
 
 	@Column(nullable = false)
