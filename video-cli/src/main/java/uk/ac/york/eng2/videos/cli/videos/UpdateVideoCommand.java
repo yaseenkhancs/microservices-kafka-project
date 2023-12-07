@@ -2,6 +2,7 @@ package uk.ac.york.eng2.videos.cli.videos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
+import uk.ac.york.eng2.videos.cli.hashtags.HashtagsClient;
 import uk.ac.york.eng2.videos.cli.users.UsersClient;
 
 @Command(name="update-video", description="Updates a video", mixinStandardHelpOptions = true)
@@ -27,7 +30,7 @@ public class UpdateVideoCommand implements Runnable {
 	private Integer author;
 	
 	@Option(names = {"--hashtags", "--tags"}, description="Tags of the video")
-	private String tagstring;
+	private Integer tags;
 
 	@Option(names = {"--views", "--v"}, description="views of the video")
 	private Integer views;
@@ -47,6 +50,9 @@ public class UpdateVideoCommand implements Runnable {
 	
 	@Inject
 	private UsersClient uclient;
+	
+	@Inject
+	private HashtagsClient hclient;
 
 	@Override
 	public void run() {
@@ -60,8 +66,16 @@ public class UpdateVideoCommand implements Runnable {
 			usr.setUsername(uclient.getUser(author).getUsername());
 			videoDetails.setAuthor(usr);
 		}
-		if (tagstring != null) {
-			videoDetails.setTags(stringToSet(tagstring));
+		if (tags != null) {
+			
+			Hashtag newhash = new Hashtag();
+			newhash.setId((long)tags);
+			newhash.setName(hclient.getTag(tags).getName());
+			
+			Collection<Hashtag> colhash = new ArrayList<Hashtag>();
+			colhash.add(newhash);
+			
+			videoDetails.setTags(colhash);
 		}
 		if (views != null) {
 			videoDetails.setNviews(views);

@@ -12,6 +12,11 @@ services:
     ports:
       - 3306:3306
 
+  adminer:
+    image: adminer:4-standalone
+    ports:
+      - 9001:8080
+  
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     ports:

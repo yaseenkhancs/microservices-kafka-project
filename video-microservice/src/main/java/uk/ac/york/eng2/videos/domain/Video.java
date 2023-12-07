@@ -1,10 +1,12 @@
 package uk.ac.york.eng2.videos.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 //import java.util.Set;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,8 +32,8 @@ public class Video {
 	@Column(nullable = false)
 	private String title;
 	
-	@Column(nullable = false)
-	private HashSet<String> tags;
+	@ElementCollection
+	private Collection<Hashtag> tags;
 
 	@Column(nullable = false)
 	private Integer nlikes;
@@ -74,17 +76,17 @@ public class Video {
 		this.author = author;
 	}
 	
-	public HashSet<String> getTags() {
+	public Collection<Hashtag> getTags() {
 		return tags;
 	}
 	
-	public void setTags(HashSet<String> tags) {
+	public void setTags(Collection<Hashtag> tags) {
 		this.tags = tags;
 	}
 	
 	private String tagsString() {
 		String output = "[";
-		for (String s : tags) {			
+		for (Hashtag s : tags) {			
 			output = output.concat(s + ", ");
 		}
 		output = output.concat("]");

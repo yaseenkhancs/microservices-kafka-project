@@ -1,16 +1,8 @@
 package uk.ac.york.eng2.videos.cli.domain;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Set;
-
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import javax.persistence.ManyToMany;
-
 import io.micronaut.serde.annotation.Serdeable;
-import uk.ac.york.eng2.videos.cli.videos.VideosClient;
 
 @Serdeable
 public class Video {
@@ -18,7 +10,7 @@ public class Video {
 	private Long id;
 	private String title;
 	private User author;
-	private HashSet<String> tags;
+	private Collection<Hashtag> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
@@ -48,11 +40,11 @@ public class Video {
 		this.author = author;
 	}
 	
-	public HashSet<String> getTags() {
+	public Collection<Hashtag> getTags() {
 		return tags;
 	}
 	
-	public void setTags(HashSet<String> tags) {
+	public void setTags(Collection<Hashtag> tags) {
 		this.tags = tags;
 	}
 
@@ -82,7 +74,7 @@ public class Video {
 	
 	private String tagsString() {
 		String output = "[";
-		for (String s : tags) {			
+		for (Hashtag s : tags) {			
 			output = output.concat(s + ", ");
 		}
 		output = output.substring(0,output.length() - 2);

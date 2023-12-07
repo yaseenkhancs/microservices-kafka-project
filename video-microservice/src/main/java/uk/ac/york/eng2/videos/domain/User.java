@@ -51,5 +51,4 @@ public class User {
 	public void setWatchedVideos(Set<Video> watchedVideos) {
 		this.watchedVideos = watchedVideos;
 	}
-
 }

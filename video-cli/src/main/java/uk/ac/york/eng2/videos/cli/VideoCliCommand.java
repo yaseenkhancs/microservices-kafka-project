@@ -7,6 +7,9 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.hashtags.AddHashtag;
+import uk.ac.york.eng2.videos.cli.hashtags.GetHashtag;
+import uk.ac.york.eng2.videos.cli.hashtags.GetHashtags;
 import uk.ac.york.eng2.videos.cli.users.AddUserCommand;
 import uk.ac.york.eng2.videos.cli.users.GetUserCommand;
 import uk.ac.york.eng2.videos.cli.users.GetUsersCommand;
@@ -27,7 +30,8 @@ import uk.ac.york.eng2.videos.cli.videos.WatchVideo;
 		subcommands = {GetVideosCommand.class, AddVideoCommand.class, GetVideoCommand.class,
 						UpdateVideoCommand.class, DeleteVideoCommand.class, GetAuthorsVideosCommand.class,
 						GetTagsVideos.class, WatchVideo.class, LikeVideo.class, DislikeVideo.class, AddVideoWatcherCommand.class,
-						GetVideoWatchersCommand.class, GetUsersCommand.class, AddUserCommand.class, GetUserCommand.class})
+						GetVideoWatchersCommand.class, GetUsersCommand.class, AddUserCommand.class, GetUserCommand.class,
+						GetHashtag.class, GetHashtags.class, AddHashtag.class})
 public class VideoCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")
