@@ -10,7 +10,9 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
+import uk.ac.york.eng2.videos.cli.users.UsersClient;
 
 @Command(name="update-video", description="Updates a video", mixinStandardHelpOptions = true)
 public class UpdateVideoCommand implements Runnable {
@@ -22,7 +24,7 @@ public class UpdateVideoCommand implements Runnable {
 	private String title;
 
 	@Option(names = {"-a", "--author"}, description="Author of the video")
-	private String author;
+	private Integer author;
 	
 	@Option(names = {"--hashtags", "--tags"}, description="Tags of the video")
 	private String tagstring;
@@ -42,6 +44,9 @@ public class UpdateVideoCommand implements Runnable {
 
 	@Inject
 	private VideosClient client;
+	
+	@Inject
+	private UsersClient uclient;
 
 	@Override
 	public void run() {
@@ -50,7 +55,10 @@ public class UpdateVideoCommand implements Runnable {
 			videoDetails.setTitle(title);
 		}
 		if (author != null) {
-			videoDetails.setAuthor(author);
+			User usr = new User();
+			usr.setId((long)author);
+			usr.setUsername(uclient.getUser(author).getUsername());
+			videoDetails.setAuthor(usr);
 		}
 		if (tagstring != null) {
 			videoDetails.setTags(stringToSet(tagstring));

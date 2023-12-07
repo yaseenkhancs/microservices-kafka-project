@@ -10,7 +10,7 @@ import uk.ac.york.eng2.videos.domain.User;
 public class VideoDTO {
 
 	private String title;
-	private String author;
+	private User author;
 	private HashSet<String> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
@@ -26,11 +26,11 @@ public class VideoDTO {
 		this.title = title;
 	}
 	
-	public String getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	

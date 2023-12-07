@@ -15,9 +15,11 @@ public class GetVideosCommand implements Runnable {
 	public void run() {
 		for (Video b : client.list()) {
 			System.out.print(b);
+			System.out.print("[");
 			for (User thisuser : client.getWatchers(b.getId())) {
-				System.out.print(thisuser.getUsername());
+				System.out.print(thisuser.getUsername() + ", ");
 			}
+			System.out.print("]]");
 		}
 	}
 }

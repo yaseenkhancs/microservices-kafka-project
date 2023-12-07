@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,9 +31,6 @@ public class Video {
 	private String title;
 	
 	@Column(nullable = false)
-	private String author;
-	
-	@Column(nullable = false)
 	private HashSet<String> tags;
 
 	@Column(nullable = false)
@@ -47,6 +45,10 @@ public class Video {
 	@JsonIgnore
 	@ManyToMany
 	private Set<User> watchers;
+	
+//	@JsonIgnore
+	@ManyToOne
+	private User author;
 
 	public Long getId() {
 		return id;
@@ -64,11 +66,11 @@ public class Video {
 		this.title = title;
 	}
 	
-	public String getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	
@@ -136,7 +138,6 @@ public class Video {
 	
 	@Override
 	public String toString() {
-		VideosController vc = new VideosController();
 		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
 				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
 	}

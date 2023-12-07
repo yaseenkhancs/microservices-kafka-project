@@ -23,5 +23,4 @@ public class AddVideoWatcherCommand implements Runnable {
 		System.out.printf("Server responded with status %s: %s%n",
 			response.getStatus(), response.getBody().orElse("(no text)"));
 	}
-
 }

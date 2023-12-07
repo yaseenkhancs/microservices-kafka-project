@@ -17,7 +17,7 @@ public class Video {
 
 	private Long id;
 	private String title;
-	private String author;
+	private User author;
 	private HashSet<String> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
@@ -40,11 +40,11 @@ public class Video {
 		this.title = title;
 	}
 	
-	public String getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 	
@@ -114,7 +114,7 @@ public class Video {
 	@Override
 	public String toString() {
 		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: " + watchers + "]";
+				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + ", watchers: ";
 	}
 
 }

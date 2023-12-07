@@ -12,18 +12,22 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
+import uk.ac.york.eng2.videos.cli.users.UsersClient;
 
 @Command(name="post-video", description="Posts a video", mixinStandardHelpOptions = true)
 public class AddVideoCommand implements Runnable {
 
 	@Inject
 	private VideosClient client;
+	
+	@Inject
+	private UsersClient uclient;
 
 	@Parameters(index="0")
 	private String title;
 
 	@Parameters(index="1")
-	private String author;
+	private Integer author;
 	
 	@Parameters(index="2")
 	private String tagstring;
@@ -37,9 +41,12 @@ public class AddVideoCommand implements Runnable {
 
 	@Override
 	public void run() {
+		User usr = new User();
+		usr.setId((long)author);
+		usr.setUsername(uclient.getUser(author).getUsername());
 		VideoDTO dto = new VideoDTO();
 		dto.setTitle(title);
-		dto.setAuthor(author);
+		dto.setAuthor(usr);
 		dto.setTags(stringToSet(tagstring));
 		dto.setNlikes(0);
 		dto.setNdislikes(0);

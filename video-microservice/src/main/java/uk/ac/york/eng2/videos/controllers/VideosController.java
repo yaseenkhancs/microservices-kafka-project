@@ -61,9 +61,17 @@ public class VideosController {
 	
 	@Get("/{id}")
 	public VideoDTO getVideo(long id) {
-		System.out.println(repo.findOne(1));
+//		System.out.println(repo.findOne(1));
 		return repo.findOne(id).orElse(null);
 	}
+	
+	
+	
+//	@Get("/{id}")
+//	public VideoDTO getVideoTrue(long id) {
+//		System.out.println(repo.findOne(1));
+//		return repo.findOne(id).orElse(null);
+//	}
 
 	
 	@Transactional
@@ -119,6 +127,16 @@ public class VideosController {
 			return null;
 		}
 		return oVideo.get().getWatchers();
+	}
+	
+	@Get("/{id}/author")
+	public User getVideoAuthor(long id) {
+		Optional<Video> oVideo = repo.findById(id);
+		if (oVideo.isEmpty()) {
+			return null;
+		}
+		System.out.println(repo.findOne(id).get().getAuthor());
+		return repo.findOne(id).get().getAuthor();
 	}
 
 	@Transactional

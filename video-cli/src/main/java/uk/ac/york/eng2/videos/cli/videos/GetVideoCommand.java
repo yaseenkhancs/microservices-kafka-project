@@ -3,6 +3,7 @@ package uk.ac.york.eng2.videos.cli.videos;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="get-video", description="Gets a specific video", mixinStandardHelpOptions = true)
@@ -21,7 +22,12 @@ public class GetVideoCommand implements Runnable {
 			System.err.println("Video not found!");
 			System.exit(1);
 		} else {
-			System.out.println(video);
+			System.out.print(video);
+			System.out.print("[");
+			for (User thisuser : client.getWatchers(id)) {
+				System.out.print(thisuser.getUsername() + ", ");
+			}
+			System.out.print("]]");
 		}
 	}	
 }

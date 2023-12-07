@@ -36,4 +36,7 @@ public interface VideosClient {
 
 	@Get("/{id}/watchers")
 	public Iterable<User> getWatchers(long id);
+	
+	@Get("/{id}/author")
+	public User getVideoAuthor(long id);
 }
