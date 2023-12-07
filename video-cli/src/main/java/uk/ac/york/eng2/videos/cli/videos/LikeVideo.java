@@ -4,6 +4,7 @@ import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.Video;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="like-video", description="likes a video", mixinStandardHelpOptions = true)
@@ -17,8 +18,8 @@ public class LikeVideo implements Runnable {
 
 	@Override
 	public void run() {
-		VideoDTO videoDetails = new VideoDTO();
-		VideoDTO currentDetails = client.getVideo(id);
+		Video videoDetails = new Video();
+		Video currentDetails = client.getVideo(id);
 		if (currentDetails == null) {
 			System.err.println("Video not found!");
 			System.exit(1);

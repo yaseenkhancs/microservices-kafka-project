@@ -3,7 +3,9 @@ package uk.ac.york.eng2.videos.cli.videos;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;
+import uk.ac.york.eng2.videos.cli.domain.Video;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="get-video", description="Gets a specific video", mixinStandardHelpOptions = true)
@@ -17,7 +19,7 @@ public class GetVideoCommand implements Runnable {
 
 	@Override
 	public void run() {
-		VideoDTO video = client.getVideo(id);
+		Video video = client.getVideo(id);
 		if (video == null) {
 			System.err.println("Video not found!");
 			System.exit(1);
@@ -27,7 +29,15 @@ public class GetVideoCommand implements Runnable {
 			for (User thisuser : client.getWatchers(id)) {
 				System.out.print(thisuser.getUsername() + ", ");
 			}
-			System.out.print("]]");
+			System.out.print("], ");
+			System.out.print("hashtags: [");
+			for (Hashtag thistag : client.getVideoHashtags(video.getId())) {
+				System.out.print(thistag.getName() + ", ");
+			}
+			System.out.print("], ");
+			System.out.print("author: ");
+			System.out.print(client.getVideoAuthor(id).getUsername());
+			System.out.print("] ");
 		}
 	}	
 }

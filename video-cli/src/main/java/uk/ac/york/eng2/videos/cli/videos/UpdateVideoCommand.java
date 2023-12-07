@@ -13,6 +13,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;
+import uk.ac.york.eng2.videos.cli.domain.Video;
 import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 import uk.ac.york.eng2.videos.cli.hashtags.HashtagsClient;
 import uk.ac.york.eng2.videos.cli.users.UsersClient;
@@ -56,7 +57,7 @@ public class UpdateVideoCommand implements Runnable {
 
 	@Override
 	public void run() {
-		VideoDTO videoDetails = new VideoDTO();
+		Video videoDetails = new Video();
 		if (title != null) {
 			videoDetails.setTitle(title);
 		}

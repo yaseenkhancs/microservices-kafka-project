@@ -90,23 +90,23 @@ public class Video {
 		this.watchers = watchers;
 	}
 	
-	private String watchersString() {
-		if (watchers == null) {
-			return "NONE";
-		}
-		String output = "[";
-		for (User s : watchers) {			
-			output = output.concat(s.getUsername() + ", ");
-		}
-		output = output.substring(0,output.length() - 2);
-		output = output.concat("]");
-		return output;
-	}
+//	private String watchersString() {
+//		if (watchers == null) {
+//			return "NONE";
+//		}
+//		String output = "[";
+//		for (User s : watchers) {			
+//			output = output.concat(s.getUsername() + ", ");
+//		}
+//		output = output.substring(0,output.length() - 2);
+//		output = output.concat("]");
+//		return output;
+//	}
 
 	@Override
 	public String toString() {
-		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tags + ", watchers: ";
+		return "[title=" + title + ", likes="	+ nlikes + 
+				", dislikes=" + ndislikes + ", views=" +nviews + ", watchers: ";
 	}
 
 }

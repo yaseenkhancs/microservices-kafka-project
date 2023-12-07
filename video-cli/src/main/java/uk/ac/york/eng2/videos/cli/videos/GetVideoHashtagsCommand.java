@@ -16,6 +16,7 @@ public class GetVideoHashtagsCommand implements Runnable {
 	
 	@Override
 	public void run() {
+		System.out.println(id);
 		System.out.println(client.getVideoHashtags(id));
 	}
 }
