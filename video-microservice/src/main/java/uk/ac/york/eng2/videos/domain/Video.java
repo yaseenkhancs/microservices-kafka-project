@@ -46,7 +46,7 @@ public class Video {
 	@ManyToMany
 	private Set<User> watchers;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToOne
 	private User author;
 
