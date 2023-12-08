@@ -35,6 +35,9 @@ public interface VideosClient {
 
 	@Put("/{videoId}/watchers/{userId}")
 	public HttpResponse<String> addWatcher(long videoId, long userId);
+	
+	@Put("/{videoId}/hashtags/{hashtagId}")
+	public HttpResponse<String> addHashtag(long videoId, long hashtagId);
 
 	@Get("/{id}/watchers")
 	public Iterable<User> getWatchers(long id);

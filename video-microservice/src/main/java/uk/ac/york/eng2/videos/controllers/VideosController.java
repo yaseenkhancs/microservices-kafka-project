@@ -22,6 +22,7 @@ import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.events.VideosProducer;
+import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 //import uk.ac.york.eng2.books.repositories.UsersRepository;
@@ -34,6 +35,9 @@ public class VideosController {
 
 	@Inject
 	UsersRepository userRepo;
+	
+	@Inject
+	HashtagsRepository hashtagsRepo;
 	
 	@Inject
 	VideosProducer producer;
@@ -170,6 +174,25 @@ public class VideosController {
 		repo.update(video);		
 
 		return HttpResponse.ok(String.format("User %d added as watcher of video %d", userId, videoId));
+	}
+	
+	@Transactional
+	@Put("/{videoId}/hashtags/{hashtagId}")
+	public HttpResponse<String> addHashtag(long videoId, long hashtagId) {
+		Optional<Video> oVideo = repo.findById(videoId);
+		if (oVideo.isEmpty()) {
+			return HttpResponse.notFound(String.format("Video %d not found", videoId));
+		}
+
+		Optional<Hashtag> oHashtag = hashtagsRepo.findById(hashtagId);
+		if (oHashtag.isEmpty()) {
+			return HttpResponse.notFound(String.format("hashtag %d not found", hashtagId));
+		}
+		Video video = oVideo.get();
+		video.getTags().add(oHashtag.get());
+		repo.update(video);
+		
+		return HttpResponse.ok(String.format("Hashtag %d added as hashtag of video %d", hashtagId, videoId));		
 	}
 
 //	@Transactional

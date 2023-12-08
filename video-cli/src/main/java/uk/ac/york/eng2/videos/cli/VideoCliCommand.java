@@ -14,6 +14,7 @@ import uk.ac.york.eng2.videos.cli.users.AddUserCommand;
 import uk.ac.york.eng2.videos.cli.users.GetUserCommand;
 import uk.ac.york.eng2.videos.cli.users.GetUsersCommand;
 import uk.ac.york.eng2.videos.cli.videos.AddVideoCommand;
+import uk.ac.york.eng2.videos.cli.videos.AddVideoHashtag;
 import uk.ac.york.eng2.videos.cli.videos.AddVideoWatcherCommand;
 import uk.ac.york.eng2.videos.cli.videos.DeleteVideoCommand;
 import uk.ac.york.eng2.videos.cli.videos.DislikeVideo;
@@ -34,7 +35,7 @@ import uk.ac.york.eng2.videos.cli.videos.WatchVideo;
 						GetTagsVideos.class, WatchVideo.class, LikeVideo.class, DislikeVideo.class, AddVideoWatcherCommand.class,
 						GetVideoWatchersCommand.class, GetUsersCommand.class, AddUserCommand.class, GetUserCommand.class,
 						GetHashtag.class, GetHashtags.class, AddHashtag.class, GetVideoHashtagsCommand.class,
-						GetVideoAuthor.class})
+						GetVideoAuthor.class, AddVideoHashtag.class})
 public class VideoCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")
