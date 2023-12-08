@@ -35,4 +35,9 @@ public class HashtagsController {
 	public HashtagDTO getHashtag(long id) {
 		return repo.findOne(id).orElse(null);
 	}
+	
+//	@Get("/{id}/videos")
+//	public HashtagDTO getHashtag(long id) {
+//		return repo.findOne(id).orElse(null);
+//	}
 }
