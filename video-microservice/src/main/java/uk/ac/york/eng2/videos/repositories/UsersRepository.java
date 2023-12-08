@@ -10,6 +10,6 @@ import uk.ac.york.eng2.videos.dto.UserDTO;
 @Repository
 public interface UsersRepository extends CrudRepository<User, Long> {
 
-	Optional<UserDTO> findOne(long id);
+	Optional<User> findOne(long id);
 
 }

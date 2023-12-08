@@ -37,7 +37,7 @@ public class UsersController {
 	}
 
 	@Get("/{id}")
-	public UserDTO getUser(long id) {
+	public User getUser(long id) {
 		return repo.findOne(id).orElse(null);
 	}
 

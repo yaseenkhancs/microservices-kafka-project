@@ -20,7 +20,7 @@ public interface UsersClient {
 	HttpResponse<Void> add(@Body UserDTO userDetails);
 
 	@Get("/{id}")
-	UserDTO getUser(long id);
+	User getUser(long id);
 
 	@Put("/{id}")
 	HttpResponse<Void> updateUser(long id, @Body UserDTO userDetails);
