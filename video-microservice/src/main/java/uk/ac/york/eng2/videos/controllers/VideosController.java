@@ -153,7 +153,7 @@ public class VideosController {
 	}
 
 	@Transactional
-	@Put("/{videoId}/watchers/{videoId}")
+	@Put("/{videoId}/watchers/{userId}")
 	public HttpResponse<String> addWatcher(long videoId, long userId) {
 		Optional<Video> oVideo = repo.findById(videoId);
 		if (oVideo.isEmpty()) {

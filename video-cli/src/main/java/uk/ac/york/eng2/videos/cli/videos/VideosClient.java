@@ -33,7 +33,7 @@ public interface VideosClient {
 	@Delete("/{id}")
 	HttpResponse<Void> deleteVideo(long id);
 
-	@Put("/{videoId}/watchers/{videoId}")
+	@Put("/{videoId}/watchers/{userId}")
 	public HttpResponse<String> addWatcher(long videoId, long userId);
 
 	@Get("/{id}/watchers")
