@@ -1,5 +1,6 @@
 package uk.ac.york.eng2.trending.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 //import java.util.Set;
 //import javax.persistence.ManyToMany;
@@ -12,11 +13,10 @@ import io.micronaut.serde.annotation.Serdeable;
 public class Video {
 	private Long id;
 	private String title;
-	private String author;
-	private HashSet<String> tags;
 	private Integer nlikes;
 	private Integer ndislikes;
 	private Integer nviews;
+	
 
 //	@JsonIgnore
 //	@ManyToMany
@@ -38,21 +38,21 @@ public class Video {
 		this.title = title;
 	}
 	
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+//	public String getAuthor() {
+//		return author;
+//	}
+//
+//	public void setAuthor(String author) {
+//		this.author = author;
+//	}
 	
-	public HashSet<String> getTags() {
-		return tags;
-	}
-	
-	public void setTags(HashSet<String> tags) {
-		this.tags = tags;
-	}
+//	public HashSet<String> getTags() {
+//		return tags;
+//	}
+//	
+//	public void setTags(HashSet<String> tags) {
+//		this.tags = tags;
+//	}
 	
 	private String tagsString() {
 		String output = "[";
