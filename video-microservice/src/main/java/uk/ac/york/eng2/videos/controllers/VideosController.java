@@ -1,6 +1,7 @@
 package uk.ac.york.eng2.videos.controllers;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
@@ -106,7 +107,11 @@ public class VideosController {
 			v.setNlikes(videoDetails.getNlikes()); //set the views of the fetched v
 			System.out.println(v);
 			System.out.println(getVideoHashtags(id));
-			producer.likeVideo(v, getVideoHashtags(id));
+			Hashtag x = (Hashtag) getVideoHashtags(id).toArray()[0];
+			System.out.println(x.getName());
+			String yo = "";
+			yo = yo + v.toString() + ((Hashtag) getVideoHashtags(id).toArray()[0]).getName();
+			producer.likeVideo((long) 5, yo);
 		}
 		if (videoDetails.getNdislikes() != null) { //if the http argument provided...
 			v.setNdislikes(videoDetails.getNdislikes()); //set the views of the fetched v

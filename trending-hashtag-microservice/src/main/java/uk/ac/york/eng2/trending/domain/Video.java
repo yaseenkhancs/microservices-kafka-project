@@ -54,14 +54,14 @@ public class Video {
 //		this.tags = tags;
 //	}
 	
-	private String tagsString() {
-		String output = "[";
-		for (String s : tags) {			
-			output = output.concat(s + ", ");
-		}
-		output = output.concat("]");
-		return output;
-	}
+//	private String tagsString() {
+//		String output = "[";
+//		for (String s : tags) {			
+//			output = output.concat(s + ", ");
+//		}
+//		output = output.concat("]");
+//		return output;
+//	}
 
 	public Integer getNlikes() {
 		return nlikes;
@@ -87,11 +87,11 @@ public class Video {
 		this.nviews = nviews;
 	}
 	
-	@Override
-	public String toString() {
-		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
+//				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tagsString() + "]";
+//	}
 
 //	public Set<User> getReaders() {
 //		return readers;

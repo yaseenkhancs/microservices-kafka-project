@@ -1,5 +1,6 @@
 package uk.ac.york.eng2.videos.events;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
@@ -26,7 +27,7 @@ public interface VideosProducer {
 	void watchVideo(@KafkaKey Long id, String username);
 	
 	@Topic(TOPIC_LIKED)
-	void likeVideo(@KafkaKey Video video, Collection<Hashtag> hashtags);
+	void likeVideo(@KafkaKey long h, String v);
 	
 	@Topic(TOPIC_DISLIKED)
 	void dislikeVideo(@KafkaKey Long id, Video video);

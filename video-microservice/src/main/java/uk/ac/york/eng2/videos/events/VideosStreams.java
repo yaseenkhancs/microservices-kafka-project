@@ -16,6 +16,7 @@ import io.micronaut.configuration.kafka.streams.ConfiguredStreamBuilder;
 import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.Video;
 
 @Factory
@@ -27,7 +28,7 @@ public class VideosStreams {
 	private SerdeRegistry serdeRegistry;
 
 	@Singleton
-	public KStream<Long, Video> watched(ConfiguredStreamBuilder builder) {
+	public KStream<Hashtag, Video> watched(ConfiguredStreamBuilder builder) {
 		Properties props = builder.getConfiguration();
 		props.put(StreamsConfig.APPLICATION_ID_CONFIG, "videos-metrics");
 
@@ -38,8 +39,8 @@ public class VideosStreams {
 		 */
 		props.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
 
-		KStream<Long, Video> videosStream = builder
-			.stream(VideosProducer.TOPIC_LIKED, Consumed.with(Serdes.Long(), serdeRegistry.getSerde(Video.class)));
+		KStream<Hashtag, Video> videosStream = builder
+			.stream(VideosProducer.TOPIC_LIKED, Consumed.with(serdeRegistry.getSerde(Hashtag.class), serdeRegistry.getSerde(Video.class)));
 
 //		KStream<WindowedIdentifier, Long> stream = videosStream.groupByKey()
 //			.windowedBy(TimeWindows.of(Duration.ofHours(1)).advanceBy(Duration.ofHours(1)))
