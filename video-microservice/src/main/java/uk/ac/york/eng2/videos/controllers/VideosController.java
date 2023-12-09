@@ -82,7 +82,7 @@ public class VideosController {
 	
 	@Transactional
 	@Put("/{id}")
-	public HttpResponse<Void> updateVideo(long id, @Body VideoDTO videoDetails) {
+	public HttpResponse<Void> updateVideo(long id, @Body Video videoDetails) {
 		Optional<Video> video = repo.findById(id);
 		if (video.isEmpty()) {
 			return HttpResponse.notFound();
@@ -104,7 +104,9 @@ public class VideosController {
 		}
 		if (videoDetails.getNlikes() != null) { //if the http argument provided...
 			v.setNlikes(videoDetails.getNlikes()); //set the views of the fetched v
-			producer.likeVideo(id, v);
+			System.out.println(v);
+			System.out.println(getVideoHashtags(id));
+			producer.likeVideo(v, getVideoHashtags(id));
 		}
 		if (videoDetails.getNdislikes() != null) { //if the http argument provided...
 			v.setNdislikes(videoDetails.getNdislikes()); //set the views of the fetched v
