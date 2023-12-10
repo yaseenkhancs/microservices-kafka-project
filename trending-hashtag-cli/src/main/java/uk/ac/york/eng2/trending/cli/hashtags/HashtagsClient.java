@@ -7,7 +7,7 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.client.annotation.Client;
 import uk.ac.york.eng2.trending.cli.domain.Hashtag;
 
-@Client("${hashtags.url:`http://localhost:8080/hashtags`}")
+@Client("${hashtags.url:`http://localhost:8081/hashtags`}")
 public interface HashtagsClient {
 	@Get("/")
 	Iterable<Hashtag> list();

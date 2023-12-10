@@ -11,9 +11,12 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor("io.micronaut.data:micronaut-data-processor")
     annotationProcessor("info.picocli:picocli-codegen")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("info.picocli:picocli")
+    implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.picocli:micronaut-picocli")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("jakarta.annotation:jakarta.annotation-api")

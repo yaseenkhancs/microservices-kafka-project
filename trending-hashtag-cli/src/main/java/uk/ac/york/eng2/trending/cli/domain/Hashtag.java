@@ -1,5 +1,8 @@
 package uk.ac.york.eng2.trending.cli.domain;
 
+import io.micronaut.serde.annotation.Serdeable;
+
+@Serdeable
 public class Hashtag {
 	private Long id;
 	private String name;

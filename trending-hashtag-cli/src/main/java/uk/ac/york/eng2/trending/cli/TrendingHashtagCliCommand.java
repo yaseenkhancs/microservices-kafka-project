@@ -7,9 +7,12 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.trending.cli.hashtags.AddHashtag;
+import uk.ac.york.eng2.trending.cli.hashtags.GetHashtags;
 
 @Command(name = "trending-hashtag-cli", description = "...",
-        mixinStandardHelpOptions = true)
+        mixinStandardHelpOptions = true,
+        subcommands = {GetHashtags.class, AddHashtag.class})
 public class TrendingHashtagCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")
