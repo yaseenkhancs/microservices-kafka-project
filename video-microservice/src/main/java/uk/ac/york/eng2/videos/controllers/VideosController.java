@@ -110,8 +110,9 @@ public class VideosController {
 			Hashtag x = (Hashtag) getVideoHashtags(id).toArray()[0];
 			System.out.println(x.getName());
 			String yo = "";
+			Hashtag ht =  (Hashtag) getVideoHashtags(id).toArray()[0];
 			yo = yo + v.toString() + ((Hashtag) getVideoHashtags(id).toArray()[0]).getName();
-			producer.likeVideo((long) 5, yo);
+			producer.likeVideo((long) 5, ht);
 		}
 		if (videoDetails.getNdislikes() != null) { //if the http argument provided...
 			v.setNdislikes(videoDetails.getNdislikes()); //set the views of the fetched v
