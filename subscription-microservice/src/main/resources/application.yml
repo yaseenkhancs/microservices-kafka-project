@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: subscriptionMicroservice
+  server:
+    port: 8082
+datasources:
+  default:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3308/subscriptions
+    username: threedo
+    password: threedosecret
+    db-type: mariadb
+    dialect: MYSQL
+jpa:
+  default:
+    entity-scan:
+      packages:
+        - uk.ac.york.eng2.subscription.domain
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+netty:
+  default:
+    allocator:
+      max-order: 3
