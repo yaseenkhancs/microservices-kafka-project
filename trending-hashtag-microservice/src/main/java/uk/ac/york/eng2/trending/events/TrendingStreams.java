@@ -9,6 +9,7 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.kstream.SlidingWindows;
 import org.apache.kafka.streams.kstream.TimeWindows;
 
 import io.micronaut.configuration.kafka.serde.SerdeRegistry;
@@ -29,22 +30,30 @@ public class TrendingStreams {
 	private SerdeRegistry serdeRegistry;
 
 	@Singleton
-	public KStream<Hashtag, Video> watched(ConfiguredStreamBuilder builder) {
+	public KStream<Long, Hashtag> liked(ConfiguredStreamBuilder builder) {
 		Properties props = builder.getConfiguration();
 		props.put(StreamsConfig.APPLICATION_ID_CONFIG, "videos-metrics");
 		props.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
 
-		KStream<Hashtag, Video> videosStream = builder
-			.stream(VideosProducer.TOPIC_LIKED, Consumed.with(serdeRegistry.getSerde(Hashtag.class), serdeRegistry.getSerde(Video.class)));
+		KStream<Long, Hashtag> videosStream = builder
+			.stream(VideosProducer.TOPIC_LIKED, Consumed.with(Serdes.Long(), serdeRegistry.getSerde(Hashtag.class)));
+		
+		videosStream.peek((key, value) -> System.out.println("INPUT STREAM key : " + key + " value " + value.getName()));
+		
+		Duration timeDifference = Duration.ofHours(1);
+		Duration gracePeriod = Duration.ofMillis(500);
 
-		KStream<WindowedIdentifier, Long> stream = videosStream.groupByKey()
-			.windowedBy(TimeWindows.of(Duration.ofHours(1)).advanceBy(Duration.ofHours(1)))
+		KStream<WindowedIdentifier, Long> stream = videosStream
+			.selectKey((k, v) -> v)
+			.peek((k, v) -> System.out.println("NEW KEY: " + k + "NEW VALUE: " + v))
+			.groupByKey()
+			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
 			.count(Materialized.as("liked-by-hour"))
 			.toStream()
-			.selectKey((k, v) -> new WindowedIdentifier(k.window().start(), k.window().end(), v));
+			.selectKey((k, v) -> new WindowedIdentifier(v, k.window().start(), k.window().end()))
+			.peek((key, value) -> System.out.println("SECOND STREAM key: " + key + "value: " + value));
 
-		stream.to(TOPIC_LIKED_BY_HOUR,
-			Produced.with(serdeRegistry.getSerde(WindowedIdentifier.class), Serdes.Long()));
+		stream.to(TOPIC_LIKED_BY_HOUR, Produced.with(serdeRegistry.getSerde(WindowedIdentifier.class), Serdes.Long()));
 
 		return videosStream;
 	}

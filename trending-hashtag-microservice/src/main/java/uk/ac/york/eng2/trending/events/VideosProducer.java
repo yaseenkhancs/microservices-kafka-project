@@ -3,6 +3,7 @@ package uk.ac.york.eng2.trending.events;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
+import uk.ac.york.eng2.trending.domain.Hashtag;
 import uk.ac.york.eng2.trending.domain.Video;
 
 @KafkaClient
@@ -17,6 +18,6 @@ public interface VideosProducer {
 	String TOPIC_LIKED = "video-liked";
 
 	@Topic(TOPIC_LIKED)
-	void likeVideo(@KafkaKey Long id, Video video);
+	void likeVideo(@KafkaKey Long id, Hashtag h);
 }
 

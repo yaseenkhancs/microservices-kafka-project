@@ -18,6 +18,6 @@ public class LikedVideosConsumer {
 		
 	@Topic("video-liked")
 	public void videoLikeMetric(@KafkaKey long v, Hashtag h) {
-		control.add(h);
+		System.out.println("Haha");
 	}
 }
