@@ -20,4 +20,9 @@ public class LikedVideosConsumer {
 	public void videoLikeMetric(@KafkaKey long v, Hashtag h) {
 		System.out.println("Haha");
 	}
+	
+//	@Topic("video-liked-by-hour")
+//	public void videoLikeHourMetric(@KafkaKey long v, Hashtag h) {
+//		System.out.println("Haha");
+//	}
 }

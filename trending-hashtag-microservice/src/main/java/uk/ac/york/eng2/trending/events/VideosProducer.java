@@ -18,6 +18,8 @@ public interface VideosProducer {
 	String TOPIC_LIKED = "video-liked";
 
 	@Topic(TOPIC_LIKED)
-	void likeVideo(@KafkaKey Long id, Hashtag h);
+	void likeVideo(@KafkaKey Long id, Video v);
+//	void likeVideo(@KafkaKey Long id, Hashtag h);
+	
 }
 
