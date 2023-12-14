@@ -81,7 +81,7 @@ public class TrendingStreams {
 				}
 				
 			};
-		
+			
 		
 		
 		Properties props = builder.getConfiguration();
