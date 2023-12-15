@@ -1,0 +1,40 @@
+@namespace(uri="assessment", prefix="")
+package assessment;
+
+class Assessment {
+	val Event[*] events;
+	val Stream[*] streams;
+	val Microservice[*] microservices;
+}
+
+class Event {
+	attr String key;
+	attr String value;
+}
+
+class Stream {
+	attr String name;
+	ref Event[*] associatedEvents;
+}
+
+class Microservice {
+	attr String name;
+	val HttpMethod[*] httpmethods;
+	ref Stream[*] subscribedStreams;
+	ref Stream[*] publishedStreams;
+}
+
+class HttpMethod{
+	val HttpType[*] accessors;
+}
+
+enum HttpType {
+	GET;
+	PUT;
+	DELETE;
+}
+
+//class Type {
+//	
+//}
+//<event key="java.lang.String" value="my.Video"/>
