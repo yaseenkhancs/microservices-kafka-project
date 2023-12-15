@@ -1,6 +1,7 @@
 package uk.ac.york.eng2.trending.events;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Properties;
 import java.util.HashMap;
 
@@ -28,7 +29,13 @@ import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import uk.ac.york.eng2.trending.domain.Hashtag;
+import uk.ac.york.eng2.trending.helpers.LongPair;
 
+
+// TODO:
+
+//MAKE TIMEDIFFERENCE A CLASS-WIDE VARIABLE SO IT CAN BE USED TO CALCULATE THE DECAY CHECK IN
+//THISREDUCER
 @Factory
 public class TrendingStreams {
 
@@ -40,44 +47,68 @@ public class TrendingStreams {
 	@Singleton
 	public KStream<Long, Hashtag> liked(ConfiguredStreamBuilder builder) {
 		
-		Reducer<Long> thisreducer = new Reducer<Long>() {
-			@Override
-			public Long apply(Long aggvalue, Long currvalue) {
-				return Math.max(aggvalue, currvalue);
-			}
-		};
-		
 		//removes the older times
-		Reducer<Pair<Long, Long>> timereducer = new Reducer<Pair<Long, Long>>() {
+//		Reducer<LongPair> timereducer = new Reducer<LongPair>() {
+//			@Override
+//			public LongPair apply(LongPair value1, LongPair value2) {				 
+//				if (value1.getFirst() > value2.getFirst()) {
+//					return value1;
+//				}
+//				else {
+//					return value2;
+//				}
+//			}
+//		};
+		
+		Reducer<LongPair> thisreducer = new Reducer<LongPair>() {
 			@Override
-			public Pair<Long, Long> apply(Pair<Long, Long> value1, Pair<Long, Long> value2) {
-				if (value1.getKey() > value2.getKey()) {
-					return value1;
+			public LongPair apply(LongPair val1, LongPair val2) {
+				Long absoluteTimeDifference = Math.abs(val1.getFirst() - val2.getFirst());
+				if (val1.getSecond() > val2.getSecond() && absoluteTimeDifference < 300000) {
+					return val1;
 				}
 				else {
-					return value2;
+					return val2;
 				}
 			}
 		};
 		
 		KeyValue<Long, Pair<Long, Long>> retoorn;
 		
-		TransformerSupplier <Windowed<Long>, Long, KeyValue<Long, Pair<Long, Long>>> mySupplier
-			= () -> new Transformer<Windowed<Long>, Long, KeyValue<Long, Pair<Long, Long>>>() {
+		TransformerSupplier <Windowed<Long>, Long, KeyValue<Long, LongPair>> mySupplier
+			= () -> new Transformer<Windowed<Long>, Long, KeyValue<Long, LongPair>>() {
 
 				@Override
 				public void init(ProcessorContext context) {					
 				}
 
 				@Override
-				public KeyValue<Long, Pair<Long, Long>> transform(Windowed<Long> key, Long value) {
-					Long newkey = value;
-					Pair<Long, Long> newpair = new Pair<Long, Long>(key.window().end(), value);
+				public KeyValue<Long, LongPair> transform(Windowed<Long> key, Long value) {
+					Long newkey = key.key();
+					LongPair newpair = new LongPair(key.window().end(), value);
 					return KeyValue.pair(newkey, newpair);
 				}
 
 				@Override
 				public void close() {
+				}
+				
+			};
+			
+			TransformerSupplier <Long, LongPair, KeyValue<Long, Long>> anotherSupplier
+			= () -> new Transformer<Long, LongPair, KeyValue<Long, Long>>() {
+
+				@Override
+				public void init(ProcessorContext context) {					
+				}
+
+				@Override
+				public void close() {
+				}
+
+				@Override
+				public KeyValue<Long, Long> transform(Long key, LongPair value) {
+					return KeyValue.pair(key, value.getSecond());
 				}
 				
 			};
@@ -93,11 +124,8 @@ public class TrendingStreams {
 		
 		videosStream.peek((key, value) -> System.out.println("INPUT STREAM key : " + key + " value " + value.getName()));
 		
-//		Pair<>
-		
 		Duration timeDifference = Duration.ofMinutes(5);
 		Duration gracePeriod = Duration.ofMillis(500);
-		//change to hashtag as the input id
 		KStream<Long, Long> stream = videosStream
 			.selectKey((k, v) -> v.getId())
 			.peek((k, v) -> System.out.println("NEW KEY: " + k + " NEW VALUE: " + v))
@@ -105,13 +133,15 @@ public class TrendingStreams {
 			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
 			.count(Materialized.as("liked-by-hour"))
 			.toStream()
-			.transform(mySupplier)		
-			.peek((k, v) -> System.out.println("Hiya! : " + k + v))
-//			.selectKey((k, v) -> new Pair<Long, Long>(k.window().end(), k.key()))
-			.groupByKey(Grouped.with(Serdes.Long(), serdeRegistry.getSerde(Pair.class))
-			.reduce(timereducer, Materialized.as("aggregated"))
+			.peek((k, v) -> System.out.println("WINDOWED KEY: " + k.toString() + " NEW VALUE: " + v))
+			.transform(mySupplier)	
+			.peek((k, v) -> System.out.println("TRANSFORMED : " + k + ", VALUE: " + v.getFirst() + ", " + v.getSecond()))
+			.groupByKey(Grouped.with(Serdes.Long(), serdeRegistry.getSerde(LongPair.class)))
+			.reduce(thisreducer, Materialized.as("aggregated"))
 			.toStream()
-			.peek((key, value) -> System.out.println("SECOND STREAM key: " + key + " value: " + value)));
+			.peek((k, v) -> System.out.println("REDUCED : " + k + ", VALUE: " + v.getFirst() + ", " + v.getSecond() + "currtime: " + Instant.now().toEpochMilli()))
+			.transform(anotherSupplier)
+			.peek((key, value) -> System.out.println("SECOND STREAM key: " + key + " value: " + value));
 		
 		stream.to(TOPIC_LIKED_BY_HOUR, Produced.with(Serdes.Long(), Serdes.Long()));
 
