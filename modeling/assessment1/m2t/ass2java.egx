@@ -1,0 +1,9 @@
+rule Model2App 
+	transform m : Assessment {
+
+	template : "model2java.egl"
+
+	parameters : Map{}
+
+	target : "src-gen/" + m.name.toLowerCase() + "/" + m.name.ftuc() + ".java"
+}

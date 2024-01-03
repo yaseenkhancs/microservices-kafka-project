@@ -1,0 +1,11 @@
+package [%=m.name.toLowerCase()%];
+
+public class [%=m.name.ftuc()%] {
+	
+}
+
+[%
+operation Model getEntryPoint() {
+	return Step.all.selectOne(s|s.incoming.isEmpty());
+}
+%]

@@ -1,40 +1,53 @@
-@namespace(uri="assessment", prefix="")
+@namespace(uri="http://york.ac.uk/cs/eng2/assessment")
 package assessment;
 
 class Assessment {
+	attr String name;
+	val KafStream[*] streams;
 	val Event[*] events;
-	val Stream[*] streams;
 	val Microservice[*] microservices;
 }
 
+class KafStream {
+	attr String streamName;
+	ref Event[*] associatedEvents;
+}
+
 class Event {
+	attr String eventName;
 	attr String key;
 	attr String value;
 }
 
-class Stream {
-	attr String name;
-	ref Event[*] associatedEvents;
-}
-
 class Microservice {
+	attr String msName;
+	val Domain[*]#parentMS domains;
+	ref KafStream[*] subscribedStreams;
+	ref KafStream[*] publishedStreams;
+}
+
+class Domain {
 	attr String name;
-	val HttpMethod[*] httpmethods;
-	ref Stream[*] subscribedStreams;
-	ref Stream[*] publishedStreams;
+	ref Microservice#domains parentMS;
+	val HttpMethod[*] httpMethods;
 }
 
-class HttpMethod{
-	val HttpType[*] accessors;
+class HttpMethod {
+	attr String name;
+	attr String httpType;
+	attr String returnType;
+	attr String path;
+	attr String parameters;
+	attr String[] tags;
 }
 
-enum HttpType {
-	GET;
-	PUT;
-	DELETE;
-}
 
 //class Type {
 //	
 //}
+//then in the modelling language you parse the types
+//my "class Event" does not model any of the actual events, so window etc
+//it instead just gives the end user the freedom to declare the types required
 //<event key="java.lang.String" value="my.Video"/>
+
+//nb we do not need to model the domain - or the db

@@ -1,0 +1,28 @@
+package [%=m.msName.toLowerCase()%].controllers;
+
+[%for (dom in d.parentMS.domains){%]
+import [%=m.msName.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
+[%}%]
+import jakarta.inject.Inject;
+[%for (method in d.httpMethods){%]
+import io.micronaut.http.annotation.[%=method.httpType.ftuc()%]
+[%}%]
+
+@Controller("/[%=d.name.toLowerCase()%]s")
+public class [%=d.name.ftuc()%]sController {
+	
+	[%for (dom in d.parentMS.domains){%]
+	@Inject	
+	[%=dom.name.ftuc()%]sRepository [%=dom.name.toLowerCase()%]sRepo;	
+	[%}%]
+	
+	[%for (method in d.httpMethods){%]
+	[%for (tag in method.tags){%]
+	@[%=tag%]
+	[%}%]
+	@[%=method.httpType%]([%=method.path%])
+	public [%=method.returnType%] [%=method.name%]([%=method.parameters%]){
+	}
+	
+	[%}%]	
+}

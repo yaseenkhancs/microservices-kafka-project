@@ -1,0 +1,7 @@
+package [%=m.msName.toLowerCase()%].domain;
+
+public class [%=d.name.ftuc()%] {
+	public String toString() {
+	
+	}
+}

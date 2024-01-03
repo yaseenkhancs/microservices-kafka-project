@@ -1,0 +1,5 @@
+package [%=m.msName.toLowerCase()%].dto;
+
+public class [%=d.name.ftuc()%]DTO {
+
+}

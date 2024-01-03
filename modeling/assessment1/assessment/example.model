@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_0zesQKpUEe6lrus6H9OEhw" name="mine">
+  <microservices xmi:id="_2Py5QKpUEe6lrus6H9OEhw" msName="video-microservice">
+    <domains xmi:id="_3V_sUKpUEe6lrus6H9OEhw" name="Video">
+      <httpMethods xmi:id="_4ErXQKpUEe6lrus6H9OEhw" name="list" httpType="Get" returnType="HttpResponse&lt;Void>" path="&quot;/&quot;">
+        <tags>@Transactional</tags>
+      </httpMethods>
+    </domains>
+  </microservices>
+</Assessment>

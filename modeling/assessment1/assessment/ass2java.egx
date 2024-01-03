@@ -1,0 +1,59 @@
+rule Model2App 
+	transform m : Microservice {
+
+	template : "applicationGen.egl"
+
+	parameters : Map{
+		"m" = m.eContainer()
+	}
+
+	target : "src-gen/" + m.msName.toLowerCase() + "/Application.java"
+}
+
+rule DomainFile
+	transform d : Domain {
+	
+	template: "domainFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : "src-gen/" + d.parentMS.msName + "/domain/" + d.name.ftuc() + ".java" 
+}
+
+rule DTOFile
+	transform d : Domain {
+	
+	template: "dtoFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : "src-gen/" + d.parentMS.msName + "/dto/" + d.name.ftuc() + "DTO.java" 
+}
+
+rule RepoFile
+	transform d : Domain {
+	
+	template: "repositoryFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : "src-gen/" + d.parentMS.msName + "/repositories/" + d.name.ftuc() + "sRepository.java"
+}
+
+rule ControllerFile
+	transform d : Domain {
+	
+	template: "controllersFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : "src-gen/" + d.parentMS.msName + "/controllers/" + d.name.ftuc() + "sController.java"
+}
