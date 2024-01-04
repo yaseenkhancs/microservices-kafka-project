@@ -203,6 +203,11 @@ public class VideosController {
 			return HttpResponse.notFound(String.format("hashtag %d not found", hashtagId));
 		}
 		Video video = oVideo.get();
+		Hashtag x = oHashtag.get();
+		System.out.println(x.getId());
+		System.out.println(x.getName());
+		System.out.println(x.getTaggedVideos());
+		System.out.println(video.getId());
 		video.getTags().add(oHashtag.get());
 		repo.update(video);
 		
