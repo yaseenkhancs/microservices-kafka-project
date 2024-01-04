@@ -2,7 +2,6 @@ package uk.ac.york.eng2.subscription.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import io.micronaut.serde.annotation.Serdeable;
@@ -10,10 +9,10 @@ import io.micronaut.serde.annotation.Serdeable;
 @Entity
 @Serdeable
 public class Hashtag {
+	
 	@Id
-	@GeneratedValue
 	private Long id;
-
+	
 	@Column(nullable = false)
 	private String name;
 	
