@@ -21,6 +21,7 @@ import uk.ac.york.eng2.subscription.repositories.UsersRepository;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 import uk.ac.york.eng2.subscription.domain.Video;
+import uk.ac.york.eng2.subscription.dto.VideoDTO;
 
 @Controller("/videos")
 public class VideosController {
@@ -40,7 +41,7 @@ public class VideosController {
 	}
 
 	@Post("/")
-	public HttpResponse<Void> add(@Body Video videoDetails) {
+	public HttpResponse<Void> add(@Body VideoDTO videoDetails) {
 		Video video = new Video();
 		video.setId(videoDetails.getId());
 		video.setTitle(videoDetails.getTitle());

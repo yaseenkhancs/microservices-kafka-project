@@ -9,7 +9,8 @@ import uk.ac.york.eng2.subscription.cli.domain.User;
 
 @Serdeable
 public class VideoDTO {
-
+	
+	private Long id;
 	private String title;
 	private User author;
 	private Collection<Hashtag> tags;
@@ -17,6 +18,14 @@ public class VideoDTO {
 	private Integer ndislikes;
 	private Integer nviews;
 	private Set<User> watchers;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getTitle() {
 		return title;
