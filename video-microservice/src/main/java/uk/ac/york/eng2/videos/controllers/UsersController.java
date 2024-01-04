@@ -1,7 +1,9 @@
 package uk.ac.york.eng2.videos.controllers;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +16,7 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
 import uk.ac.york.eng2.videos.domain.User;
+import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.UserDTO;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 
@@ -39,6 +42,22 @@ public class UsersController {
 	@Get("/{id}")
 	public User getUser(long id) {
 		return repo.findOne(id).orElse(null);
+	}
+	
+	@Transactional
+	@Get("/{id}/watchedvideos")
+	public Video[] getWatchedVideos(long id) {
+		Optional<User> oUser = repo.findById(id);
+		if (oUser.isEmpty()) {
+			return null;
+		}
+		return parseSet(oUser.get().getWatchedVideos());
+	}
+	
+	private Video[] parseSet(Set<Video> x) {
+		Object[] vidArr = x.toArray();
+		Video[] outputArr = Arrays.copyOf(vidArr, vidArr.length, Video[].class);
+		return outputArr;
 	}
 
 	@Transactional
