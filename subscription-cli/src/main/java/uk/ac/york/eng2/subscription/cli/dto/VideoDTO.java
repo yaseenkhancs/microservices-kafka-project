@@ -1,59 +1,23 @@
-package uk.ac.york.eng2.subscription.domain;
+package uk.ac.york.eng2.subscription.cli.dto;
 
 import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import io.micronaut.serde.annotation.Serdeable;
+import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
+import uk.ac.york.eng2.subscription.cli.domain.User;
 
-@Entity
 @Serdeable
-public class Video {
-	
-	@Id
-	private Long id;
-	
-	@Column(nullable = false)
-	private String title;
-	
-	@ElementCollection
-	@JsonIgnore
-	@ManyToMany
-	private Collection<Hashtag> tags;
-	
-	@Column(nullable = false)
-	private Integer nlikes;
-	
-	@Column(nullable = false)
-	private Integer ndislikes;
-	
-	@Column(nullable = false)
-	private Integer nviews;
+public class VideoDTO {
 
-	@JsonIgnore
-	@ManyToMany
+	private String title;
+	private User author;
+	private Collection<Hashtag> tags;
+	private Integer nlikes;
+	private Integer ndislikes;
+	private Integer nviews;
 	private Set<User> watchers;
 	
-	@JsonIgnore
-	@ManyToOne
-	private User author;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -101,7 +65,7 @@ public class Video {
 	public void setNviews(Integer nviews) {
 		this.nviews = nviews;
 	}
-
+	
 	public Set<User> getWatchers() {
 		return watchers;
 	}
@@ -109,5 +73,4 @@ public class Video {
 	public void setWatchers(Set<User> watchers) {
 		this.watchers = watchers;
 	}
-	
 }
