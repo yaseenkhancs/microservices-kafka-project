@@ -44,9 +44,12 @@ public class VideosController {
 		Video video = new Video();
 		video.setId(videoDetails.getId());
 		video.setTitle(videoDetails.getTitle());
-		video.setNlikes(videoDetails.getNlikes());
-		video.setNdislikes(videoDetails.getNdislikes());
-		video.setNviews(videoDetails.getNviews());
+		video.setAuthor(videoDetails.getAuthor());
+		video.setTags(videoDetails.getTags());
+		video.setNlikes(0);
+		video.setNdislikes(0);
+		video.setNviews(0);
+		video.setWatchers(null);
 		
 		repo.save(video);		
 
