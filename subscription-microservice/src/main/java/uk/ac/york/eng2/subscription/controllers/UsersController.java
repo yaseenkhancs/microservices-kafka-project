@@ -15,9 +15,11 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
+import uk.ac.york.eng2.subscription.repositories.HashtagsRepository;
 import uk.ac.york.eng2.subscription.repositories.UsersRepository;
 import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.dto.UserDTO;
+import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 
 @Controller("/users")
@@ -25,6 +27,9 @@ public class UsersController {
 	
 	@Inject
 	UsersRepository repo;
+	
+	@Inject
+	HashtagsRepository hashtagrepo;
 	
 	@Get("/")
 	public Iterable<User> list() {
@@ -87,5 +92,35 @@ public class UsersController {
 
 		repo.delete(user.get());
 		return HttpResponse.ok();
+	}
+	
+	@Transactional
+	@Get("/{id}/subscribedhashtags")
+	public Iterable<Hashtag> getSubscribedHashtags(long id) {
+		Optional<User> oUser = repo.findById(id);
+		if (oUser.isEmpty()) {
+			return null;
+		}
+		return oUser.get().getSubscribedHashtags();
+	}
+	
+	@Transactional
+	@Put("/{userId}/subscribedhashtags/{hashtagId}")
+	public HttpResponse<String> addSubHashtag(long userId, long hashtagId) {
+		Optional<User> oUser = repo.findById(userId);
+		if (oUser.isEmpty()) {
+			return HttpResponse.notFound(String.format("Video %d not found", userId));
+		}
+
+		Optional<Hashtag> oHashtag = hashtagrepo.findById(hashtagId);
+		if (oHashtag.isEmpty()) {
+			return HttpResponse.notFound(String.format("User %d not found", hashtagId));
+		}
+
+		User user = oUser.get();
+		user.getSubscribedHashtags().add(oHashtag.get());
+		repo.update(user);		
+
+		return HttpResponse.ok(String.format("hashtag %d added as subbed tag of user %d", hashtagId, userId));
 	}
 }

@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,6 +25,10 @@ public class User {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "watchers")
 	private Set<Video> watchedVideos;
+	
+	@JsonIgnore
+	@OneToMany
+	private Set<Hashtag> subscribedHashtags;
 	
 	public Long getId() {
 		return id;
@@ -47,5 +52,13 @@ public class User {
 
 	public void setWatchedVideos(Set<Video> watchedVideos) {
 		this.watchedVideos = watchedVideos;
+	}
+	
+	public Set<Hashtag> getSubscribedHashtags() {
+		return subscribedHashtags;
+	}
+	
+	public void setSubscribedHashtags(Set<Hashtag> subscribedHashtags) {
+		this.subscribedHashtags = subscribedHashtags;
 	}
 }

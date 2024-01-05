@@ -27,5 +27,8 @@ public interface UsersClient {
 
 	@Delete("/{id}")
 	HttpResponse<Void> deleteUser(long id);
+	
+	@Put("{userId}/subscribedhashtags/{hashtagId}")
+	HttpResponse<String> addSubHashtag(long userId, long hashtagId);
 
 }

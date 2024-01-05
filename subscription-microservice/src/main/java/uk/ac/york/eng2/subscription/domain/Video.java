@@ -24,7 +24,7 @@ public class Video {
 	@Column(nullable = false)
 	private String title;
 	
-	@ElementCollection
+//	@ElementCollection
 	@JsonIgnore
 	@ManyToMany
 	private Collection<Hashtag> tags;
