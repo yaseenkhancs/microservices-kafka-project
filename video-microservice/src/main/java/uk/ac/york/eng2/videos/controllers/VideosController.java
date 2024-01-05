@@ -23,6 +23,7 @@ import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.events.VideosProducer;
+import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
@@ -61,7 +62,9 @@ public class VideosController {
 		
 		repo.save(video);
 		
-		producer.postVideo(video.getId(), video);
+		HashtagUserPair thishup = new HashtagUserPair(videoDetails.getTags(), videoDetails.getAuthor());
+		
+		producer.postVideo(thishup, video);
 
 		return HttpResponse.created(URI.create("/videos/" + video.getId()));
 	}

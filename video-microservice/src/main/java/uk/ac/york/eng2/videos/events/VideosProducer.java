@@ -9,6 +9,7 @@ import io.micronaut.configuration.kafka.annotation.Topic;
 import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
+import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 
 @KafkaClient
 public interface VideosProducer {
@@ -36,7 +37,7 @@ public interface VideosProducer {
 	void dislikeVideo(@KafkaKey Long id, Video video);
 	
 	@Topic(TOPIC_POSTED)
-	void postVideo(@KafkaKey Long id, Video video);
+	void postVideo(@KafkaKey HashtagUserPair hup, Video video);
 	
 	@Topic(TOPIC_USRADDED)
 	void addUser(@KafkaKey Long id, User user);
