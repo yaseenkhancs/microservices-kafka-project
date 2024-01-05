@@ -37,6 +37,9 @@ public interface UsersClient {
 	Hashtag[] getSubscribedHashtags(long id);
 	
 	@Get("/{id}/watchedvideos")
-	public Video[] getWatchedVideos(long id);	
+	public Video[] getWatchedVideos(long id);
+	
+	@Get("/{userId}/subscribedhashtags/{hashtagId}/videos")
+	public Video[] getUserTagVideos(long userId, long hashtagId);
 
 }
