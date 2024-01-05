@@ -16,6 +16,8 @@ public interface VideosProducer {
 	 */
 	String TOPIC_LIKED = "video-liked";
 	String TOPIC_POSTED = "video-posted";
+	String TOPIC_SUBSCRIBED = "user-subscribed";
+	String TOPIC_UNSUBSCRIBED = "user-unsubscribed";
 	
 	@Topic(TOPIC_POSTED)
 	void postVideo(@KafkaKey Long id, Video video);
@@ -23,5 +25,11 @@ public interface VideosProducer {
 	@Topic(TOPIC_LIKED)
 	void likeVideo(@KafkaKey Long id, Video v);
 //	void likeVideo(@KafkaKey Long id, Hashtag h);
+	
+	@Topic(TOPIC_SUBSCRIBED)
+	void subscribed(@KafkaKey long userId, long hashtagId);
+	
+	@Topic(TOPIC_UNSUBSCRIBED)
+	void unsubscribed(@KafkaKey long userId, long hashtagId);
 	
 }

@@ -19,6 +19,7 @@ import uk.ac.york.eng2.subscription.repositories.HashtagsRepository;
 import uk.ac.york.eng2.subscription.repositories.UsersRepository;
 import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.dto.UserDTO;
+import uk.ac.york.eng2.subscription.events.VideosProducer;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 
@@ -30,6 +31,9 @@ public class UsersController {
 	
 	@Inject
 	HashtagsRepository hashtagrepo;
+	
+	@Inject
+	VideosProducer vproducer;
 	
 	@Get("/")
 	public Iterable<User> list() {
@@ -126,7 +130,9 @@ public class UsersController {
 
 		User user = oUser.get();
 		user.getSubscribedHashtags().add(oHashtag.get());
-		repo.update(user);		
+		repo.update(user);
+		
+		vproducer.subscribed(userId, hashtagId);
 
 		return HttpResponse.ok(String.format("hashtag %d added as subbed tag of user %d", hashtagId, userId));
 	}
@@ -149,6 +155,8 @@ public class UsersController {
 		user.getSubscribedHashtags().remove(oHashtag.get());
 		
 		repo.update(user);		
+		
+		vproducer.unsubscribed(userId, hashtagId);
 
 		return HttpResponse.ok(String.format("hashtag %d removed as subbed tag of user %d", hashtagId, userId));
 	}
