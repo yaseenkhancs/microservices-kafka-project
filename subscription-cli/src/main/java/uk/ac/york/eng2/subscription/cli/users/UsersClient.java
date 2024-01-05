@@ -9,6 +9,7 @@ import io.micronaut.http.annotation.Put;
 import io.micronaut.http.client.annotation.Client;
 import uk.ac.york.eng2.subscription.cli.domain.User;
 import uk.ac.york.eng2.subscription.cli.dto.UserDTO;
+import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
 
 @Client("${users.url:`http://localhost:8082/users`}")
 public interface UsersClient {
@@ -30,5 +31,9 @@ public interface UsersClient {
 	
 	@Put("{userId}/subscribedhashtags/{hashtagId}")
 	HttpResponse<String> addSubHashtag(long userId, long hashtagId);
+	
+	@Get("/{id}/subscribedhashtags")
+	Hashtag[] getSubscribedHashtags(long id);
+	
 
 }
