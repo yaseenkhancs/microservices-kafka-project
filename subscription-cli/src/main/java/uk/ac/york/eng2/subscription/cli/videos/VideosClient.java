@@ -12,14 +12,16 @@ import io.micronaut.http.client.annotation.Client;
 import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
 import uk.ac.york.eng2.subscription.cli.domain.User;
 import uk.ac.york.eng2.subscription.cli.domain.Video;
+import uk.ac.york.eng2.subscription.cli.dto.VideoDTO;
 
 @Client("${videos.url:`http://localhost:8082/videos`}")
 public interface VideosClient {
+	
 	@Get("/")
 	public Iterable<Video> list();
 
 	@Post("/")
-	public HttpResponse<Void> add(@Body Video videoDetails);
+	public HttpResponse<Void> add(@Body VideoDTO videoDetails);
 	
 	@Get("/{id}")
 	Video getVideo(long id);

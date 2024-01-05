@@ -1,21 +1,11 @@
-package uk.ac.york.eng2.subscription.cli.domain;
+package uk.ac.york.eng2.subscription.cli.dto;
 
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
-public class User {
-
-	private Long id;
-
+public class UserDTO {
+	
 	private String username;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -27,6 +17,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + "]";
-	}	
+		return "UserDTO [username=" + username + "]";
+	}
+
 }

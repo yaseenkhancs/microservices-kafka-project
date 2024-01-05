@@ -4,9 +4,9 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,8 +15,8 @@ import io.micronaut.serde.annotation.Serdeable;
 @Entity
 @Serdeable
 public class User {
+	
 	@Id
-	@GeneratedValue
 	private Long id;
 	
 	@Column(nullable = false)
@@ -25,6 +25,10 @@ public class User {
 	@JsonIgnore
 	@ManyToMany(mappedBy = "watchers")
 	private Set<Video> watchedVideos;
+	
+	@JsonIgnore
+	@OneToMany
+	private Set<Hashtag> subscribedHashtags;
 	
 	public Long getId() {
 		return id;
@@ -41,12 +45,20 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	
 	public Set<Video> getWatchedVideos() {
 		return watchedVideos;
 	}
 
 	public void setWatchedVideos(Set<Video> watchedVideos) {
 		this.watchedVideos = watchedVideos;
+	}
+	
+	public Set<Hashtag> getSubscribedHashtags() {
+		return subscribedHashtags;
+	}
+	
+	public void setSubscribedHashtags(Set<Hashtag> subscribedHashtags) {
+		this.subscribedHashtags = subscribedHashtags;
 	}
 }

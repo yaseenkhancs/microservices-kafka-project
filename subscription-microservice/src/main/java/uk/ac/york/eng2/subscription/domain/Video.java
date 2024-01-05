@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -18,18 +17,18 @@ import io.micronaut.serde.annotation.Serdeable;
 @Entity
 @Serdeable
 public class Video {
+	
 	@Id
-	@GeneratedValue
 	private Long id;
-
+	
 	@Column(nullable = false)
 	private String title;
 	
-	@ElementCollection
+//	@ElementCollection
 	@JsonIgnore
 	@ManyToMany
 	private Collection<Hashtag> tags;
-
+	
 	@Column(nullable = false)
 	private Integer nlikes;
 	
@@ -46,7 +45,7 @@ public class Video {
 	@JsonIgnore
 	@ManyToOne
 	private User author;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -79,15 +78,6 @@ public class Video {
 		this.tags = tags;
 	}
 	
-//	private String tagsString() {
-//		String output = "[";
-//		for (Hashtag s : tags) {			
-//			output = output.concat(s + ", ");
-//		}
-//		output = output.concat("]");
-//		return output;
-//	}
-
 	public Integer getNlikes() {
 		return nlikes;
 	}
@@ -120,23 +110,4 @@ public class Video {
 		this.watchers = watchers;
 	}
 	
-	private String watchersString() {
-		if (watchers == null) {
-			return "NONE";
-		}
-		String output = "[";
-		for (User s : watchers) {			
-			output = output.concat(s.getUsername() + ", ");
-		}
-		output = output.substring(0,output.length() - 2);
-		output = output.concat("]");
-		return output;
-	}
-	
-	@Override
-	public String toString() {
-		return "[title=" + title + ", author=" + author + ", likes="	+ nlikes + 
-				", dislikes=" + ndislikes + ", views=" +nviews + ", tags= " + tags + ", watchers: " + watchers + "]";
-	}
-
 }

@@ -1,12 +1,14 @@
-package uk.ac.york.eng2.subscription.cli.domain;
+package uk.ac.york.eng2.subscription.cli.dto;
 
 import java.util.Collection;
 import java.util.Set;
 
 import io.micronaut.serde.annotation.Serdeable;
+import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
+import uk.ac.york.eng2.subscription.cli.domain.User;
 
 @Serdeable
-public class Video {
+public class VideoDTO {
 	
 	private Long id;
 	private String title;
@@ -24,7 +26,7 @@ public class Video {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -48,7 +50,7 @@ public class Video {
 	public void setTags(Collection<Hashtag> tags) {
 		this.tags = tags;
 	}
-
+	
 	public Integer getNlikes() {
 		return nlikes;
 	}
