@@ -96,12 +96,19 @@ public class UsersController {
 	
 	@Transactional
 	@Get("/{id}/subscribedhashtags")
-	public Iterable<Hashtag> getSubscribedHashtags(long id) {
+	public Hashtag[] getSubscribedHashtags(long id) {
 		Optional<User> oUser = repo.findById(id);
 		if (oUser.isEmpty()) {
 			return null;
 		}
-		return oUser.get().getSubscribedHashtags();
+		return parseHashtags(oUser.get().getSubscribedHashtags());
+	}
+	
+	public Hashtag[] parseHashtags(Set<Hashtag> x) {
+		Object[] y = x.toArray();
+		Hashtag[] outputArr = Arrays.copyOf(y, y.length, Hashtag[].class);
+		return outputArr;
+		
 	}
 	
 	@Transactional
