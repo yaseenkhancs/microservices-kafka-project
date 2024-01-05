@@ -132,6 +132,28 @@ public class UsersController {
 	}
 	
 	@Transactional
+	@Put("/{userId}/subscribedhashtags/{hashtagId}/delete")
+	public HttpResponse<String> deleteSubHashtag(long userId, long hashtagId) {
+		Optional<User> oUser = repo.findById(userId);
+		if (oUser.isEmpty()) {
+			return HttpResponse.notFound(String.format("Video %d not found", userId));
+		}
+
+		Optional<Hashtag> oHashtag = hashtagrepo.findById(hashtagId);
+		if (oHashtag.isEmpty()) {
+			return HttpResponse.notFound(String.format("User %d not found", hashtagId));
+		}
+
+		User user = oUser.get();
+		
+		user.getSubscribedHashtags().remove(oHashtag.get());
+		
+		repo.update(user);		
+
+		return HttpResponse.ok(String.format("hashtag %d removed as subbed tag of user %d", hashtagId, userId));
+	}
+	
+	@Transactional
 	@Get("/{userId}/subscribedhashtags/{hashtagId}/videos")
 	public Video[] getUserTagVideos(long userId, long hashtagId) {
 		Optional<User> oUser = repo.findById(userId);

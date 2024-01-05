@@ -41,5 +41,8 @@ public interface UsersClient {
 	
 	@Get("/{userId}/subscribedhashtags/{hashtagId}/videos")
 	public Video[] getUserTagVideos(long userId, long hashtagId);
+	
+	@Put("/{userId}/subscribedhashtags/{hashtagId}/delete")
+	public HttpResponse<String> deleteSubHashtag(long userId, long hashtagId);
 
 }
