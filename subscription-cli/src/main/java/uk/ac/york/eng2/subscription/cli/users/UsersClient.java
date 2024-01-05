@@ -9,6 +9,7 @@ import io.micronaut.http.annotation.Put;
 import io.micronaut.http.client.annotation.Client;
 import uk.ac.york.eng2.subscription.cli.domain.User;
 import uk.ac.york.eng2.subscription.cli.dto.UserDTO;
+import uk.ac.york.eng2.subscription.cli.domain.Video;
 import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
 
 @Client("${users.url:`http://localhost:8082/users`}")
@@ -35,5 +36,7 @@ public interface UsersClient {
 	@Get("/{id}/subscribedhashtags")
 	Hashtag[] getSubscribedHashtags(long id);
 	
+	@Get("/{id}/watchedvideos")
+	public Video[] getWatchedVideos(long id);	
 
 }
