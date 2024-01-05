@@ -26,6 +26,8 @@ public interface VideosProducer {
 	String TOPIC_POSTED = "video-posted";
 	String TOPIC_USRADDED = "user-added";
 	String TOPIC_HASHTAGADDED = "hashtag-added";
+	String TOPIC_ADDITIONALHASHTAG = "another-hashtag";
+	String TOPIC_WATCHERADDED = "watcher-added";
 
 	@Topic(TOPIC_WATCHED)
 	void watchVideo(@KafkaKey Long id, Video video);
@@ -43,7 +45,13 @@ public interface VideosProducer {
 	void addUser(@KafkaKey Long id, User user);
 	
 	@Topic(TOPIC_HASHTAGADDED)
-	void addHashtag(@KafkaKey Long id, Hashtag hashag);
+	void addHashtag(@KafkaKey Long id, Hashtag hashtag);
+	
+	@Topic(TOPIC_ADDITIONALHASHTAG)
+	void addAnotherHashtag(@KafkaKey Long videoId, Long hashtagId);
+	
+	@Topic(TOPIC_WATCHERADDED)
+	void addWatcher(@KafkaKey Long videoId, Long userId);
 
 }
 

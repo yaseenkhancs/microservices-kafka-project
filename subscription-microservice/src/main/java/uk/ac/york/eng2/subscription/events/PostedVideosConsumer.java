@@ -60,4 +60,18 @@ public class PostedVideosConsumer {
 		hashtag.setName(h.getName());
 		hcontroller.add(h);
 	}
+	
+	@Topic("another-hashtag")
+	public void anotherHashtag(@KafkaKey long videoId, long hashtagId) {
+		System.out.println("postedvideosconsumer anotherHashtag() video ID: " + videoId);
+		System.out.println("postedvideosconsumer anotherHashtag() hashtag ID: " + hashtagId);
+		controller.addHashtag(videoId, hashtagId);
+	}
+	
+	@Topic("watcher-added")
+	public void watcherAdded(@KafkaKey long videoId, long userId) {
+		System.out.println("postedvideosconsumer watcherAdded() video ID: " + videoId);
+		System.out.println("postedvideosconsumer watcherAdded() user ID: " + userId);
+		controller.addWatcher(videoId, userId);
+	}
 }

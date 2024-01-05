@@ -188,7 +188,9 @@ public class VideosController {
 
 		Video video = oVideo.get();
 		video.getWatchers().add(oUser.get());
-		repo.update(video);		
+		repo.update(video);
+		
+		producer.addWatcher(videoId, userId);
 
 		return HttpResponse.ok(String.format("User %d added as watcher of video %d", userId, videoId));
 	}
@@ -213,6 +215,8 @@ public class VideosController {
 		System.out.println(video.getId());
 		video.getTags().add(oHashtag.get());
 		repo.update(video);
+		
+		producer.addAnotherHashtag(videoId, hashtagId);
 		
 		return HttpResponse.ok(String.format("Hashtag %d added as hashtag of video %d", hashtagId, videoId));		
 	}
