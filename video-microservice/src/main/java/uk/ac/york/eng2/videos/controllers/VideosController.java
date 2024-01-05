@@ -101,7 +101,7 @@ public class VideosController {
 		}
 		if (videoDetails.getNviews() != null) { //if the http argument provided...
 			v.setNviews(videoDetails.getNviews()); //set the views of the fetched v
-			producer.watchVideo(id, "Username");			
+//			producer.watchVideo(id, "Username");		
 		}
 		if (videoDetails.getNlikes() != null) { //if the http argument provided...
 			v.setNlikes(videoDetails.getNlikes()); //set the views of the fetched v

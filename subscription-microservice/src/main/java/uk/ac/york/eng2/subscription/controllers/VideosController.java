@@ -52,7 +52,7 @@ public class VideosController {
 		video.setNviews(0);
 		video.setWatchers(null);
 		
-		repo.save(video);		
+		repo.save(video);
 
 		return HttpResponse.created(URI.create("/videos/" + video.getId()));
 	}

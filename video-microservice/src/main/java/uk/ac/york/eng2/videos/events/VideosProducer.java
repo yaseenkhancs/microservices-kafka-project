@@ -7,6 +7,7 @@ import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import uk.ac.york.eng2.videos.domain.Hashtag;
+import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 
 @KafkaClient
@@ -22,9 +23,11 @@ public interface VideosProducer {
 	String TOPIC_LIKED = "video-liked";
 	String TOPIC_DISLIKED = "video-disliked";
 	String TOPIC_POSTED = "video-posted";
+	String TOPIC_USRADDED = "user-added";
+	String TOPIC_HASHTAGADDED = "hashtag-added";
 
 	@Topic(TOPIC_WATCHED)
-	void watchVideo(@KafkaKey Long id, String username);
+	void watchVideo(@KafkaKey Long id, Video video);
 	
 	@Topic(TOPIC_LIKED)
 	void likeVideo(@KafkaKey long h, Hashtag v);
@@ -34,6 +37,12 @@ public interface VideosProducer {
 	
 	@Topic(TOPIC_POSTED)
 	void postVideo(@KafkaKey Long id, Video video);
+	
+	@Topic(TOPIC_USRADDED)
+	void addUser(@KafkaKey Long id, User user);
+	
+	@Topic(TOPIC_HASHTAGADDED)
+	void addHashtag(@KafkaKey Long id, Hashtag hashag);
 
 }
 

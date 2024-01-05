@@ -17,6 +17,7 @@ import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.HashtagDTO;
+import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 
 @Controller("/hashtags")
@@ -24,6 +25,9 @@ public class HashtagsController {
 	
 	@Inject
 	HashtagsRepository repo;
+	
+	@Inject
+	VideosProducer producer;
 	
 	@Get("/")
 	public Iterable<Hashtag> list() {
@@ -35,6 +39,7 @@ public class HashtagsController {
 		Hashtag tag = new Hashtag();
 		tag.setName(tagdetails.getName());
 		repo.save(tag);
+		producer.addHashtag((long) 1, tag);
 		return HttpResponse.created(URI.create("/hashtags/" + tag.getId()));
 	}
 	
