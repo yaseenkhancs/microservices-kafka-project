@@ -13,12 +13,17 @@ import uk.ac.york.eng2.subscription.cli.users.AddUserCommand;
 import uk.ac.york.eng2.subscription.cli.users.GetUsersCommand;
 import uk.ac.york.eng2.subscription.cli.videos.AddVideoCommand;
 import uk.ac.york.eng2.subscription.cli.videos.AddVideoHashtag;
+import uk.ac.york.eng2.subscription.cli.videos.AddVideoWatcherCommand;
+import uk.ac.york.eng2.subscription.cli.videos.DislikeVideoCommand;
 import uk.ac.york.eng2.subscription.cli.videos.GetVideosCommand;
+import uk.ac.york.eng2.subscription.cli.videos.LikeVideoCommand;
 
 @Command(name = "subscription-cli", description = "...",
         mixinStandardHelpOptions = true, subcommands = {GetVideosCommand.class,
         		GetHashtags.class, GetUsersCommand.class, AddVideoCommand.class,
-        		AddUserCommand.class, AddHashtagCommand.class, AddVideoHashtag.class})
+        		AddUserCommand.class, AddHashtagCommand.class, AddVideoHashtag.class,
+        		AddVideoWatcherCommand.class, LikeVideoCommand.class, 
+        		DislikeVideoCommand.class})
 public class SubscriptionCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")
