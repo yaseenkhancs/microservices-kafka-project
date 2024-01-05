@@ -130,4 +130,23 @@ public class UsersController {
 
 		return HttpResponse.ok(String.format("hashtag %d added as subbed tag of user %d", hashtagId, userId));
 	}
+	
+	@Transactional
+	@Get("/{userId}/subscribedhashtags/{hashtagId}/videos")
+	public Video[] getUserTagVideos(long userId, long hashtagId) {
+		Optional<User> oUser = repo.findById(userId);
+		if (oUser.isEmpty()) {
+			return null;
+		}
+
+		Optional<Hashtag> oHashtag = hashtagrepo.findById(hashtagId);
+		if (oHashtag.isEmpty()) {
+			return null;
+		}
+		
+		return parseSet(oHashtag.get().getTaggedVideos());
+	}
+	
+	
+	
 }
