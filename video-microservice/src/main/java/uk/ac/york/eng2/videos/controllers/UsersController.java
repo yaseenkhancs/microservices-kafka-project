@@ -18,6 +18,7 @@ import jakarta.inject.Inject;
 import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.UserDTO;
+import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 
 @Controller("/users")
@@ -25,6 +26,9 @@ public class UsersController {
 
 	@Inject
 	UsersRepository repo;
+	
+	@Inject
+	VideosProducer producer;
 
 	@Get("/")
 	public Iterable<User> list() {
@@ -36,7 +40,9 @@ public class UsersController {
 		User user = new User();
 		user.setUsername(userDetails.getUsername());
 		repo.save(user);
+		producer.addUser((long)1, user);
 		return HttpResponse.created(URI.create("/users/" + user.getId()));
+		
 	}
 
 	@Get("/{id}")
