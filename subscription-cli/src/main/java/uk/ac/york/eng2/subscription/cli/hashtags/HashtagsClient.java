@@ -7,6 +7,7 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.client.annotation.Client;
 import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
 import uk.ac.york.eng2.subscription.cli.dto.HashtagDTO;
+import uk.ac.york.eng2.subscription.cli.domain.Video;
 
 @Client("${hashtags.url:`http://localhost:8082/hashtags`}")
 public interface HashtagsClient {
@@ -19,4 +20,7 @@ public interface HashtagsClient {
 
 	@Get("/{id}")
 	HashtagDTO getTag(long id);
+	
+	@Get("/{id}/videos")
+	Video[] getHashtagVideos(long id);
 }
