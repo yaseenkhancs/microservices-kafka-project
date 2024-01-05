@@ -1,6 +1,10 @@
 package uk.ac.york.eng2.subscription.cli.users;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Comparator;
 
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
@@ -24,17 +28,33 @@ public class ViewUserSubscriptionVideos implements Runnable {
 		Video[] imported = client.getUserTagVideos(userId, hashtagId);
 		Video[] watched = client.getWatchedVideos(userId);
 		
-		ArrayList<Long> watchedIds = new ArrayList<Long>();
+		List<Video> sortedWatchedList = Arrays.asList(watched);
 		
-		for (int i = 0; i < watched.length; i++) {
-			watchedIds.add(watched[i].getId());
+		Collections.sort(sortedWatchedList, new Comparator<Video>(){
+			@Override
+			public int compare(Video o1, Video o2) {
+				return o1.getNviews() < o2.getNviews() ? -1
+					 : o1.getNviews() < o2.getNviews() ? 1
+					 : 0;
+			}			
+		});
+		
+		ArrayList<Long> ids = new ArrayList<Long>();
+		for (Video x : sortedWatchedList) {
+			ids.add(x.getId());
 		}
 		
-		for (int i = 0; i < imported.length; i++) {
-			if (watchedIds.contains(imported[i].getId())) {
+		int x = imported.length;
+		
+		for (Video v : imported) {
+			if (x < 0) {
+				break;
+			}
+			if (ids.contains(v.getId())) {
 				continue;
-			}			
-			System.out.println(imported[i].getTitle());
+			}
+			System.out.println(v.getTitle());
+			x--;
 		}
 		
 	}
