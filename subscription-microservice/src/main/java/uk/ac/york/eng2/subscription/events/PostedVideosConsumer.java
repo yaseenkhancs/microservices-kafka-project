@@ -4,11 +4,15 @@ import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import jakarta.inject.Inject;
+import uk.ac.york.eng2.subscription.controllers.HashtagsController;
+import uk.ac.york.eng2.subscription.controllers.UsersController;
 import uk.ac.york.eng2.subscription.controllers.VideosController;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 import uk.ac.york.eng2.subscription.domain.Video;
+import uk.ac.york.eng2.subscription.dto.UserDTO;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
+import uk.ac.york.eng2.subscription.helpers.HashtagUserPair;
 
 @KafkaListener(groupId="books-debug")
 public class PostedVideosConsumer {
@@ -16,23 +20,44 @@ public class PostedVideosConsumer {
 	@Inject
 	VideosController controller;
 	
+	@Inject
+	UsersController ucontroller;
+	
+	@Inject
+	HashtagsController hcontroller;
+	
 	@Topic("video-posted")
-	public void videoPostedMetric(@KafkaKey long k, Video v) {
+	public void videoPostedMetric(@KafkaKey HashtagUserPair hup, Video v) {
+		System.out.println("YOOOOOOOOOOOOOOOOO");
+		System.out.println(hup.getU().getUsername());
+		System.out.println(hup.getH());
+		
 		VideoDTO dto = new VideoDTO();
 		dto.setId(v.getId());
-		dto.setTitle(v.getTitle());		
+		dto.setTitle(v.getTitle());
+		dto.setAuthor(hup.getU());
+		dto.setTags(hup.getH());
 		dto.setNlikes(0);
 		dto.setNdislikes(0);
-		dto.setNviews(0);		
+		dto.setNviews(0);
+		dto.setWatchers(null);
+		
+		controller.add(dto);
 	}
 	
 	@Topic("user-added")
 	public void addedUser(@KafkaKey long k, User u) {
-		System.out.println(u.getUsername());
+		User user = new User();
+		user.setId(u.getId());
+		user.setUsername(u.getUsername());
+		ucontroller.add(user);
 	}
 	
 	@Topic("hashtag-added")
 	public void addedHashtag(@KafkaKey long k, Hashtag h) {
-		System.out.println(h.getName());
+		Hashtag hashtag = new Hashtag();
+		hashtag.setId(h.getId());
+		hashtag.setName(h.getName());
+		hcontroller.add(h);
 	}
 }
