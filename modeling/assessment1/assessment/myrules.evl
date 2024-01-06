@@ -13,6 +13,30 @@ context Assessment {
 
 context Event {
 
+	constraint NamePresence {
+		
+		check: self.eventName.size() >= 1
+		
+		message: "Please give your event a name"
+	
+	}
+	
+	constraint KeyPresence {
+	
+		check: self.key.size() >= 1
+		
+		message: "Please give your event " + self.eventName + " a key." 
+	
+	}
+	
+	constraint ValuePresence {
+	
+		check: self.value.size() >= 1
+		
+		message: "Please give your event " + self.eventName + " a value."
+		 
+	}	
+
 	constraint UsedAtLeastOnce {
 	
 		check : self.relatedProducers.size() + self.relatedConsumers.size() + self.relatedStreams.size() >= 1
@@ -28,6 +52,27 @@ context Event {
 		message: "Your event titled " + self.eventName + " must have one producer and one consumer"
 	
 	}
+}
+
+context Microservice {
+
+	constraint HasName {
+		
+		check: self.msName.size() >= 1
+		
+		message: "Give your microservice a name"
+	}
+}
+
+context KafStream {
+
+	constraint NamePresence {
+	
+		check: self.streamName.size() >= 1
+		
+		message: "Please give your Kafka Stream a name" 
+	}
+
 }
 
 
