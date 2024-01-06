@@ -1,11 +1,13 @@
 context Domain {
 
-	constraint StartsWithNumber {
+	constraint DoesNotStartWithNumber {
 		
 		check {
 			var c = self.name.charAt(0);
 			return not(c.isInteger());
 		}
+		
+		message: "The name of a domain cannot start with a number - your domain starts with '" + self.name.charAt(0) + "'"
 	}
 
 }
