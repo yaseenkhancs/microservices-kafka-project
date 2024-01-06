@@ -9,7 +9,7 @@ public class [%=c.conName.ftuc()%]Consumer {
 	
 	[%for (x in c.consumedEvents) {%]
 	@Topic("[%=x.eventName%]")
-	public void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%], [%=x.value%]) {
+	public void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%] k, [%=x.value%] v) {
 	
 	}
 	[%}%]

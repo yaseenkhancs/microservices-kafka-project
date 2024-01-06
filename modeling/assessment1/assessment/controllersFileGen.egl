@@ -20,7 +20,7 @@ public class [%=d.name.ftuc()%]sController {
 	[%for (tag in method.tags){%]
 	@[%=tag%]
 	[%}%]
-	@[%=method.httpType%]([%=method.path%])
+	@[%=method.httpType%]("[%=method.path%]")
 	public [%=method.returnType%] [%=method.name%]([%=method.parameters%]){
 	}
 	
