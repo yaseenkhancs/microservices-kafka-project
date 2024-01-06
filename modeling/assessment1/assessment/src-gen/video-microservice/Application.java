@@ -1,4 +1,4 @@
-package mine;
+package video-microservice;
 
 import io.micronaut.runtime.Micronaut;
 

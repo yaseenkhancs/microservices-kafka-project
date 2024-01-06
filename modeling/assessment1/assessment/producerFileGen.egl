@@ -1,0 +1,19 @@
+package [%=m.msName.toLowerCase()%].events;
+
+import io.micronaut.configuration.kafka.annotation.KafkaClient;
+import io.micronaut.configuration.kafka.annotation.KafkaKey;
+import io.micronaut.configuration.kafka.annotation.Topic;
+
+@KafkaClient
+public interface [%=p.prodName.ftuc()%]Producer {
+
+	[%for (x in p.producedEvents) {%]
+	String [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toUpperCase()%] = "[%=x.eventName%]"
+	[%}%]
+	
+	[%for (x in p.producedEvents) {%]
+	@Topic("[%=x.eventName%]")
+	void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%], [%=x.value%]);
+	[%}%]
+
+}

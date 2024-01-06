@@ -1,0 +1,11 @@
+context Domain {
+
+	constraint StartsWithNumber {
+		
+		check {
+			var c = self.name.charAt(0);
+			return not(c.isInteger());
+		}
+	}
+
+}

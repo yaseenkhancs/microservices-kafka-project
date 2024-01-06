@@ -1,0 +1,13 @@
+package [%=m.msName.toLowerCase()%].events;
+
+import io.micronaut.context.annotation.Factory;
+
+@Factory
+public class [%=s.streamName.ftuc()%] {
+
+	[%for (x in s.associatedEvents) {%]
+	public KStream<[%=x.key%], [%=x.value%]> [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").ftuc()%](ConfiguredStreamBuilder builder){
+	
+	}	
+	[%}%]
+}

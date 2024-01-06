@@ -1,4 +1,4 @@
-package [%=m.name.toLowerCase()%];
+package [%=m.msName.toLowerCase()%];
 
 import io.micronaut.runtime.Micronaut;
 

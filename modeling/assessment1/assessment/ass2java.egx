@@ -4,7 +4,7 @@ rule Model2App
 	template : "applicationGen.egl"
 
 	parameters : Map{
-		"m" = m.eContainer()
+		"m" = m
 	}
 
 	target : "src-gen/" + m.msName.toLowerCase() + "/Application.java"
@@ -56,4 +56,41 @@ rule ControllerFile
 	}
 	
 	target : "src-gen/" + d.parentMS.msName + "/controllers/" + d.name.ftuc() + "sController.java"
+}
+
+rule StreamsFile
+	transform s : KafStream {
+	
+	template: "streamsFileGen.egl"
+	
+	parameters: Map {
+		"m" = s.eContainer()
+	}
+	
+	target: "src-gen/" + s.parentMS.msName.toLowerCase() + "/events/" + s.streamName.ftuc() + "Stream.java" 
+	
+}
+
+rule ProducerFile
+	transform p : KafProd {
+	
+	template: "producerFileGen.egl"
+	
+	parameters: Map {
+		"m" = p.eContainer()
+	}
+	
+	target: "src-gen/" + p.eContainer().msName.toLowerCase() + "/events/" + p.prodName.ftuc() + "Producer.java" 
+}
+
+rule ConsumerFile
+	transform c : KafCon {
+	
+	template: "consumerFileGen.egl"
+	
+	parameters: Map {
+		"m" = c.eContainer()
+	}
+	
+	target: "src-gen/" + c.eContainer().msName.toLowerCase() + "/events/" + c.conName.ftuc() + "Consumer.java" 
 }

@@ -3,23 +3,23 @@ package assessment;
 
 class Assessment {
 	attr String name;
-	val KafStream[*] streams;
 	val Event[*] events;
 	val Microservice[*] microservices;
 }
 
 class KafStream {
 	attr String streamName;
-	ref KafCon[*] consumers;
-	ref KafProd[*] producers;
 	ref Event[*] associatedEvents;
+	ref Microservice#stream parentMS;
 }
 
 class KafCon {
+	attr String conName;
 	ref Event[*] consumedEvents;
 }
 
 class KafProd {
+	attr String prodName;
 	ref Event[*] producedEvents;
 }
 
@@ -32,7 +32,9 @@ class Event {
 class Microservice {
 	attr String msName;
 	val Domain[*]#parentMS domains;
-	ref KafStream stream;
+	val KafStream[*]#parentMS stream;
+	val KafCon[*] consumers;
+	val KafProd[*] producers;
 }
 
 class Domain {

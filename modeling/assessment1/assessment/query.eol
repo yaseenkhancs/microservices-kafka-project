@@ -1,0 +1,8 @@
+//KafCon.all.select(s | s.conName.equals("LikedConsumer")).size().println();
+//KafCon.all.select(s | s.conName.equals("LikedConsumer")).size().println();
+
+//var s = KafCon.all.first();
+//s.conName = "WHADDUP";
+
+var s = KafCon.all.first();
+s.conName = "VidCon";
