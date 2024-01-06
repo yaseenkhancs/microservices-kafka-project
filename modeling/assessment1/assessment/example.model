@@ -3,7 +3,11 @@
   <events xmi:id="_9E5_oKy0Ee6RR8fJYgQtPw" eventName="video-posted" key="Long id" value="Video v"/>
   <microservices xmi:id="_6VlSoKy0Ee6RR8fJYgQtPw" msName="video-microservice">
     <domains xmi:id="_vgnM0Ky3Ee6RR8fJYgQtPw" name="Video">
-      <httpMethods xmi:id="_0WpSMKy4Ee6RR8fJYgQtPw" name="Get" path="hello there"/>
+      <httpMethods xmi:id="_0WpSMKy4Ee6RR8fJYgQtPw" name="getdat" httpType="Get" returnType="d" path="/hellothere">
+        <tags>Transactional</tags>
+        <tags>Lol</tags>
+        <tags>Mate</tags>
+      </httpMethods>
     </domains>
   </microservices>
 </Assessment>

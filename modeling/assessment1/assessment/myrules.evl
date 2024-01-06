@@ -68,31 +68,99 @@ context HttpMethod {
 	
 		guard: self.satisfies("PathPresent")
 	
-		check {
-		
-//			return self.path.matches([ \t\n\x0B\f\r]);
-					
-			var i : Integer = 0;
-			var x : Boolean = true;
-			
-			//  I have to do this because EOL refuses to recognise 
-			//  "\\s" or ["\\s"] as regex to search for any whitespaces 
-			//  present in a string. It only recognises a single whitespace.
-			//  I checked this regex with Java and it works fine, just not
-			//  fine in EOL. So I have to use this loop. Thanks for reading.
-			
-			while (i < self.path.length()) { 
-				if (self.path.characterAt(i).matches("\\s")) {
-					x = false;
-				}
-				i++;
-			}
-			return x;
-		}
+		check: not self.path.contains(" ")
 		
 		message: "there cannot be spaces in a http method."
 	
 	}
 	
-
+	constraint startsWithSlash {
+		guard: self.satisfies("PathPresent")
+		
+		check: self.path.startsWith("/")
+		
+		message: "a path must begin with a '/' character"
+	}
+	
+	constraint TagsUpperCase {
+	
+		check {
+			
+			var finalcheck : Boolean = true;
+			
+			for (x : String in self.tags) {
+				finalcheck = (x.ftuc() == x);
+			}
+			return finalcheck;		
+		} 
+		
+		message: "a tag must begin with a capital letter"
+		
+		fix {
+			title: "changing to upper case."
+			
+			do {
+				var oset : OrderedSet;
+				for (x : String in self.tags) {
+					oset.add(x.ftuc());
+				}
+				self.tags = oset;
+			}
+		}
+	}
+	
+	constraint ReturnTypePresent {
+		
+		check: self.returnType.length() >= 1
+		
+		message: "Return type should be present. If there is no return type, return 'void' instead"
+	
+	}
+	
+	constraint HttpTypePresence {
+		check: self.httpType.length() >= 1
+		
+		message: "http method type should be present"	
+	}
+	
+	constraint HttpTypeValidity {
+	
+		guard: self.satisfies("HttpTypePresence")
+	
+		check {
+			var httpMethodsSet : OrderedSet;
+			httpMethodsSet.add("get");
+			httpMethodsSet.add("head");
+			httpMethodsSet.add("options");
+			httpMethodsSet.add("trace");
+			httpMethodsSet.add("delete");
+			httpMethodsSet.add("put");
+			httpMethodsSet.add("post");
+			httpMethodsSet.add("patch");
+			httpMethodsSet.add("connect");
+			var lt : String = self.httpType.toLowerCase();
+			return httpMethodsSet.contains(self.httpType.toLowerCase());
+		}
+		
+		message: "Enter a valid http method"
+	}
+	
+	constraint HttpMethodStartWithUpper {
+	
+		guard: self.satisfies("HttpTypeValidity")
+		
+		check: self.httpType == self.httpType.ftuc()
+		
+		message: "Start your http method with an upper case"
+		
+		fix {
+			title: "set first letter to an upper case."
+			
+			do {
+				self.httpType = self.httpType.ftuc();
+			}
+		}
+	}
+	
+	
 }

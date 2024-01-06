@@ -8,9 +8,9 @@
 //s.conName = "VidCon";
 
 var s = HttpMethod.all.first();
-s.path.println();
-s.path.matches('\\s').println();
-(" " == " ").println();
+//s.path.println();
+//s.path.matches('\\s').println();
+//(" " == " ").println();
 //
 //var i : Integer = 0;
 //var j : Boolean = true;
@@ -25,3 +25,5 @@ s.path.matches('\\s').println();
 //}
 ////x.println();
 ////return x;
+
+s.tags.println();
