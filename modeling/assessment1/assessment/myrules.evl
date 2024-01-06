@@ -72,22 +72,22 @@ context HttpMethod {
 		
 //			return self.path.matches([ \t\n\x0B\f\r]);
 					
-//			var i : Integer = 0;
-//			var x : Boolean = true;
-//			
-//			while (i < self.path.length()) {
-//				self.path.charAt(i).println();
-//				if (self.path.charAt(i) = "p") {
-//					"YOOO".println();
-//					x = false;
-//				}
-//				i++;
-//			}
-//			x.println();
-//			return x;
+			var i : Integer = 0;
+			var x : Boolean = true;
 			
+			//  I have to do this because EOL refuses to recognise 
+			//  "\\s" or ["\\s"] as regex to search for any whitespaces 
+			//  present in a string. It only recognises a single whitespace.
+			//  I checked this regex with Java and it works fine, just not
+			//  fine in EOL. So I have to use this loop. Thanks for reading.
 			
-
+			while (i < self.path.length()) { 
+				if (self.path.characterAt(i).matches("\\s")) {
+					x = false;
+				}
+				i++;
+			}
+			return x;
 		}
 		
 		message: "there cannot be spaces in a http method."

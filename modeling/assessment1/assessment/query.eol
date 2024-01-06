@@ -9,4 +9,19 @@
 
 var s = HttpMethod.all.first();
 s.path.println();
-s.path.matches(" +").println();
+s.path.matches('\\s').println();
+(" " == " ").println();
+//
+//var i : Integer = 0;
+//var j : Boolean = true;
+
+//while (i < s.path.length()) {
+//	s.path.characterAt(i).println();
+//	if (s.path.characterAt(i).matches('\\s')) {
+//		"YOOO".println();
+//		j = false;
+//	}
+//	i++;
+//}
+////x.println();
+////return x;
