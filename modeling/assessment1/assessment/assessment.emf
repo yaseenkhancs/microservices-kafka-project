@@ -10,7 +10,17 @@ class Assessment {
 
 class KafStream {
 	attr String streamName;
+	ref KafCon[*] consumers;
+	ref KafProd[*] producers;
 	ref Event[*] associatedEvents;
+}
+
+class KafCon {
+	ref Event[*] consumedEvents;
+}
+
+class KafProd {
+	ref Event[*] producedEvents;
 }
 
 class Event {
@@ -22,8 +32,7 @@ class Event {
 class Microservice {
 	attr String msName;
 	val Domain[*]#parentMS domains;
-	ref KafStream[*] subscribedStreams;
-	ref KafStream[*] publishedStreams;
+	ref KafStream stream;
 }
 
 class Domain {

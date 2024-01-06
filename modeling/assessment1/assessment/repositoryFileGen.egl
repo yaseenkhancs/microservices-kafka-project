@@ -7,5 +7,7 @@ import io.micronaut.data.annotation.CrudRepository;
 
 @Repository
 public interface [%=d.name.ftuc()%]sRepository extends CrudRepository<[%=d.name.ftuc()%], Long> {
+
+	Optional<[%=d.name.ftuc()%]> findOne(long id);
 	
 }

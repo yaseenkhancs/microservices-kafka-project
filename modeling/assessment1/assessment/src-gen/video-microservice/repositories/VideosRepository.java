@@ -7,5 +7,7 @@ import io.micronaut.data.annotation.CrudRepository;
 
 @Repository
 public interface VideosRepository extends CrudRepository<Video, Long> {
+
+	Optional<Video> findOne(long id);
 	
 }

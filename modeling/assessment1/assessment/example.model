@@ -3,7 +3,7 @@
   <microservices xmi:id="_2Py5QKpUEe6lrus6H9OEhw" msName="video-microservice">
     <domains xmi:id="_3V_sUKpUEe6lrus6H9OEhw" name="Video">
       <httpMethods xmi:id="_4ErXQKpUEe6lrus6H9OEhw" name="list" httpType="Get" returnType="HttpResponse&lt;Void>" path="&quot;/&quot;">
-        <tags>@Transactional</tags>
+        <tags>Transactional</tags>
       </httpMethods>
     </domains>
   </microservices>
