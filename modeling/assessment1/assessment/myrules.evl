@@ -13,18 +13,36 @@ context Assessment {
 
 context Event {
 
-	constraint EventUsed {
+	constraint UsedAtLeastOnce {
 	
-		check: 
-	
+		check : self.relatedProducers.size() + self.relatedConsumers.size() + self.relatedStreams.size() >= 1
+		
+		message: "Your event titled " + self.eventName + " must be used in at least one event stream."
 	
 	}
 
+	constraint HasProducerAndConsumer {
+	
+		check : self.relatedProducers.size() >= 1 and self.relatedConsumers.size() >= 1 
+		
+		message: "Your event titled " + self.eventName + " must have one producer and one consumer"
+	
+	}
 }
+
 
 context Domain {
 
+	constraint NamePresent {
+		
+		check: self.name.length() >= 1
+		
+		message: "The domain must have a name."
+	}
+
 	constraint DoesNotStartWithNumber {
+	
+		guard: self.satisfies("NamePresent")
 		
 		check {
 			var c = self.name.charAt(0);
@@ -33,5 +51,48 @@ context Domain {
 		
 		message: "The name of a domain cannot start with a number - your domain starts with '" + self.name.charAt(0) + "'"
 	}
+
+}
+
+context HttpMethod {
+
+	constraint PathPresent {
+	
+		check: self.path.length() >= 1
+		
+		message: "There must be a given http path for a http method."
+	
+	}
+	
+	constraint NoSpaces {
+	
+		guard: self.satisfies("PathPresent")
+	
+		check {
+		
+//			return self.path.matches([ \t\n\x0B\f\r]);
+					
+//			var i : Integer = 0;
+//			var x : Boolean = true;
+//			
+//			while (i < self.path.length()) {
+//				self.path.charAt(i).println();
+//				if (self.path.charAt(i) = "p") {
+//					"YOOO".println();
+//					x = false;
+//				}
+//				i++;
+//			}
+//			x.println();
+//			return x;
+			
+			
+
+		}
+		
+		message: "there cannot be spaces in a http method."
+	
+	}
+	
 
 }

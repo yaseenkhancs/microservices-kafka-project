@@ -4,5 +4,9 @@
 //var s = KafCon.all.first();
 //s.conName = "WHADDUP";
 
-var s = KafCon.all.first();
-s.conName = "VidCon";
+//var s = KafCon.all.first();
+//s.conName = "VidCon";
+
+var s = HttpMethod.all.first();
+s.path.println();
+s.path.matches(" +").println();

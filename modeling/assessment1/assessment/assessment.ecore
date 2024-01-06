@@ -11,24 +11,30 @@
   <eClassifiers xsi:type="ecore:EClass" name="KafStream">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="associatedEvents" upperBound="-1"
-        eType="#//Event"/>
+        eType="#//Event" eOpposite="#//Event/relatedStreams"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentMS" eType="#//Microservice"
         eOpposite="#//Microservice/stream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="KafCon">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="conName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="consumedEvents" upperBound="-1"
-        eType="#//Event"/>
+        eType="#//Event" eOpposite="#//Event/relatedConsumers"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="KafProd">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prodName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="producedEvents" upperBound="-1"
-        eType="#//Event"/>
+        eType="#//Event" eOpposite="#//Event/relatedProducers"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedProducers" upperBound="-1"
+        eType="#//KafProd" eOpposite="#//KafProd/producedEvents"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedConsumers" upperBound="-1"
+        eType="#//KafCon" eOpposite="#//KafCon/consumedEvents"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedStreams" upperBound="-1"
+        eType="#//KafStream" eOpposite="#//KafStream/associatedEvents"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Microservice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

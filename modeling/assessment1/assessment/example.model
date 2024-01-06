@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_QPATcKypEe6RR8fJYgQtPw" name="myassessment">
-  <events xmi:id="_KGXPUKyrEe6RR8fJYgQtPw" eventName="video-posted" key="Long id" value="Video v"/>
-  <microservices xmi:id="_q5gAIKypEe6RR8fJYgQtPw" msName="video-microservice">
-    <domains xmi:id="_RfGM4KyqEe6RR8fJYgQtPw" name="Video"/>
-    <stream xmi:id="_h-jMcKyrEe6RR8fJYgQtPw" streamName="vidstream" associatedEvents="_KGXPUKyrEe6RR8fJYgQtPw"/>
-    <consumers xmi:id="_b0lkkKyrEe6RR8fJYgQtPw" conName="likedconsumer" consumedEvents="_KGXPUKyrEe6RR8fJYgQtPw"/>
-    <producers xmi:id="_f01t8KyrEe6RR8fJYgQtPw" prodName="likedproducer" producedEvents="_KGXPUKyrEe6RR8fJYgQtPw"/>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_4eGMkKy0Ee6RR8fJYgQtPw" name="vid">
+  <events xmi:id="_9E5_oKy0Ee6RR8fJYgQtPw" eventName="video-posted" key="Long id" value="Video v"/>
+  <microservices xmi:id="_6VlSoKy0Ee6RR8fJYgQtPw" msName="video-microservice">
+    <domains xmi:id="_vgnM0Ky3Ee6RR8fJYgQtPw" name="Video">
+      <httpMethods xmi:id="_0WpSMKy4Ee6RR8fJYgQtPw" name="Get" path="pam ela"/>
+    </domains>
   </microservices>
 </Assessment>
