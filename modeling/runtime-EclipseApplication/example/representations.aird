@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://york.ac.uk/cs/eng2/assessment" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="__Y9TkK19Ee6mqPG4tdYpMw" selectedViews="_rwplUK1_Ee6mqPG4tdYpMw" version="14.5.1.202106111100">
+    <semanticResources>assessment.ecore</semanticResources>
+    <semanticResources>example.assessment</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_rwplUK1_Ee6mqPG4tdYpMw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_A9h9UK2BEe6mqPG4tdYpMw" name="new Assessment Diagram" repPath="#_A9ReoK2BEe6mqPG4tdYpMw" changeId="53439958-c785-4a9f-ba52-6ba1071382d2">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
+        <target xmi:type="Assessment" href="example.assessment#_4eGMkKy0Ee6RR8fJYgQtPw"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8eg-4q2BEe6mqPG4tdYpMw" name="new Assessment Diagram" repPath="#_8eg-4K2BEe6mqPG4tdYpMw" changeId="d73b2bd3-c332-486f-96db-bc8a01d4424e">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
+        <target xmi:type="Assessment" href="example.assessment#_4eGMkKy0Ee6RR8fJYgQtPw"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_A9ReoK2BEe6mqPG4tdYpMw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_A-AecK2BEe6mqPG4tdYpMw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_A-Aeca2BEe6mqPG4tdYpMw" type="Sirius" element="_A9ReoK2BEe6mqPG4tdYpMw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_uGYbsK2BEe6mqPG4tdYpMw" type="2001" element="_uGUxUK2BEe6mqPG4tdYpMw">
+          <children xmi:type="notation:Node" xmi:id="_uGYbs62BEe6mqPG4tdYpMw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_uGYbtK2BEe6mqPG4tdYpMw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_uGZCwK2BEe6mqPG4tdYpMw" type="3003" element="_uGXNkK2BEe6mqPG4tdYpMw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_uGZCwa2BEe6mqPG4tdYpMw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uGZCwq2BEe6mqPG4tdYpMw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_uGYbsa2BEe6mqPG4tdYpMw" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uGYbsq2BEe6mqPG4tdYpMw" width="366" height="176"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_A-Aecq2BEe6mqPG4tdYpMw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_A-JoYK2BEe6mqPG4tdYpMw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_A-KPcK2BEe6mqPG4tdYpMw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_uGUxUK2BEe6mqPG4tdYpMw" name="Invalid feature as name" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="Microservice" href="example.assessment#_6VlSoKy0Ee6RR8fJYgQtPw"/>
+      <semanticElements xmi:type="Microservice" href="example.assessment#_6VlSoKy0Ee6RR8fJYgQtPw"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_uGXNkK2BEe6mqPG4tdYpMw" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_A9YMUK2BEe6mqPG4tdYpMw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer"/>
+    <target xmi:type="Assessment" href="example.assessment#_4eGMkKy0Ee6RR8fJYgQtPw"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_8eg-4K2BEe6mqPG4tdYpMw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8eg-5K2BEe6mqPG4tdYpMw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_8eg-5a2BEe6mqPG4tdYpMw" type="Sirius" element="_8eg-4K2BEe6mqPG4tdYpMw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_8ekpQ62BEe6mqPG4tdYpMw" type="2001" element="_8eiNAK2BEe6mqPG4tdYpMw">
+          <children xmi:type="notation:Node" xmi:id="_8elQUK2BEe6mqPG4tdYpMw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8elQUa2BEe6mqPG4tdYpMw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8elQUq2BEe6mqPG4tdYpMw" type="3003" element="_8ekCMK2BEe6mqPG4tdYpMw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8elQU62BEe6mqPG4tdYpMw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8elQVK2BEe6mqPG4tdYpMw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_8ekpRK2BEe6mqPG4tdYpMw" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8ekpRa2BEe6mqPG4tdYpMw" width="271" height="131"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_8eg-5q2BEe6mqPG4tdYpMw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8ekpQa2BEe6mqPG4tdYpMw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_8ekpQq2BEe6mqPG4tdYpMw"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_8eiNAK2BEe6mqPG4tdYpMw" name="Invalid feature as name" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="Microservice" href="example.assessment#_6VlSoKy0Ee6RR8fJYgQtPw"/>
+      <semanticElements xmi:type="Microservice" href="example.assessment#_6VlSoKy0Ee6RR8fJYgQtPw"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_8ekCMK2BEe6mqPG4tdYpMw" labelSize="12" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_8eg-4a2BEe6mqPG4tdYpMw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='AssessmentViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer"/>
+    <target xmi:type="Assessment" href="example.assessment#_4eGMkKy0Ee6RR8fJYgQtPw"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

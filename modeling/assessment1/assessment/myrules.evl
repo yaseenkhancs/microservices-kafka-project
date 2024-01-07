@@ -16,15 +16,7 @@ context Assessment {
 	
 	}
 	
-	constraint AtLeastOneKafkaStream {
-	
-		check: self.stream.size() >= 1
-		
-		message: "Your project must have at least one Kafka Stream, otherwise the Kafka topology will break."
-		
-	}
-	
-	
+
 
 }
 
@@ -86,6 +78,14 @@ context Microservice {
 		check: self.msName.size() >= 1
 		
 		message: "Give your microservice a name"
+	}
+	
+	constraint AtLeastOneKafkaStream {
+	
+		check: self.stream.size() >= 1
+		
+		message: "Your project must have at least one Kafka Stream, otherwise the Kafka topology will break."
+		
 	}
 }
 
