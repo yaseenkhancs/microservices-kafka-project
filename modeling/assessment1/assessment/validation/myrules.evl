@@ -12,7 +12,40 @@ context Assessment {
 		check: self.microservices.size() >= 1
 		
 		message: "Your project must have at least one microservice."
+		
+	}
 	
+	constraint UniqueEventNames {
+	
+		check {
+			
+			var o : OrderedSet;
+			for (x : Event in self.events) {
+				o.add(x.eventName);
+			}
+			return (o.size()==self.events.size());
+		
+		}
+		
+		message: "Each event for the model must have unique names"
+			
+	}
+	
+	constraint UniqueMSNames {
+		
+		guard: self.satisfies("AtLeastOneMS")
+		
+		check {
+			
+			var o : OrderedSet;
+			for (x : Microservice in self.microservices) {
+				o.add(x.msName);
+			}
+			return (o.size()==self.microservices.size());
+		
+		}
+		
+		message: "Each microservice for the model must have unique names"	
 	
 	}
 }
