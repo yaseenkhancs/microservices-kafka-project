@@ -5,7 +5,7 @@
     <semanticResources>assessment.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_tLlDgK2FEe6Lh66Rt0fmAw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xorg8K2FEe6Lh66Rt0fmAw" name="new Assessment Diagram" repPath="#_xoZ0IK2FEe6Lh66Rt0fmAw" changeId="43600b7d-6526-4bc6-a1fe-80481721382e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xorg8K2FEe6Lh66Rt0fmAw" name="new Assessment Diagram" repPath="#_xoZ0IK2FEe6Lh66Rt0fmAw" changeId="c10371d6-a340-400a-a7c6-d046d1a9b352">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
         <target xmi:type="Assessment" href="example.assessment#_4eGMkKy0Ee6RR8fJYgQtPw"/>
       </ownedRepresentationDescriptors>
@@ -58,7 +58,7 @@
           <styles xmi:type="notation:ShapeStyle" xmi:id="__QM30a2LEe6Lh66Rt0fmAw" fontName="Segoe UI"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="__QM30q2LEe6Lh66Rt0fmAw" x="405" y="595" width="201" height="156"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_QUSq8K2MEe6Lh66Rt0fmAw" type="2001" element="_QUQ1yK2MEe6Lh66Rt0fmAw">
+        <children xmi:type="notation:Node" xmi:id="_QUSq8K2MEe6Lh66Rt0fmAw" visible="false" type="2001" element="_QUQ1yK2MEe6Lh66Rt0fmAw">
           <children xmi:type="notation:Node" xmi:id="_QUSq862MEe6Lh66Rt0fmAw" type="5002">
             <layoutConstraint xmi:type="notation:Location" xmi:id="_QUSq9K2MEe6Lh66Rt0fmAw" y="5"/>
           </children>
@@ -79,6 +79,17 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_k1NxUa2MEe6Lh66Rt0fmAw" fontName="Segoe UI"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k1NxUq2MEe6Lh66Rt0fmAw" x="105" y="370" width="171" height="71"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Id1n4K2TEe6Lh66Rt0fmAw" type="2001" element="_IdGoEK2TEe6Lh66Rt0fmAw">
+          <children xmi:type="notation:Node" xmi:id="_Id1n462TEe6Lh66Rt0fmAw" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Id1n5K2TEe6Lh66Rt0fmAw" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Id1n5a2TEe6Lh66Rt0fmAw" type="3002" element="_IdGoEa2TEe6Lh66Rt0fmAw">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Id1n5q2TEe6Lh66Rt0fmAw" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Id1n562TEe6Lh66Rt0fmAw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Id1n4a2TEe6Lh66Rt0fmAw" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Id1n4q2TEe6Lh66Rt0fmAw" width="30" height="30"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_xpG-wq2FEe6Lh66Rt0fmAw"/>
         <edges xmi:type="notation:Edge" xmi:id="_FchasK2NEe6Lh66Rt0fmAw" type="4001" element="_FbmNoK2NEe6Lh66Rt0fmAw" source="_0OgeQK2GEe6Lh66Rt0fmAw" target="_k1NxUK2MEe6Lh66Rt0fmAw">
@@ -150,7 +161,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='consumerNode']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_QUQ1yK2MEe6Lh66Rt0fmAw" name="what" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_QUQ1yK2MEe6Lh66Rt0fmAw" name="what" visible="false" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="KafStream" href="example.assessment#_En83UKzWEe6yWtwACiQ7Uw"/>
       <semanticElements xmi:type="KafStream" href="example.assessment#_En83UKzWEe6yWtwACiQ7Uw"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -179,6 +190,14 @@
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_FbpQ8a2NEe6Lh66Rt0fmAw" labelSize="12"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@edgeMappings[name='ms2Domain']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_IdGoEK2TEe6Lh66Rt0fmAw" name="what" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="KafStream" href="example.assessment#_En83UKzWEe6yWtwACiQ7Uw"/>
+      <semanticElements xmi:type="KafStream" href="example.assessment#_En83UKzWEe6yWtwACiQ7Uw"/>
+      <ownedStyle xmi:type="diagram:Dot" uid="_IdGoEa2TEe6Lh66Rt0fmAw" labelSize="12" labelPosition="node" backgroundColor="238,201,142">
+        <description xmi:type="style:DotDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='newLayer']/@nodeMappings[name='streamNode']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='newLayer']/@nodeMappings[name='streamNode']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_xoiXAK2FEe6Lh66Rt0fmAw"/>

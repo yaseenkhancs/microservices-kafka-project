@@ -17,11 +17,24 @@ public class [%=d.name.ftuc()%]sController {
 	[%}%]
 	
 	[%for (method in d.httpMethods){%]
-	[%for (tag in method.tags){%]
-	@[%=tag%]
+	[%if (method.transactional){%]
+	@Transactional
 	[%}%]
+	[%
+	var paramlist : String;
+	paramlist = "";
+	var varcount : Integer;
+	varcount = 0;
+	while (varcount < method.parameters.size()) {
+		if (varcount == (method.parameters.size() - 1)) {
+			paramlist = paramlist + method.parameters[varcount] + " var" + varcount;
+		} else {
+			paramlist = paramlist + method.parameters[varcount] + " var" + varcount + ", ";
+		}
+		varcount++;
+	}%]
 	@[%=method.httpType%]("[%=method.path%]")
-	public [%=method.returnType%] [%=method.name%]([%=method.parameters%]){
+	public [%=method.returnType%] [%=method.name%]([%=paramlist%]){
 	}
 	
 	[%}%]	

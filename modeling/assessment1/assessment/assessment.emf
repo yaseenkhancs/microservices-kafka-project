@@ -51,8 +51,8 @@ class HttpMethod {
 	attr String httpType;
 	attr String returnType;
 	attr String path;
-	attr String parameters;
-	attr String[] tags;
+	attr String[] parameters;
+	attr boolean transactional;
 }
 
 

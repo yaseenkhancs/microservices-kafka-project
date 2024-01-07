@@ -1,6 +1,6 @@
-package video-microservice.controllers;
+package lol.controllers;
 
-import video-microservice.repositories.VideosRepository;
+import lol.repositories.VideosRepository;
 import jakarta.inject.Inject;
 import io.micronaut.http.annotation.Get
 
@@ -11,8 +11,8 @@ public class VideosController {
 	VideosRepository videosRepo;	
 	
 	@Transactional
-	@Get("/hellothere")
-	public String getdat(Video var1){
+	@Get("/")
+	public Integer GetAllVideos(Video var0, Long var1){
 	}
 	
 	
