@@ -3,7 +3,14 @@
   <events xmi:id="_Fvj3MK2oEe6Gx-RjMNFohg" eventName="mate" key="Video" value="Hashtag" relatedStreams="_a3iEkK2qEe6Gx-RjMNFohg"/>
   <events xmi:id="_F_H9MK2oEe6Gx-RjMNFohg" eventName="haha" key="Long" value="Integer" relatedStreams="_a3iEkK2qEe6Gx-RjMNFohg"/>
   <microservices xmi:id="_e4SZsK2pEe6Gx-RjMNFohg" msName="sd">
+    <domains xmi:id="_Kmo-EK2sEe6Gx-RjMNFohg">
+      <httpMethods xmi:id="_LaxJsK2sEe6Gx-RjMNFohg" httpType="Delete"/>
+    </domains>
     <stream xmi:id="_a3iEkK2qEe6Gx-RjMNFohg" streamName="MyStream" associatedEvents="_F_H9MK2oEe6Gx-RjMNFohg _Fvj3MK2oEe6Gx-RjMNFohg"/>
   </microservices>
-  <microservices xmi:id="_fQsSoK2pEe6Gx-RjMNFohg" msName="sdasdsd"/>
+  <microservices xmi:id="_fQsSoK2pEe6Gx-RjMNFohg" msName="sdasdsd">
+    <domains xmi:id="_MP7QEK2sEe6Gx-RjMNFohg">
+      <httpMethods xmi:id="_Mk5agK2sEe6Gx-RjMNFohg"/>
+    </domains>
+  </microservices>
 </Assessment>
