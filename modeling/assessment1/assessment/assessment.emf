@@ -48,11 +48,23 @@ class Domain {
 
 class HttpMethod {
 	attr String name;
-	attr String httpType;
+	attr httpTypeEnum httpType;
 	attr String returnType;
 	attr String path;
 	attr String[] parameters;
 	attr boolean transactional;
+}
+
+enum httpTypeEnum {
+	Get;
+	Put;
+	Delete;
+	Head;
+	Options;
+	Trace;
+	Post;
+	Patch;
+	Connect;
 }
 
 

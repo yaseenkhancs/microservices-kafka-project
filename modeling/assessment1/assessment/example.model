@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_xB5P8K2UEe6Gx-RjMNFohg">
-  <microservices xmi:id="_xxKwwK2UEe6Gx-RjMNFohg" msName="lol">
-    <domains xmi:id="_yqKOQK2UEe6Gx-RjMNFohg" name="Video">
-      <httpMethods xmi:id="_0DRWQK2UEe6Gx-RjMNFohg" name="GetAllVideos" httpType="Get" returnType="Integer" path="/" transactional="true">
-        <parameters>Video</parameters>
-        <parameters>Long</parameters>
-      </httpMethods>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_FOJpsK2cEe6Gx-RjMNFohg" name="deeeee">
+  <events xmi:id="_J6DYIK2cEe6Gx-RjMNFohg" eventName="ed" key="Video" value="Image"/>
+  <microservices xmi:id="_sPAPEK2cEe6Gx-RjMNFohg">
+    <domains xmi:id="_5IBI4K2cEe6Gx-RjMNFohg">
+      <httpMethods xmi:id="_5YMS4K2cEe6Gx-RjMNFohg"/>
     </domains>
   </microservices>
 </Assessment>

@@ -56,11 +56,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HttpMethod">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpType" eType="#//httpTypeEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="returnType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameters" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transactional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="httpTypeEnum">
+    <eLiterals name="Get"/>
+    <eLiterals name="Put" value="1"/>
+    <eLiterals name="Delete" value="2"/>
+    <eLiterals name="Head" value="3"/>
+    <eLiterals name="Options" value="4"/>
+    <eLiterals name="Trace" value="5"/>
+    <eLiterals name="Post" value="6"/>
+    <eLiterals name="Patch" value="7"/>
+    <eLiterals name="Connect" value="8"/>
   </eClassifiers>
 </ecore:EPackage>
