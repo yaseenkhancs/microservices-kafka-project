@@ -76,7 +76,8 @@ public class UsersControllerTest {
 		assertEquals(HttpStatus.OK, response2.getStatus(), "Update should be successful");
 		
 		HttpResponse<Void> response3 = client.deleteUser(1);
-		try {
+		
+		try { //to check http response outputs.
 			FileWriter myWriter = new FileWriter("filename.txt");
 			myWriter.write(response3.getStatus().toString());
 		    myWriter.close();
@@ -84,6 +85,7 @@ public class UsersControllerTest {
 			System.out.println("An error occurred.");
 		    e.printStackTrace();
 		}
+		
 		assertEquals(response3.getStatus(), HttpStatus.OK, "Delete should be successful");
 		
 		
