@@ -23,61 +23,41 @@ import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 
 @MicronautTest
-public class VideosControllerTest {
+public class UsersControllerTest {
 	
 	@Inject
-	VideosClient client;
+	UsersClient client;
 	
 	@Inject
-	VideosRepository repo;
+	UsersRepository repo;
 	
 	@Inject
-	UsersRepository usersrepo;
+	VideosRepository videosrepo;
 	
 	@Inject
 	HashtagsRepository htrepo;
 	
+	
 	@BeforeEach
 	void clean() {
 		repo.deleteAll();
-		usersrepo.deleteAll();
+		videosrepo.deleteAll();
+		htrepo.deleteAll();
 	}
 	
 	@Test
-	public void noVideos() { 
-		Iterable<Video> iterVideo = client.list();
-		assertFalse(iterVideo.iterator().hasNext(), "Service should not list any books initially");
+	public void noUsers() { 
+		Iterable<User> iterUser = client.list();
+		assertFalse(iterUser.iterator().hasNext(), "Service should not list any books initially");
 	}
 	
 	@Test
-	public void getVideo() {
+	public void getUser() {
+		UserDTO newuser = new UserDTO();
+		newuser.setUsername("jack");
 		
-		
-//		
-//		User newuser = new User();
-//		newuser.setId((long)1);
-//		newuser.setUsername("jack");
-//		usersrepo.save(newuser);
-		
-//		Hashtag newhashtag = new Hashtag();
-//		newhashtag.setId((long)2);
-//		newhashtag.setName("sad");
-//		htrepo.save(newhashtag);
-//		
-//		HashSet<Hashtag> x = new HashSet<Hashtag>();
-//		x.add(newhashtag);
-//		
-//		VideoDTO dto = new VideoDTO();
-//		
-//		dto.setTitle("Sample Text");
-//		dto.setAuthor(newuser);
-//		dto.setTags(x);
-//		
-//		HttpResponse<Void> response = client.add(dto);
-//		assertEquals(HttpStatus.CREATED, response.getStatus(), "Update should be successful");
-		
-//		assertTrue(client.list().iterator().next().getAuthor()
-//				.getId().equals((long)(2)), "Author ID should be 2");
+		HttpResponse<Void> response = client.add(newuser);
+		assertEquals(HttpStatus.CREATED, response.getStatus(), "Update should be successful");
 		
 	}
 
