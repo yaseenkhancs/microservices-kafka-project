@@ -57,6 +57,8 @@ public class UsersControllerTest {
 	
 	@Test
 	public void UserTests() {
+		
+		
 		UserDTO newuser = new UserDTO();
 		newuser.setUsername("jack");
 		
@@ -72,38 +74,18 @@ public class UsersControllerTest {
 		another.setUsername("greg");
 		HttpResponse<Void> response2 = client.updateUser(1, another);
 		assertEquals(HttpStatus.OK, response2.getStatus(), "Update should be successful");
-	}
-	
-	@Test
-	public void deleteUser() {
 		
-		UserDTO another = new UserDTO();
-		another.setUsername("jack");		
-		client.add(another);
-		
-		HttpResponse<Void> response2 = client.deleteUser(1);
-		
-		try {
-		      File myObj = new File("filenameLOL.txt");
-		      if (myObj.createNewFile()) {
-		        System.out.println("File created: " + myObj.getName());
-		      } else {
-		        System.out.println("File already exists.");
-		      }
-		    } catch (IOException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
-		    }
+		HttpResponse<Void> response3 = client.deleteUser(1);
 		try {
 			FileWriter myWriter = new FileWriter("filename.txt");
-			myWriter.write("Files in Java might be tricky, but it is fun enough!");
+			myWriter.write(response3.getStatus().toString());
 		    myWriter.close();
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 		    e.printStackTrace();
 		}
+		assertEquals(response3.getStatus(), HttpStatus.OK, "Delete should be successful");
 		
-		assertTrue(response2.getStatus().toString().length()>1, "Update should be successful");
 		
 	}
 
