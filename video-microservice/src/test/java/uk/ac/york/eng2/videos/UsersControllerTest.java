@@ -68,12 +68,11 @@ public class UsersControllerTest {
 		assertEquals(client.list().iterator().next().getUsername(), "jack", "Author username should be jack");
 		
 		UserDTO another = new UserDTO();
-		another.setUsername("jack");		
-		client.add(another);
-		
 		another.setUsername("greg");
 		HttpResponse<Void> response2 = client.updateUser(1, another);
 		assertEquals(HttpStatus.OK, response2.getStatus(), "Update should be successful");
+		
+		assertEquals(client.list().iterator().next().getUsername(), "greg", "Author username should be jack");
 		
 		HttpResponse<Void> response3 = client.deleteUser(1);
 		
