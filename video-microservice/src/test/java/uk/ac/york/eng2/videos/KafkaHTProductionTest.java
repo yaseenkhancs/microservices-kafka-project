@@ -5,9 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;
 
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
@@ -58,7 +60,7 @@ public class KafkaHTProductionTest {
 		newhashtag.setName("sad");
 		
 		HttpResponse<Void> response = hclient.add(newhashtag);
-		assertTrue(addedHashtags.containsKey((long) 1));
+		Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> addedHashtags.containsKey((long) 1));
 		assertEquals(HttpStatus.CREATED, response.getStatus(), "Creation should be successful");		
 		assertEquals(hclient.list().iterator().next().getId(), (long)1, "Hashtag ID should be 1");		
 		assertEquals(hclient.list().iterator().next().getName(), "sad", "Hashtag name should be sad");
