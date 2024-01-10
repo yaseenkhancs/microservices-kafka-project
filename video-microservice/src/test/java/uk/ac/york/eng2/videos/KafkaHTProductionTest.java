@@ -29,11 +29,14 @@ import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 
 @MicronautTest(environments = "no_streams")
-@Property(name = "spec.name", value = "KafkaProductionTest")
-public class KafkaProductionTest {
+@Property(name = "spec.name", value = "KafkaHTProductionTest")
+public class KafkaHTProductionTest {
 	
 	@Inject
 	UsersClient client;
+	
+	@Inject
+	HashtagsClient hclient;
 	
 	@Inject
 	UsersRepository repo;
@@ -44,27 +47,30 @@ public class KafkaProductionTest {
 	@Inject
 	HashtagsRepository htrepo;
 	
-	private static final Map<Long, User> addedUsers = new HashMap<>();
+	private static final Map<Long, Hashtag> addedHashtags = new HashMap<>();
+	
 	
 	@Test
-	public void UserTests() {
+	public void HashtagTests() {
 		
-		UserDTO newuser = new UserDTO();
-		newuser.setUsername("jack");
 		
-		HttpResponse<Void> response = client.add(newuser);
+		HashtagDTO newhashtag = new HashtagDTO();
+		newhashtag.setName("sad");
 		
+		HttpResponse<Void> response = hclient.add(newhashtag);
+		assertTrue(addedHashtags.containsKey((long) 1));
 		assertEquals(HttpStatus.CREATED, response.getStatus(), "Creation should be successful");		
-		assertEquals(client.list().iterator().next().getId(), (long)1, "Author ID should be 1");		
-		assertEquals(client.list().iterator().next().getUsername(), "jack", "Author username should be jack");
+		assertEquals(hclient.list().iterator().next().getId(), (long)1, "Hashtag ID should be 1");		
+		assertEquals(hclient.list().iterator().next().getName(), "sad", "Hashtag name should be sad");
+		
 	}
 	
-	@Requires(property="spec.name", value="KafkaProductionTest")
-	@KafkaListener(groupId = "kafka-production-test")
-	static class TestConsumer {
-		@Topic (VideosProducer.TOPIC_USRADDED)
-		void addUser(@KafkaKey Long id, User u) {
-			addedUsers.put(id, u);
+	@Requires(property="spec.name", value="KafkaHTProductionTest")
+	@KafkaListener(groupId = "kafka-production-test-ht")
+	static class TestConsumerAgain {
+		@Topic (VideosProducer.TOPIC_HASHTAGADDED)
+		void addHashtag(@KafkaKey Long id, Hashtag h) {
+			addedHashtags.put(id, h);
 		}
 	}
 
