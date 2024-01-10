@@ -14,7 +14,7 @@ import uk.ac.york.eng2.subscription.domain.User;
 import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 
-@Client("${videos.url:`http://localhost:8082/videos`}")
+@Client("/videos")
 public interface VideosClient {
 	
 	@Get("/")

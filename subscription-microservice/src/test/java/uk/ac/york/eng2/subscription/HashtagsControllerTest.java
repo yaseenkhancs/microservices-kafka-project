@@ -16,6 +16,7 @@ import jakarta.inject.Inject;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 import uk.ac.york.eng2.subscription.domain.Video;
+import uk.ac.york.eng2.subscription.dto.HashtagDTO;
 import uk.ac.york.eng2.subscription.dto.UserDTO;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.repositories.HashtagsRepository;
@@ -23,30 +24,50 @@ import uk.ac.york.eng2.subscription.repositories.UsersRepository;
 import uk.ac.york.eng2.subscription.repositories.VideosRepository;
 
 @MicronautTest
-public class VideosControllerTest {
+public class HashtagsControllerTest {
 	
 	@Inject
-	VideosClient client;
+	HashtagsClient client;
 	
 	@Inject
-	VideosRepository repo;
+	HashtagsRepository repo;
+	
+	@Inject
+	VideosRepository videosrepo;
 	
 	@Inject
 	UsersRepository usersrepo;
 	
-	@Inject
-	HashtagsRepository htrepo;
 	
 	@BeforeEach
 	void clean() {
 		repo.deleteAll();
+		videosrepo.deleteAll();
 		usersrepo.deleteAll();
 	}
 	
 	@Test
-	public void videosTest() { 
-		Iterable<Video> iterVideo = client.list();
-		assertFalse(iterVideo.iterator().hasNext(), "Service should not list any books initially");
+	public void noHashtags() { 
+		Iterable<Hashtag> iterUser = client.list();
+		assertFalse(iterUser.iterator().hasNext(), "Service should not list any books initially");
+	}
+	
+	@Test
+	public void HashtagTests() {
+		
+		
+		Hashtag newhashtag = new Hashtag();
+		newhashtag.setId((long)1);
+		newhashtag.setName("sad");
+		
+		HttpResponse<Void> response = client.add(newhashtag);
+		assertEquals(HttpStatus.CREATED, response.getStatus(), "Creation should be successful");		
+		assertEquals(client.list().iterator().next().getId(), (long)1, "Hashtag ID should be 1");		
+		assertEquals(client.list().iterator().next().getName(), "sad", "Hashtag name should be sad");
+		
+		
+		
+		
 	}
 
 }
