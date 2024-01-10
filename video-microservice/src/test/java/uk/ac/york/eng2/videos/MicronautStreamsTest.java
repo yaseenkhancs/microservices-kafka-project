@@ -50,16 +50,7 @@ public class MicronautStreamsTest {
 		@Topic(VideosProducer.TOPIC_USRADDED)
 		public void userAdded(@KafkaKey long id, User u) {
 			events.put(id, u);
-			try { //to check http response outputs.
-				FileWriter myWriter = new FileWriter("mst.txt");
-				myWriter.write("YO");
-				myWriter.close();
-			} catch (IOException e) {
-				System.out.println("An error occurred.");
-				e.printStackTrace();
-			}
 		}
-		
 	}
 	
 	@BeforeEach
