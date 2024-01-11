@@ -5,7 +5,7 @@ micronaut:
     port: 8082
 datasources:
   default:
-    url: jdbc:mariadb://localhost:3308/subscriptions
+    url: jdbc:mariadb://${DB_HOST:db3}/${DB_NAME:subscriptions}
     username: threedo
     password: threedosecret
     driver-class-name: org.mariadb.jdbc.Driver
