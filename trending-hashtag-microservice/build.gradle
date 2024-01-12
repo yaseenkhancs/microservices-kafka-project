@@ -23,6 +23,9 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+    annotationProcessor("io.micronaut:micronaut-graal")
+    implementation("com.google.guava:guava:32.1.2-jre")
+    compileOnly("org.graalvm.nativeimage:svm")
 }
 
 
@@ -34,7 +37,15 @@ java {
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
-graalvmNative.toolchainDetection = false
+graalvmNative {
+  toolchainDetection = false
+  binaries.configureEach {
+    buildArgs.add('-H:IncludeResources="librocksdbjni-linux64.*"')
+    buildArgs.add('-H:IncludeResources="kafka/kafka-streams-version.properties"')
+    buildArgs.add('-H:JNIConfigurationFiles=resources/kafka-streams/jni-config.json')
+  }
+}
+
 micronaut {
     runtime("netty")
     testRuntime("junit5")

@@ -227,10 +227,18 @@ public class TrendingStreams {
 			.selectKey((k, v) -> v.getId())
 			.peek((k, v) -> System.out.println("NEW KEY: " + k + " NEW VALUE: " + v))
 			.groupByKey(Grouped.with(Serdes.Long(), serdeRegistry.getSerde(Hashtag.class)))
-//			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
+			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
 			.count(Materialized.as("liked-by-hour"))
 			.toStream()
-			.peek((k, v) -> System.out.println("WINDOWED KEY: " + k.toString() + " NEW VALUE: " + v));		
+			.peek((k, v) -> System.out.println("WINDOWED KEY: " + k.toString() + " NEW VALUE: " + v))
+			.transform(mySupplier)	
+			.peek((k, v) -> System.out.println("TRANSFORMED : " + k + ", VALUE: " + v.getFirst() + ", " + v.getSecond()))
+			.groupByKey(Grouped.with(Serdes.Long(), serdeRegistry.getSerde(LongPair.class)))
+			.reduce(thisreducer, Materialized.as("aggregated"))
+			.toStream()
+			.peek((k, v) -> System.out.println("REDUCED : " + k + ", VALUE: " + v.getFirst() + ", " + v.getSecond() + "currtime: " + Instant.now().toEpochMilli()))
+			.transform(anotherSupplier)
+			.peek((key, value) -> System.out.println("SECOND STREAM key: " + key + " value: " + value));
 		stream.to(TOPIC_LIKED_BY_HOUR, Produced.with(Serdes.Long(), Serdes.Long()));
 		
 		return videosStream;
