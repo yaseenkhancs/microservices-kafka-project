@@ -68,6 +68,25 @@ services:
       DB_PASSWORD: threedosecret
       DB_NAME: subscriptions
       KAFKA_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
+  
+  adminer:
+    image: adminer:4-standalone
+    ports:
+      - 9001:8080
+  
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 9000:8080
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-0:9092
+      KAFKA_CLUSTERS_0_METRICS_PORT: 9997
+      DYNAMIC_CONFIG_ENABLED: 'true'
 
   kafka-0:
     image: docker.io/bitnami/kafka:3.5
