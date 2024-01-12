@@ -223,14 +223,15 @@ public class TrendingStreams {
 //		stream.to(TOPIC_LIKED_BY_HOUR, Produced.with(Serdes.Long(), serdeRegistry.getSerde(Hashtag.class)));
 				
 		
-		KStream<Windowed<Long>, Long> stream = videosStream
+		KStream<Long, Long> stream = videosStream
 			.selectKey((k, v) -> v.getId())
 			.peek((k, v) -> System.out.println("NEW KEY: " + k + " NEW VALUE: " + v))
 			.groupByKey(Grouped.with(Serdes.Long(), serdeRegistry.getSerde(Hashtag.class)))
-			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
+//			.windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod))
 			.count(Materialized.as("liked-by-hour"))
 			.toStream()
-			.peek((k, v) -> System.out.println("WINDOWED KEY: " + k.toString() + " NEW VALUE: " + v));
+			.peek((k, v) -> System.out.println("WINDOWED KEY: " + k.toString() + " NEW VALUE: " + v));		
+		stream.to(TOPIC_LIKED_BY_HOUR, Produced.with(Serdes.Long(), Serdes.Long()));
 		
 		return videosStream;
 	}
