@@ -1,0 +1,1 @@
+docker compose -p assessment-prod -f compose-prod.yml up kafka-0 kafka-1 kafka-2 db db2 db3

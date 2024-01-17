@@ -13,3 +13,4 @@ docker compose -p assessment-prod -f compose-prod.yml exec -e JMX_PORT= kafka-2 
 docker compose -p assessment-prod -f compose-prod.yml exec -e JMX_PORT= kafka-2 kafka-topics.sh --bootstrap-server kafka-0:9092 --create --topic videos-metrics-aggregated-repartition --replication-factor 3 --partitions 6
 docker compose -p assessment-prod -f compose-prod.yml exec -e JMX_PORT= kafka-2 kafka-topics.sh --bootstrap-server kafka-0:9092 --create --topic subs-stream-liked-by-hour-repartition --replication-factor 3 --partitions 6
 docker compose -p assessment-prod -f compose-prod.yml exec -e JMX_PORT= kafka-2 kafka-topics.sh --bootstrap-server kafka-0:9092 --create --topic videos-metrics-huh-repartition --replication-factor 3 --partitions 6
+docker compose -p assessment-prod -f compose-prod.yml exec -e JMX_PORT= kafka-2 kafka-topics.sh --bootstrap-server kafka-0:9092 --create --topic subs-stream-aggregated-repartition --replication-factor 3 --partitions 6
