@@ -1,4 +1,4 @@
-package subscription-microservice;
+package myassessment.subscriptionmicroservice;
 
 import io.micronaut.runtime.Micronaut;
 

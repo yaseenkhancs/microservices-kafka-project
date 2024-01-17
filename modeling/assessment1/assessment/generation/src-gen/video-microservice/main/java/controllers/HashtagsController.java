@@ -1,4 +1,4 @@
-package video-microservice.controllers;
+package myassessment.videomicroservice.controllers;
 
 import video-microservice.repositories.VideosRepository;
 import video-microservice.repositories.HashtagsRepository;

@@ -1,4 +1,4 @@
-package video-microservice;
+package myassessment.videomicroservice;
 
 import io.micronaut.runtime.Micronaut;
 

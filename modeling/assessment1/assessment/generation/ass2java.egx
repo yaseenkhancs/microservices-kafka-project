@@ -10,6 +10,17 @@ rule Model2App
 	target : "src-gen/" + m.msName.toLowerCase() + "/main/java/Application.java"
 }
 
+rule ComposeGeneration
+	transform a : Assessment {
+	
+	template: "composeFileGen.egl"
+	
+	parameters: Map{}
+	
+	target: "src-gen/compose.yml"
+	
+	}
+
 rule DomainFile
 	transform d : Domain {
 	

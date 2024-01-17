@@ -1,4 +1,4 @@
-package trending-hashtag-microservice;
+package myassessment.trendinghashtagmicroservice;
 
 import io.micronaut.runtime.Micronaut;
 

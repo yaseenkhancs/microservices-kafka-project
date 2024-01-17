@@ -1,4 +1,4 @@
-package video-microservice.repositories;
+package myassessment.videomicroservice.repositories;
 
 import java.util.Optional;
 

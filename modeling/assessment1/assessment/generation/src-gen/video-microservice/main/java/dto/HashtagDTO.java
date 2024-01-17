@@ -1,4 +1,4 @@
-package video-microservice.dto;
+package myassessment.videomicroservice.dto;
 
 public class HashtagDTO {
 

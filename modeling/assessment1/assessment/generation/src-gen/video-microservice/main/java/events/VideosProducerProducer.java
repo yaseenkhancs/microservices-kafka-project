@@ -1,4 +1,4 @@
-package video-microservice.events;
+package myassessment.videomicroservice.events;
 
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
