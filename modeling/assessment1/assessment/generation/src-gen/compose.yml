@@ -1,5 +1,4 @@
 services:
-  # Our database management system
   
   db1:
     image: mariadb:11

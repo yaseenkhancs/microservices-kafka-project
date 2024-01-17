@@ -21,6 +21,17 @@ rule ComposeGeneration
 	
 	}
 
+rule BuildGradleGen
+	transform m : Microservice {
+	
+	template: "buildGradleGen.egl"
+	
+	parameters: Map {}
+	
+	target: "src-gen/" + m.msName.toLowerCase() + "/build.gradle"
+	
+	}
+
 rule DomainFile
 	transform d : Domain {
 	
