@@ -7,7 +7,7 @@ rule Model2App
 		"m" = m
 	}
 
-	target : "../../../../" + m.msName.toLowerCase() + "/src-gen/main/java/Application.java"
+	target : "src-gen/" + m.msName.toLowerCase() + "/main/java/Application.java"
 }
 
 rule ComposeGeneration

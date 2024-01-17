@@ -1,10 +1,12 @@
+//BUILD GRADLE FOR MICRONAUT / JAVA 11. FOR ANY OTHER SETUP, OVERWRITE NECESSARY CONFIGS. 
+
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.7.10"
 }
 
 version = "0.1"
-group = "uk.ac.york.eng2.videos"
+group = "[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%]"
 
 repositories {
     mavenCentral()
@@ -28,7 +30,7 @@ dependencies {
 
 
 application {
-    mainClass.set("uk.ac.york.eng2.videos.Application")
+    mainClass.set("[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
@@ -41,13 +43,8 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("uk.ac.york.eng2.videos.*")
+        annotations("[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].*")
     }
-}
-
-sourceSets {
-        main.java.srcDirs = ['src-gen/main/java', 'src/main/java']
-        main.resources.srcDirs = ['src/main/resources']
 }
 
 

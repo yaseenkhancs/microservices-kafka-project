@@ -1,0 +1,17 @@
+package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].events;
+
+import io.micronaut.configuration.kafka.annotation.KafkaListener;
+import io.micronaut.configuration.kafka.annotation.KafkaKey;
+import io.micronaut.configuration.kafka.annotation.Topic;
+
+@KafkaListener
+public class [%=c.conName.ftuc()%]Consumer {
+	
+	[%for (x in c.consumedEvents) {%]
+	@Topic("[%=x.eventName%]")
+	public void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%] k, [%=x.value%] v) {
+	
+	}
+	[%}%]
+
+}
