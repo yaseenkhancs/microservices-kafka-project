@@ -7,7 +7,7 @@ rule Model2App
 		"m" = m
 	}
 
-	target : "src-gen/" + m.msName.toLowerCase() + "/Application.java"
+	target : "src-gen/" + m.msName.toLowerCase() + "/main/java/Application.java"
 }
 
 rule DomainFile
@@ -19,7 +19,7 @@ rule DomainFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/domain/" + d.name.ftuc() + ".java" 
+	target : "src-gen/" + d.parentMS.msName + "/main/java/domain/" + d.name.ftuc() + ".java" 
 }
 
 rule DTOFile
@@ -31,7 +31,7 @@ rule DTOFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/dto/" + d.name.ftuc() + "DTO.java" 
+	target : "src-gen/" + d.parentMS.msName + "/main/java/dto/" + d.name.ftuc() + "DTO.java" 
 }
 
 rule RepoFile
@@ -43,7 +43,7 @@ rule RepoFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/repositories/" + d.name.ftuc() + "sRepository.java"
+	target : "src-gen/" + d.parentMS.msName + "/main/java/repositories/" + d.name.ftuc() + "sRepository.java"
 }
 
 rule ControllerFile
@@ -55,7 +55,7 @@ rule ControllerFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/controllers/" + d.name.ftuc() + "sController.java"
+	target : "src-gen/" + d.parentMS.msName + "/main/java/controllers/" + d.name.ftuc() + "sController.java"
 }
 
 rule StreamsFile
@@ -67,7 +67,7 @@ rule StreamsFile
 		"m" = s.eContainer()
 	}
 	
-	target: "src-gen/" + s.parentMS.msName.toLowerCase() + "/events/" + s.streamName.ftuc() + "Stream.java" 
+	target: "src-gen/" + s.parentMS.msName.toLowerCase() + "/main/java/events/" + s.streamName.ftuc() + "Stream.java" 
 	
 }
 
@@ -80,7 +80,7 @@ rule ProducerFile
 		"m" = p.eContainer()
 	}
 	
-	target: "src-gen/" + p.eContainer().msName.toLowerCase() + "/events/" + p.prodName.ftuc() + "Producer.java" 
+	target: "src-gen/" + p.eContainer().msName.toLowerCase() + "/main/java/events/" + p.prodName.ftuc() + "Producer.java" 
 }
 
 rule ConsumerFile
@@ -92,5 +92,17 @@ rule ConsumerFile
 		"m" = c.eContainer()
 	}
 	
-	target: "src-gen/" + c.eContainer().msName.toLowerCase() + "/events/" + c.conName.ftuc() + "Consumer.java" 
+	target: "src-gen/" + c.eContainer().msName.toLowerCase() + "/main/java/events/" + c.conName.ftuc() + "Consumer.java" 
 }
+
+rule YMLFile
+	transform m : Microservice {
+	
+	template: "ymlFileGen.egl"
+	
+	parameters: Map {}
+	
+	target: "src-gen/" + m.msName.toLowerCase() + "/main/resources/application.yml"
+	
+	
+	}

@@ -1,4 +1,4 @@
-package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%]
+package subscription-microservice;
 
 import io.micronaut.runtime.Micronaut;
 

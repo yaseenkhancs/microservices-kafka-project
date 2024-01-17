@@ -1,11 +1,11 @@
-package [%=m.msName.toLowerCase()%].controllers;
+package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].controllers;
 
 [%for (dom in d.parentMS.domains){%]
 import [%=m.msName.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
 [%}%]
 import jakarta.inject.Inject;
 [%for (method in d.httpMethods){%]
-import io.micronaut.http.annotation.[%=method.httpType.ftuc()%]
+import io.micronaut.http.annotation.[%=method.httpType%]
 [%}%]
 
 @Controller("/[%=d.name.toLowerCase()%]s")

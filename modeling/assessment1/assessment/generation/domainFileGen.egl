@@ -1,4 +1,4 @@
-package [%=m.msName.toLowerCase()%].domain;
+package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].domain;
 
 public class [%=d.name.ftuc()%] {
 	public String toString() {

@@ -1,4 +1,4 @@
-package [%=m.msName.toLowerCase()%].events;
+package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].events;
 
 import io.micronaut.context.annotation.Factory;
 
