@@ -1,0 +1,29 @@
+//KafCon.all.select(s | s.conName.equals("LikedConsumer")).size().println();
+//KafCon.all.select(s | s.conName.equals("LikedConsumer")).size().println();
+
+//var s = KafCon.all.first();
+//s.conName = "WHADDUP";
+
+//var s = KafCon.all.first();
+//s.conName = "VidCon";
+
+var s = HttpMethod.all.first();
+//s.path.println();
+//s.path.matches('\\s').println();
+//(" " == " ").println();
+//
+//var i : Integer = 0;
+//var j : Boolean = true;
+
+//while (i < s.path.length()) {
+//	s.path.characterAt(i).println();
+//	if (s.path.characterAt(i).matches('\\s')) {
+//		"YOOO".println();
+//		j = false;
+//	}
+//	i++;
+//}
+////x.println();
+////return x;
+
+s.tags.println();
