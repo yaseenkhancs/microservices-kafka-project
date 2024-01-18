@@ -22,6 +22,7 @@ import uk.ac.york.eng2.subscription.cli.videos.AddVideoHashtag;
 import uk.ac.york.eng2.subscription.cli.videos.AddVideoWatcherCommand;
 import uk.ac.york.eng2.subscription.cli.videos.DislikeVideoCommand;
 import uk.ac.york.eng2.subscription.cli.videos.GetVideosCommand;
+import uk.ac.york.eng2.subscription.cli.videos.HeartBeatCommand;
 import uk.ac.york.eng2.subscription.cli.videos.LikeVideoCommand;
 
 @Command(name = "subscription-cli", description = "...",
@@ -31,7 +32,8 @@ import uk.ac.york.eng2.subscription.cli.videos.LikeVideoCommand;
         		AddVideoWatcherCommand.class, LikeVideoCommand.class, 
         		DislikeVideoCommand.class, AddSubscriptionCommand.class,
         		ViewHashtagVideos.class, ViewSubscriptions.class, ViewWatchedVideos.class,
-        		ViewUserSubscriptionVideos.class, DeleteSubscriptionCommand.class})
+        		ViewUserSubscriptionVideos.class, DeleteSubscriptionCommand.class,
+        		HeartBeatCommand.class})
 public class SubscriptionCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")
