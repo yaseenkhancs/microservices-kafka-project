@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_2C81sLX9Ee6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
+  <microservices xmi:id="_5O4mMLX9Ee6wU4C-Rm5a6w" msName="video-microservice" packagename="videos">
+    <domains xmi:id="_8b_bYLX9Ee6wU4C-Rm5a6w" name="Video">
+      <httpMethods xmi:id="_9P1TILX9Ee6wU4C-Rm5a6w" name="get-videos" returnType="HttpResponse&lt;Void>" path="/"/>
+    </domains>
+  </microservices>
+</Assessment>

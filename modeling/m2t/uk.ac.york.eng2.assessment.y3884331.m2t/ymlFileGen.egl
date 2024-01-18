@@ -13,7 +13,7 @@ jpa:
   default:
     entity-scan:
       packages:
-        - [%=m.eContainer().name%].[%=m.msName.replaceAll("[^a-zA-Z0-9]", "")%].domain
+        - [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain
       properties:
         hibernate:
           hbm2ddl:

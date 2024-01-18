@@ -38,6 +38,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Microservice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="packagename" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="domains" upperBound="-1"
         eType="#//Domain" containment="true" eOpposite="#//Domain/parentMS"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stream" upperBound="-1"

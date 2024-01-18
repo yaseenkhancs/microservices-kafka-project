@@ -6,7 +6,7 @@ plugins {
 }
 
 version = "0.1"
-group = "[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%]"
+group = "[%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%]"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ dependencies {
 
 
 application {
-    mainClass.set("[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].Application")
+    mainClass.set("[%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
@@ -43,7 +43,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("[%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].*")
+        annotations("[%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].*")
     }
 }
 

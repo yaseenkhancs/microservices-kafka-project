@@ -1,7 +1,8 @@
-package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].domain;
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain;
 
-public class [%=d.name.ftuc()%] {
-	public String toString() {
-	
-	}
+import javax.persistence.Entity;
+import io.micronaut.serde.annotation.Serdeable;
+
+public class Base[%=d.name.ftuc()%] {
+
 }

@@ -1,18 +1,18 @@
-package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].controllers;
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].controllers;
 
 [%for (dom in d.parentMS.domains){%]
-import [%=m.msName.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
 [%}%]
 import jakarta.inject.Inject;
 [%for (method in d.httpMethods){%]
-import io.micronaut.http.annotation.[%=method.httpType%]
+import io.micronaut.http.annotation.[%=method.httpType%];
 [%}%]
+import io.micronaut.http.HttpResponse;
 
-@Controller("/[%=d.name.toLowerCase()%]s")
-public class [%=d.name.ftuc()%]sController {
+public class Base[%=d.name.ftuc()%]sController {
 	
 	[%for (dom in d.parentMS.domains){%]
-	@Inject	
+	
 	[%=dom.name.ftuc()%]sRepository [%=dom.name.toLowerCase()%]sRepo;	
 	[%}%]
 	
@@ -33,8 +33,9 @@ public class [%=d.name.ftuc()%]sController {
 		}
 		varcount++;
 	}%]
-	@[%=method.httpType%]("[%=method.path%]")
-	public [%=method.returnType%] [%=method.name%]([%=paramlist%]){
+
+	public [%=method.returnType%] [%=method.name.replaceAll("[^a-zA-Z0-9]", "")%]([%=paramlist%]){
+	    return null;
 	}
 	
 	[%}%]	

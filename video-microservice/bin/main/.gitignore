@@ -1,9 +1,2 @@
-/Application.class
-/application.yml
-/controllers/
-/domain/
-/dto/
-/events/
-/logback.xml
-/repositories/
+/BaseApplication.class
 /uk/

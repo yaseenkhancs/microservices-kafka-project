@@ -34,6 +34,7 @@ class Event {
 
 class Microservice {
 	attr String msName;
+	attr String packagename;
 	val Domain[*]#parentMS domains;
 	val KafStream[*]#parentMS stream;
 	val KafCon[*] consumers;

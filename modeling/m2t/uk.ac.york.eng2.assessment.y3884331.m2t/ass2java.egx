@@ -1,3 +1,9 @@
+pre {
+	var relativePath : String;
+	relativePath = "../../../";
+}
+
+
 rule Model2App 
 	transform m : Microservice {
 
@@ -7,8 +13,10 @@ rule Model2App
 		"m" = m
 	}
 
-	target : "src-gen/" + m.msName.toLowerCase() + "/main/java/Application.java"
-}
+	target : relativePath + m.msName.toLowerCase() + "/src-gen/main/java/" + m.eContainer().packageName.replace("\\.", "/") + "/" + m.packagename + "/BaseApplication.java"
+	
+	} 
+
 
 rule ComposeGeneration
 	transform a : Assessment {
@@ -17,7 +25,7 @@ rule ComposeGeneration
 	
 	parameters: Map{}
 	
-	target: "src-gen/compose.yml"
+	target: "other-generated-files/compose.yml"
 	
 	}
 
@@ -28,7 +36,7 @@ rule BuildGradleGen
 	
 	parameters: Map {}
 	
-	target: "src-gen/" + m.msName.toLowerCase() + "/build.gradle"
+	target: "other-generated-files/" + m.msName +"-build.gradle"
 	
 	}
 
@@ -41,7 +49,7 @@ rule DomainFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/main/java/domain/" + d.name.ftuc() + ".java" 
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/domain/Base" + d.name.ftuc() + ".java"
 }
 
 rule DTOFile
@@ -53,7 +61,8 @@ rule DTOFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/main/java/dto/" + d.name.ftuc() + "DTO.java" 
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/dto/Base" + d.name.ftuc() + "DTO.java" 
+	 
 }
 
 rule RepoFile
@@ -65,7 +74,8 @@ rule RepoFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/main/java/repositories/" + d.name.ftuc() + "sRepository.java"
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/repositories/Base" + d.name.ftuc() + "sRepository.java" 
+	
 }
 
 rule ControllerFile
@@ -77,7 +87,8 @@ rule ControllerFile
 		"m" = d.eContainer()
 	}
 	
-	target : "src-gen/" + d.parentMS.msName + "/main/java/controllers/" + d.name.ftuc() + "sController.java"
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/controllers/Base" + d.name.ftuc() + "sController.java" 
+//	"src-gen/" + d.parentMS.msName + "/main/java/controllers/" + d.name.ftuc() + "sController.java"
 }
 
 rule StreamsFile
@@ -89,7 +100,7 @@ rule StreamsFile
 		"m" = s.eContainer()
 	}
 	
-	target: "src-gen/" + s.parentMS.msName.toLowerCase() + "/main/java/events/" + s.streamName.ftuc() + "Stream.java" 
+	target: relativePath + s.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + s.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + s.parentMS.packagename + "/events/Base" + s.streamName.ftuc() + "Stream.java" 
 	
 }
 
@@ -102,7 +113,8 @@ rule ProducerFile
 		"m" = p.eContainer()
 	}
 	
-	target: "src-gen/" + p.eContainer().msName.toLowerCase() + "/main/java/events/" + p.prodName.ftuc() + "Producer.java" 
+	target: relativePath + p.eContainer().msName.toLowerCase() + "/src-gen/main/java/" + p.eContainer().eContainer().packageName.replace("\\.", "/") + "/" + p.eContainer().packagename + "/events/Base" + p.prodName.ftuc() + "Producer.java" 
+//	"src-gen/" + p.eContainer().msName.toLowerCase() + "/main/java/events/" + p.prodName.ftuc() + "Producer.java" 
 }
 
 rule ConsumerFile
@@ -124,7 +136,9 @@ rule YMLFile
 	
 	parameters: Map {}
 	
-	target: "src-gen/" + m.msName.toLowerCase() + "/main/resources/application.yml"
+	target: "other-generated-files/" + m.msName.toLowerCase() +"-application.yml" 
+//	"src-gen/" + m.msName.toLowerCase() + "/main/resources/application.yml"
 	
 	
 	}
+
