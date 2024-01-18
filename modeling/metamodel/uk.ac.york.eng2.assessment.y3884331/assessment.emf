@@ -11,6 +11,8 @@ class Assessment {
 class Topic {
 	attr String topicName;
 	ref Event[*]#relatedTopics relatedEvents;
+	ref KafProd[*] subscribers;
+	ref KafCon[*] producers;
 }
 
 class KafStream {
@@ -74,14 +76,3 @@ enum httpTypeEnum {
 	Patch;
 	Connect;
 }
-
-
-//class Type {
-//	
-//}
-//then in the modelling language you parse the types
-//my "class Event" does not model any of the actual events, so window etc
-//it instead just gives the end user the freedom to declare the types required
-//<event key="java.lang.String" value="my.Video"/>
-
-//nb we do not need to model the domain - or the db

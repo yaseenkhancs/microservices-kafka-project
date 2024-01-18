@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment"/>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_RVlykLYhEe6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
+  <events xmi:id="_UWibELYhEe6wU4C-Rm5a6w" eventName="postVideo" key="uk.ac.york.eng2.videos.helpers.HashtagUserPair" value="Video" relatedProducers="_zHME0LYhEe6wU4C-Rm5a6w" relatedStreams="_68lTwLYhEe6wU4C-Rm5a6w" relatedTopics="_SEmNoLYhEe6wU4C-Rm5a6w"/>
+  <microservices xmi:id="_h3xygLYhEe6wU4C-Rm5a6w" msName="video-microservice" packagename="videos">
+    <domains xmi:id="__GAnQLYhEe6wU4C-Rm5a6w" name="Video"/>
+    <stream xmi:id="_68lTwLYhEe6wU4C-Rm5a6w" streamName="Videos" associatedEvents="_UWibELYhEe6wU4C-Rm5a6w"/>
+    <producers xmi:id="_zHME0LYhEe6wU4C-Rm5a6w" prodName="Videos" producedEvents="_UWibELYhEe6wU4C-Rm5a6w"/>
+  </microservices>
+  <topics xmi:id="_SEmNoLYhEe6wU4C-Rm5a6w" topicName="video-posted" relatedEvents="_UWibELYhEe6wU4C-Rm5a6w"/>
+</Assessment>

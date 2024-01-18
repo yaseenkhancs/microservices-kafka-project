@@ -48,6 +48,41 @@ context Assessment {
 		message: "Each microservice for the model must have unique names"	
 	
 	}
+	
+	constraint UniqueTopicNames {
+		
+		check {
+			
+			var o : OrderedSet;
+			for (x : Topic in self.topics) {
+				o.add(x.topicName);
+			}
+			return (o.size()==self.microservices.size());
+		
+		}
+		
+		message: "Each topic for the model must have unique names"	
+	
+	}
+}
+
+context Topic {
+
+	constraint NamePresence {
+		
+		check: not (self.topicName==null)
+		
+		message: "Please give your topic a name"
+	
+	}
+	
+	constraint OneProducerOneSubscriber {
+		
+		check: self.subscribers.size()>=1 and self.consumers.size()>=1
+		
+		message: "A topic must have a related consumer and producer"
+		
+	}
 }
 
 context Event {
@@ -78,17 +113,9 @@ context Event {
 
 	constraint UsedAtLeastOnce {
 	
-		check : self.relatedProducers.size() + self.relatedConsumers.size() + self.relatedStreams.size() >= 1
+		check : self.relatedTopics.size() >= 1
 		
 		message: "Your event titled " + self.eventName + " must be used in at least one event stream."
-	
-	}
-
-	constraint HasProducerAndConsumer {
-	
-		check : self.relatedProducers.size() >= 1 and self.relatedConsumers.size() >= 1 
-		
-		message: "Your event titled " + self.eventName + " must have one producer and one consumer"
 	
 	}
 	
