@@ -23,9 +23,6 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
-    annotationProcessor("io.micronaut:micronaut-graal")
-    implementation("com.google.guava:guava:32.1.2-jre")
-    compileOnly("org.graalvm.nativeimage:svm")
 }
 
 
@@ -39,11 +36,6 @@ java {
 
 graalvmNative {
   toolchainDetection = false
-  binaries.configureEach {
-    buildArgs.add('-H:IncludeResources="librocksdbjni-linux64.*"')
-    buildArgs.add('-H:IncludeResources="kafka/kafka-streams-version.properties"')
-    buildArgs.add('-H:JNIConfigurationFiles=resources/kafka-streams/jni-config.json')
-  }
 }
 
 micronaut {
@@ -53,11 +45,6 @@ micronaut {
         incremental(true)
         annotations("uk.ac.york.eng2.trending.*")
     }
-}
-
-tasks.named("dockerfile") {
-  baseImage = "eclipse-temurin:11-alpine"
-  instruction "RUN apk add --no-cache libstdc++ gcompat"
 }
 
 
