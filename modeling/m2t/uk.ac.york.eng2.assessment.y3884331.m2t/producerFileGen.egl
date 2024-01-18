@@ -1,14 +1,16 @@
-package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].events;
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].events;
 
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
+[%for (dom in m.domains) {%]
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=dom.name.ftuc()%];
+[%}%]
 
-@KafkaClient
-public interface [%=p.prodName.ftuc()%]Producer {
+public interface Base[%=p.prodName.ftuc()%]Producer {
 
 	[%for (x in p.producedEvents) {%]
-	String [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toUpperCase()%] = "[%=x.eventName%]"
+	String [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toUpperCase()%] = "[%=x.eventName%]";
 	[%}%]
 	
 	[%for (x in p.producedEvents) {%]

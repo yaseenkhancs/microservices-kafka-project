@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_2C81sLX9Ee6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
+  <events xmi:id="_PsNiULYTEe6wU4C-Rm5a6w" eventName="post-video" key="Long" value="Video" relatedProducers="_GguDILYTEe6wU4C-Rm5a6w" relatedConsumers="_FIH4gLYTEe6wU4C-Rm5a6w" relatedStreams="_BwrbkLYTEe6wU4C-Rm5a6w"/>
   <microservices xmi:id="_5O4mMLX9Ee6wU4C-Rm5a6w" msName="video-microservice" packagename="videos">
     <domains xmi:id="_8b_bYLX9Ee6wU4C-Rm5a6w" name="Video">
-      <httpMethods xmi:id="_9P1TILX9Ee6wU4C-Rm5a6w" name="get-videos" returnType="HttpResponse&lt;Void>" path="/"/>
+      <httpMethods xmi:id="_9P1TILX9Ee6wU4C-Rm5a6w" name="list" returnType="Iterable&lt;Video>" path="/"/>
     </domains>
+    <stream xmi:id="_BwrbkLYTEe6wU4C-Rm5a6w" streamName="Videos" associatedEvents="_PsNiULYTEe6wU4C-Rm5a6w"/>
+    <consumers xmi:id="_FIH4gLYTEe6wU4C-Rm5a6w" conName="Videos" consumedEvents="_PsNiULYTEe6wU4C-Rm5a6w"/>
+    <producers xmi:id="_GguDILYTEe6wU4C-Rm5a6w" prodName="Videos" producedEvents="_PsNiULYTEe6wU4C-Rm5a6w"/>
   </microservices>
 </Assessment>

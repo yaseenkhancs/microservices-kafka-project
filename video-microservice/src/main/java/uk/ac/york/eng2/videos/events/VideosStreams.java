@@ -20,7 +20,7 @@ import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.Video;
 
 @Factory
-public class VideosStreams {
+public class VideosStreams extends BaseVideosStream {
 
 	public static final String TOPIC_LIKED_BY_HOUR = "video-liked-by-hour";
 

@@ -126,7 +126,8 @@ rule ConsumerFile
 		"m" = c.eContainer()
 	}
 	
-	target: "src-gen/" + c.eContainer().msName.toLowerCase() + "/main/java/events/" + c.conName.ftuc() + "Consumer.java" 
+	target: relativePath + c.eContainer().msName.toLowerCase() + "/src-gen/main/java/" + c.eContainer().eContainer().packageName.replace("\\.", "/") + "/" + c.eContainer().packagename + "/events/Base" + c.conName.ftuc() + "Consumer.java" 
+//	"src-gen/" + c.eContainer().msName.toLowerCase() + "/main/java/events/" + c.conName.ftuc() + "Consumer.java" 
 }
 
 rule YMLFile
