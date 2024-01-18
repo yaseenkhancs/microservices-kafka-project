@@ -3,9 +3,10 @@ package uk.ac.york.eng2.trending.cli.domain;
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
-public class HashtagCounts {
+public class HashtagCount {
 	private Long id;
 	private String name;
+	private Long timeStamp;
 	
 	public Long getId() {
 		return id;
@@ -21,5 +22,13 @@ public class HashtagCounts {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Long getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Long timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 }

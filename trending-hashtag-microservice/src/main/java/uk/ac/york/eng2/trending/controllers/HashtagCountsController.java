@@ -9,7 +9,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import jakarta.inject.Inject;
 import uk.ac.york.eng2.trending.helpers.Hashtag;
-import uk.ac.york.eng2.trending.domain.HashtagCounts;
+import uk.ac.york.eng2.trending.domain.HashtagCount;
 import uk.ac.york.eng2.trending.repositories.HashtagCountsRepository;
 
 @Controller("/hashtagcounts")
@@ -19,13 +19,13 @@ public class HashtagCountsController {
 	HashtagCountsRepository repo;
 	
 	@Get("/")
-	public Iterable<HashtagCounts> list() {
+	public Iterable<HashtagCount> list() {
 		return repo.findAll();
 	}
 	
 	@Post("/")
 	public HttpResponse<Void> add(@Body Hashtag tagdetails) {
-		HashtagCounts tag = new HashtagCounts();
+		HashtagCount tag = new HashtagCount();
 		tag.setName(tagdetails.getName());
 		tag.setTimeStamp(System.currentTimeMillis());
 		repo.save(tag);

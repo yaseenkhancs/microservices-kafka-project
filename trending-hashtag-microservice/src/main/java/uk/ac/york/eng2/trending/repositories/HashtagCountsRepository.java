@@ -4,12 +4,12 @@ import java.util.Optional;
 
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
-import uk.ac.york.eng2.trending.domain.HashtagCounts;
+import uk.ac.york.eng2.trending.domain.HashtagCount;
 
 @Repository
-public interface HashtagCountsRepository extends CrudRepository<HashtagCounts, Long>{
+public interface HashtagCountsRepository extends CrudRepository<HashtagCount, Long>{
 	
-	Optional<HashtagCounts> findOne(long id);
+	Optional<HashtagCount> findOne(long id);
 	
 
 }
