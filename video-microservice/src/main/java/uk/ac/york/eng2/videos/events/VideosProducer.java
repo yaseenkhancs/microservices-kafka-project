@@ -38,7 +38,6 @@ public interface VideosProducer extends BaseVideosProducer {
 	@Topic(TOPIC_DISLIKED)
 	void dislikeVideo(@KafkaKey Long id, Video video);
 	
-	@Override
 	@Topic(TOPIC_POSTED)
 	void postVideo(@KafkaKey HashtagUserPair hup, Video video);
 	

@@ -3,7 +3,7 @@ services:
   db1:
     image: mariadb:11
     environment:
-      MYSQL_DATABASE: videomicroservicedb
+      MYSQL_DATABASE: subscriptionmicroservicedb
       MYSQL_USER: todo5
       MYSQL_PASSWORD: todosecret5
       MYSQL_ROOT_PASSWORD: todoroot5

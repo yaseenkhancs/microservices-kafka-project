@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: videomicroservice
+    name: subscriptionmicroservice
 datasources:
   default:
     url: #enter database url here
@@ -13,7 +13,7 @@ jpa:
   default:
     entity-scan:
       packages:
-        - myassessment.videomicroservice.domain
+        - uk.ac.york.eng2.subscription.domain
       properties:
         hibernate:
           hbm2ddl:

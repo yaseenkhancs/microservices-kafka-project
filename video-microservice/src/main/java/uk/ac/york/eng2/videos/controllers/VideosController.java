@@ -44,7 +44,6 @@ public class VideosController extends BaseVideosController {
 	@Inject
 	VideosProducer producer;
 
-	@Override
 	@Get("/")
 	public Iterable<Video> list() {
 		return repo.findAll();

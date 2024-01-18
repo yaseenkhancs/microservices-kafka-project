@@ -11,8 +11,8 @@ class Assessment {
 class Topic {
 	attr String topicName;
 	ref Event[*]#relatedTopics relatedEvents;
-	ref KafProd[*] subscribers;
-	ref KafCon[*] producers;
+	ref KafProd[*] producers;
+	ref KafCon[*] subscribers;
 }
 
 class KafStream {

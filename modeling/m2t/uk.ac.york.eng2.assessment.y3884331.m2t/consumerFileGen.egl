@@ -8,10 +8,9 @@ import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[
 [%}%]
 
 public class Base[%=c.conName.ftuc()%]Consumer {
-	
 	[%for (x in c.consumedEvents) {%]
-	@Topic("[%=x.eventName%]")
-	public void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%] k, [%=x.value%] v) {
+	
+	public void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "")%](@KafkaKey [%=x.key%] k, [%=x.value%] v) {
 			
 	}
 	[%}%]
