@@ -188,6 +188,7 @@ public class VideosController extends BaseVideosController {
 
 		Video video = oVideo.get();
 		video.getWatchers().add(oUser.get());
+		video.setNviews(video.getNviews()+1);
 		repo.update(video);
 		
 		producer.addWatcher(videoId, userId);
