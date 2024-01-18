@@ -7,8 +7,8 @@ import uk.ac.york.eng2.videos.domain.Video;
 
 public class BaseVideosConsumer {
 	
-	@Topic("post-video")
-	public void postvideo(@KafkaKey Long k, Video v) {
+	@Topic("post-Video")
+	public void postvideo(@KafkaKey uk.ac.york.eng2.videos.helpers.HashtagUserPair k, Video v) {
 			
 	}
 

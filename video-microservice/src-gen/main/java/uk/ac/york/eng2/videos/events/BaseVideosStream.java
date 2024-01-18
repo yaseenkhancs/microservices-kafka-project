@@ -7,7 +7,7 @@ import uk.ac.york.eng2.videos.domain.Video;
 
 public class BaseVideosStream {
 
-	public KStream<Long, Video> Postvideo(ConfiguredStreamBuilder builder){
+	public KStream<uk.ac.york.eng2.videos.helpers.HashtagUserPair, Video> PostVideo(ConfiguredStreamBuilder builder){
 		return null;
 	}	
 }

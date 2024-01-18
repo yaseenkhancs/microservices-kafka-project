@@ -5,6 +5,12 @@ class Assessment {
 	attr String packageName;
 	val Event[*] events;
 	val Microservice[*] microservices;
+	val Topic[*] topics;
+}
+
+class Topic {
+	attr String topicName;
+	ref Event[*]#relatedTopics relatedEvents;
 }
 
 class KafStream {
@@ -30,6 +36,7 @@ class Event {
 	ref KafProd[*]#producedEvents relatedProducers;
 	ref KafCon[*]#consumedEvents relatedConsumers;
 	ref KafStream[*]#associatedEvents relatedStreams;
+	ref Topic[*]#relatedEvents relatedTopics;
 }
 
 class Microservice {

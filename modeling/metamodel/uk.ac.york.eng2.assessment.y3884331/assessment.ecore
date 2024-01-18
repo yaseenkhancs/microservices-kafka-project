@@ -7,6 +7,13 @@
         eType="#//Event" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="microservices" upperBound="-1"
         eType="#//Microservice" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topics" upperBound="-1"
+        eType="#//Topic" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Topic">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topicName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedEvents" upperBound="-1"
+        eType="#//Event" eOpposite="#//Event/relatedTopics"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="KafStream">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="streamName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -35,6 +42,8 @@
         eType="#//KafCon" eOpposite="#//KafCon/consumedEvents"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="relatedStreams" upperBound="-1"
         eType="#//KafStream" eOpposite="#//KafStream/associatedEvents"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedTopics" upperBound="-1"
+        eType="#//Topic" eOpposite="#//Topic/relatedEvents"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Microservice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

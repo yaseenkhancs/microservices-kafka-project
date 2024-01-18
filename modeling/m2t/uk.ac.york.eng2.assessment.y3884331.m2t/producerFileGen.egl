@@ -8,14 +8,9 @@ import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[
 [%}%]
 
 public interface Base[%=p.prodName.ftuc()%]Producer {
-
-	[%for (x in p.producedEvents) {%]
-	String [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toUpperCase()%] = "[%=x.eventName%]";
-	[%}%]
 	
 	[%for (x in p.producedEvents) {%]
-	@Topic("[%=x.eventName%]")
-	void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").toLowerCase()%](@KafkaKey [%=x.key%] k, [%=x.value%] v);
+	void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "")%](@KafkaKey [%=x.key%] k, [%=x.value%] v);
 	[%}%]
 
 }
