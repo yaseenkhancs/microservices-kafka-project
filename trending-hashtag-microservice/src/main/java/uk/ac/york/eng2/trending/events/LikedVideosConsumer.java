@@ -10,7 +10,7 @@ import jakarta.inject.Inject;
 import uk.ac.york.eng2.trending.controllers.HashtagCountsController;
 import uk.ac.york.eng2.trending.helpers.Hashtag;
 
-@KafkaListener(groupId = "books-debug")
+@KafkaListener(groupId = "trending-group")
 public class LikedVideosConsumer extends BaseTrendingConsumer {	
 	
 	@Inject
