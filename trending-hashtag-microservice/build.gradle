@@ -17,15 +17,11 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.kafka:micronaut-kafka")
-    implementation("io.micronaut.kafka:micronaut-kafka-streams")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
-    annotationProcessor("io.micronaut:micronaut-graal")
-    implementation("com.google.guava:guava:32.1.2-jre")
-    compileOnly("org.graalvm.nativeimage:svm")
 }
 
 
@@ -39,11 +35,6 @@ java {
 
 graalvmNative {
   toolchainDetection = false
-  binaries.configureEach {
-    buildArgs.add('-H:IncludeResources="librocksdbjni-linux64.*"')
-    buildArgs.add('-H:IncludeResources="kafka/kafka-streams-version.properties"')
-    buildArgs.add('-H:JNIConfigurationFiles=resources/kafka-streams/jni-config.json')
-  }
 }
 
 micronaut {
@@ -55,10 +46,8 @@ micronaut {
     }
 }
 
-tasks.named("dockerfile") {
-  baseImage = "eclipse-temurin:11-alpine"
-  instruction "RUN apk add --no-cache libstdc++ gcompat"
+sourceSets {
+        main.java.srcDirs = ['src-gen/main/java', 'src/main/java']
+        main.resources.srcDirs = ['src/main/resources']
 }
-
-
 

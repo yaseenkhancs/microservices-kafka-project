@@ -12,7 +12,7 @@ import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 
 @KafkaClient
-public interface VideosProducer {
+public interface VideosProducer extends BaseVideosProducer {
 	
 //	HashMap<String, Video> userVideo = new HashMap<String, Video>();
 

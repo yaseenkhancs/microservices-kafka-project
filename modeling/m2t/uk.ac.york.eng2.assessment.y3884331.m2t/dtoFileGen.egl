@@ -1,0 +1,7 @@
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].dto;
+
+import io.micronaut.serde.annotation.Serdeable;
+
+public class Base[%=d.name.ftuc()%]DTO {
+
+}

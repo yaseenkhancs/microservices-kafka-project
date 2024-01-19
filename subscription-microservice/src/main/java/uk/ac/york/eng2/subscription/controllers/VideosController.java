@@ -167,6 +167,7 @@ public class VideosController {
 
 		Video video = oVideo.get();
 		video.getWatchers().add(oUser.get());
+		video.setNviews(video.getNviews()+1);
 		repo.update(video);		
 
 		return HttpResponse.ok(String.format("User %d added as watcher of video %d", userId, videoId));

@@ -1,0 +1,12 @@
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].repositories;
+
+import java.util.Optional;
+
+import io.micronaut.data.repository.CrudRepository;
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=d.name.ftuc()%];
+
+public interface Base[%=d.name.ftuc()%]sRepository extends CrudRepository<[%=d.name.ftuc()%], Long> {
+
+	Optional<[%=d.name.ftuc()%]> findOne(long id);
+	
+}

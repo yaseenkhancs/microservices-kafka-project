@@ -9,7 +9,7 @@ import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 
 @Serdeable
-public class VideoDTO {
+public class VideoDTO extends BaseVideoDTO {
 
 	private String title;
 	private User author;

@@ -1,0 +1,45 @@
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].controllers;
+
+[%for (dom in d.parentMS.domains){%]
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
+[%}%]
+import jakarta.inject.Inject;
+[%for (method in d.httpMethods){%]
+import io.micronaut.http.annotation.[%=method.httpType%];
+[%}%]
+import io.micronaut.http.HttpResponse;
+[%for (dom in m.domains) {%]
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=dom.name.ftuc()%];
+[%}%]
+
+public class Base[%=d.name.ftuc()%]sController {
+	
+	[%for (dom in d.parentMS.domains){%]
+	
+	[%=dom.name.ftuc()%]sRepository [%=dom.name.toLowerCase()%]sRepo;	
+	[%}%]
+	
+	[%for (method in d.httpMethods){%]
+	[%if (method.transactional){%]
+	@Transactional
+	[%}%]
+	[%
+	var paramlist : String;
+	paramlist = "";
+	var varcount : Integer;
+	varcount = 0;
+	while (varcount < method.parameters.size()) {
+		if (varcount == (method.parameters.size() - 1)) {
+			paramlist = paramlist + method.parameters[varcount] + " var" + varcount;
+		} else {
+			paramlist = paramlist + method.parameters[varcount] + " var" + varcount + ", ";
+		}
+		varcount++;
+	}%]
+
+	public [%=method.returnType%] [%=method.name.replaceAll("[^a-zA-Z0-9]", "")%]([%=paramlist%]){
+	    return null;
+	}
+	
+	[%}%]	
+}

@@ -3,8 +3,6 @@ package uk.ac.york.eng2.videos;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,7 +53,7 @@ public class KafkaProductionTest {
 		newuser.setUsername("jack");
 		
 		HttpResponse<Void> response = client.add(newuser);
-		Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> addedUsers.containsKey((long) 1));
+		Awaitility.await().atMost(Duration.ofSeconds(3)).until(() -> addedUsers.containsKey((long) 1));
 		assertEquals(HttpStatus.CREATED, response.getStatus(), "Creation should be successful");		
 		assertEquals(client.list().iterator().next().getId(), (long)1, "Author ID should be 1");		
 		assertEquals(client.list().iterator().next().getUsername(), "jack", "Author username should be jack");

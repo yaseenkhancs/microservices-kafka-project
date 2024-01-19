@@ -30,7 +30,7 @@ import uk.ac.york.eng2.videos.repositories.VideosRepository;
 //import uk.ac.york.eng2.books.repositories.UsersRepository;
 
 @Controller("/videos")
-public class VideosController {
+public class VideosController extends BaseVideosController {
 
 	@Inject
 	VideosRepository repo;
@@ -188,6 +188,7 @@ public class VideosController {
 
 		Video video = oVideo.get();
 		video.getWatchers().add(oUser.get());
+		video.setNviews(video.getNviews()+1);
 		repo.update(video);
 		
 		producer.addWatcher(videoId, userId);

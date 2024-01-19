@@ -1,0 +1,243 @@
+context Assessment {
+
+	constraint NamePresence {
+	
+		check: not (self.packageName==null)
+		
+		message: "Please give your whole project a name" 
+	}
+
+	constraint AtLeastOneMS {
+	
+		check: self.microservices.size() >= 1
+		
+		message: "Your project must have at least one microservice."
+		
+	}
+	
+	constraint UniqueEventNames {
+	
+		check {
+			
+			var o : OrderedSet;
+			for (x : Event in self.events) {
+				o.add(x.eventName);
+			}
+			return (o.size()==self.events.size());
+		
+		}
+		
+		message: "Each event for the model must have unique names"
+			
+	}
+	
+	constraint UniqueMSNames {
+		
+		guard: self.satisfies("AtLeastOneMS")
+		
+		check {
+			
+			var o : OrderedSet;
+			for (x : Microservice in self.microservices) {
+				o.add(x.msName);
+			}
+			return (o.size()==self.microservices.size());
+		
+		}
+		
+		message: "Each microservice for the model must have unique names"	
+	
+	}
+	
+	constraint UniqueTopicNames {
+		
+		check {
+			
+			var o : OrderedSet;
+			for (x : Topic in self.topics) {
+				o.add(x.topicName);
+			}
+			return (o.size()==self.microservices.size());
+		
+		}
+		
+		message: "Each topic for the model must have unique names"	
+	
+	}
+}
+
+context Topic {
+
+	constraint NamePresence {
+		
+		check: not (self.topicName==null)
+		
+		message: "Please give your topic a name"
+	
+	}
+	
+	constraint OneProducerOneSubscriber {
+		
+		check: self.subscribers.size()>=1 and self.consumers.size()>=1
+		
+		message: "A topic must have a related consumer and producer"
+		
+	}
+}
+
+context Event {
+
+	constraint NamePresence {
+		
+		check: not (self.eventName==null)
+		
+		message: "Please give your event a name"
+	
+	}
+	
+	constraint KeyPresence {
+	
+		check:  not (self.key==null)
+		
+		message: "Please give your event " + self.eventName + " a key." 
+	
+	}
+	
+	constraint ValuePresence {
+	
+		check:  not (self.value==null)
+		
+		message: "Please give your event " + self.eventName + " a value."
+		 
+	}	
+
+	constraint UsedAtLeastOnce {
+	
+		check : self.relatedTopics.size() >= 1
+		
+		message: "Your event titled " + self.eventName + " must be used in at least one event stream."
+	
+	}
+	
+	constraint KeyNoSpaces {
+	
+		guard: self.satisfies("KeyPresence")
+	
+		check: not self.key.contains(" ")
+		
+		message: "Your key cannot contain spaces"		
+	
+	}
+	
+	constraint ValueNoSpaces {
+	
+		guard: self.satisfies("ValuePresence")
+	
+		check: not self.value.contains(" ")
+		
+		message: "Your value cannot contain spaces"		
+	
+	}
+}
+
+context Microservice {
+
+	constraint HasName {
+		
+		check: not (self.msName==null)
+		
+		message: "Give your microservice a name"
+	}
+	
+	constraint AtLeastOneKafkaStream {
+	
+		check: self.stream.size() >= 1
+		
+		message: "Your project must have at least one Kafka Stream, otherwise the Kafka topology will break."
+		
+	}
+	
+}
+
+context KafStream {
+
+	constraint NamePresence {
+	
+		check: not (self.streamName==null)
+		
+		message: "Please give your Kafka Stream a name" 
+	}
+
+}
+
+
+context Domain {
+
+	constraint NamePresent {
+		
+		check: not (self.name==null)
+		
+		message: "The domain must have a name."
+	}
+
+	constraint DoesNotStartWithNumber {
+	
+		guard: self.satisfies("NamePresent")
+		
+		check {
+			var c = self.name.charAt(0);
+			return not(c.isInteger());
+		}
+		
+		message: "The name of a domain cannot start with a number - your domain starts with '" + self.name.charAt(0) + "'"
+	}
+
+}
+
+context HttpMethod {
+
+	constraint PathPresent {
+	
+		check: not (self.path==null)
+		
+		message: "There must be a given http path for a http method."
+	
+	}
+	
+	constraint NoSpaces {
+	
+		guard: self.satisfies("PathPresent")
+	
+		check: not self.path.contains(" ")
+		
+		message: "there cannot be spaces in a http method."
+	
+	}
+	
+	constraint startsWithSlash {
+		guard: self.satisfies("PathPresent")
+		
+		check: self.path.startsWith("/")
+		
+		message: "a path must begin with a '/' character"
+	}
+	
+	constraint ReturnTypePresent {
+		
+		check: not (self.returnType==null)
+		
+		message: "Return type should be present. If there is no return type, return 'void' instead"
+	
+	}
+	
+	constraint ReturnTypeNoSpaces {
+	
+		guard: self.satisfies("ReturnTypePresent")
+		
+		check: not self.returnType.contains(" ")
+		
+		message: "Return type is a Java type, cannot contain spaces"
+	}
+	
+	
+}

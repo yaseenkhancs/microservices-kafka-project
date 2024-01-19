@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_M8_kMLYtEe6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
+  <events xmi:id="_nHwn8LYtEe6wU4C-Rm5a6w" eventName="addedUser" key="long" value="User" relatedTopics="_lFxiELYtEe6wU4C-Rm5a6w"/>
+  <events xmi:id="_rs-CQLZeEe6wU4C-Rm5a6w" eventName="videoLikeMetric" key="long" value="uk.ac.york.eng2.trending.helpers.Hashtag" relatedTopics="_w0k1QLZeEe6wU4C-Rm5a6w"/>
+  <microservices xmi:id="_iVBRsLYtEe6wU4C-Rm5a6w" msName="subscription-microservice" packagename="subscription">
+    <domains xmi:id="_7YjAkLYtEe6wU4C-Rm5a6w" name="Hashtag"/>
+    <domains xmi:id="_9YgGILYtEe6wU4C-Rm5a6w" name="User"/>
+    <consumers xmi:id="_t_qT4LYtEe6wU4C-Rm5a6w" conName="Subscription" consumedEvents="_nHwn8LYtEe6wU4C-Rm5a6w"/>
+  </microservices>
+  <microservices xmi:id="_f7zhULZeEe6wU4C-Rm5a6w" msName="trending-hashtag-microservice" packagename="trending">
+    <domains xmi:id="_jvGz0LZeEe6wU4C-Rm5a6w" name="HashtagCount"/>
+    <consumers xmi:id="_of96wLZeEe6wU4C-Rm5a6w" conName="Trending" consumedEvents="_rs-CQLZeEe6wU4C-Rm5a6w"/>
+  </microservices>
+  <topics xmi:id="_lFxiELYtEe6wU4C-Rm5a6w" topicName="user-added" relatedEvents="_nHwn8LYtEe6wU4C-Rm5a6w" subscribers="_t_qT4LYtEe6wU4C-Rm5a6w"/>
+  <topics xmi:id="_w0k1QLZeEe6wU4C-Rm5a6w" topicName="video-liked" relatedEvents="_rs-CQLZeEe6wU4C-Rm5a6w" subscribers="_of96wLZeEe6wU4C-Rm5a6w"/>
+</Assessment>

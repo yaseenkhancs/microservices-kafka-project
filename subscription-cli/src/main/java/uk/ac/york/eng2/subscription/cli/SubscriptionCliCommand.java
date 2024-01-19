@@ -10,6 +10,7 @@ import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.subscription.cli.hashtags.AddHashtagCommand;
 import uk.ac.york.eng2.subscription.cli.hashtags.GetHashtags;
 import uk.ac.york.eng2.subscription.cli.hashtags.ViewHashtagVideos;
+import uk.ac.york.eng2.subscription.cli.health.HeartBeatCommand;
 import uk.ac.york.eng2.subscription.cli.users.AddSubscriptionCommand;
 import uk.ac.york.eng2.subscription.cli.users.AddUserCommand;
 import uk.ac.york.eng2.subscription.cli.users.DeleteSubscriptionCommand;
@@ -31,7 +32,8 @@ import uk.ac.york.eng2.subscription.cli.videos.LikeVideoCommand;
         		AddVideoWatcherCommand.class, LikeVideoCommand.class, 
         		DislikeVideoCommand.class, AddSubscriptionCommand.class,
         		ViewHashtagVideos.class, ViewSubscriptions.class, ViewWatchedVideos.class,
-        		ViewUserSubscriptionVideos.class, DeleteSubscriptionCommand.class})
+        		ViewUserSubscriptionVideos.class, DeleteSubscriptionCommand.class,
+        		HeartBeatCommand.class})
 public class SubscriptionCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")

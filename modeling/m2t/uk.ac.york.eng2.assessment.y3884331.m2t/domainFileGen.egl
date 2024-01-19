@@ -1,0 +1,8 @@
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain;
+
+import javax.persistence.Entity;
+import io.micronaut.serde.annotation.Serdeable;
+
+public class Base[%=d.name.ftuc()%] {
+
+}

@@ -1,5 +1,0 @@
-package [%=m.eContainer().name%].[%=m.msName.toLowerCase().replaceAll("[^a-zA-Z0-9]", "")%].dto;
-
-public class [%=d.name.ftuc()%]DTO {
-
-}

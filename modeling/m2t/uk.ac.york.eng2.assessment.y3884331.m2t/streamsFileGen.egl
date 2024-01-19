@@ -1,0 +1,20 @@
+package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].events;
+
+import io.micronaut.configuration.kafka.streams.ConfiguredStreamBuilder;
+import io.micronaut.context.annotation.Factory;
+import org.apache.kafka.streams.kstream.KStream;
+[%for (dom in m.domains) {%]
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=dom.name.ftuc()%];
+[%}%]
+
+public class Base[%=s.streamName.ftuc()%]Stream {
+
+	[%for (x in s.associatedEvents) {
+		var i : Integer;
+		
+	%]
+	public KStream<[%=x.key%], [%=x.value%]> [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "").ftuc()%](ConfiguredStreamBuilder builder){
+		return null;
+	}	
+	[%}%]
+}

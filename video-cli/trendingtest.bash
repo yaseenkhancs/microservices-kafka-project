@@ -1,4 +1,8 @@
 ./gradlew run --args="add-user 'yaseen'"
 ./gradlew run --args="add-tag 'sad'"
 ./gradlew run --args="post-video 'lolvideo' 1 2"
+./gradlew run --args="add-tag 'happy'"
+./gradlew run --args="add-video-hashtag 3 4"
+./gradlew run --args="post-video 'hahahavideo' 1 4"
 ./gradlew run --args="like-video 3"
+./gradlew run --args="like-video 5"

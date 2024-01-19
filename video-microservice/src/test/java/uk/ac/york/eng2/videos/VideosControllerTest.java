@@ -16,6 +16,7 @@ import jakarta.inject.Inject;
 import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
+import uk.ac.york.eng2.videos.dto.HashtagDTO;
 import uk.ac.york.eng2.videos.dto.UserDTO;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
@@ -37,6 +38,12 @@ public class VideosControllerTest {
 	@Inject
 	HashtagsRepository htrepo;
 	
+	@Inject
+	UsersClient uclient;
+	
+	@Inject
+	HashtagsClient hclient;
+	
 	@BeforeEach
 	void clean() {
 		repo.deleteAll();
@@ -50,34 +57,46 @@ public class VideosControllerTest {
 	}
 	
 	@Test
-	public void getVideo() {
+	public void getVideo() {			
 		
+		UserDTO newuser = new UserDTO();
+		newuser.setUsername("jack");
+		uclient.add(newuser);
 		
+		HashtagDTO newhashtag = new HashtagDTO();
+		newhashtag.setName("sad");		
+		hclient.add(newhashtag);
 		
-//		User newuser = new User();
-//		newuser.setId((long)1);
-//		newuser.setUsername("jack");
-//		usersrepo.save(newuser);
+		HashSet<Hashtag> x = new HashSet<Hashtag>();
+		Hashtag newtag = new Hashtag();
+		newtag.setId((long)2);
+		newtag.setName(newhashtag.getName());
+		x.add(newtag);
 		
-//		Hashtag newhashtag = new Hashtag();
-//		newhashtag.setId((long)2);
-//		newhashtag.setName("sad");
-//		htrepo.save(newhashtag);
-//		
-//		HashSet<Hashtag> x = new HashSet<Hashtag>();
-//		x.add(newhashtag);
-//		
-//		VideoDTO dto = new VideoDTO();
-//		
-//		dto.setTitle("Sample Text");
-//		dto.setAuthor(newuser);
-//		dto.setTags(x);
-//		
-//		HttpResponse<Void> response = client.add(dto);
-//		assertEquals(HttpStatus.CREATED, response.getStatus(), "Update should be successful");
+		User thisuser = new User();
+		thisuser.setId((long)1);
+		thisuser.setUsername(newuser.getUsername());
 		
-//		assertTrue(client.list().iterator().next().getAuthor()
-//				.getId().equals((long)(2)), "Author ID should be 2");
+		VideoDTO dto = new VideoDTO();
+		
+		dto.setTitle("Sample Text");
+		dto.setAuthor(thisuser);
+		dto.setTags(x);
+		
+		HttpResponse<Void> response = client.add(dto);
+		assertEquals(HttpStatus.CREATED, response.getStatus(), "Update should be successful");
+		
+		assertTrue(client.list().iterator().next().getTitle()
+				.equals("Sample Text"), "Title should be sample text");
+		
+		assertTrue(client.list().iterator().next().getNlikes()
+				.equals(0), "should have 0 likes");
+		
+		assertTrue(client.list().iterator().next().getNdislikes()
+				.equals(0), "should have 0 dislikes");
+		
+		assertTrue(client.list().iterator().next().getNviews()
+				.equals(0), "should have 0 views");
 		
 	}
 

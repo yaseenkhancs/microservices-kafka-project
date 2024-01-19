@@ -23,7 +23,7 @@ import uk.ac.york.eng2.videos.controllers.VideosController;
 
 @Entity
 @Serdeable
-public class Video {
+public class Video extends BaseVideo {
 
 	@Id
 	@GeneratedValue

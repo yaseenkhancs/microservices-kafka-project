@@ -7,12 +7,13 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-import uk.ac.york.eng2.trending.cli.hashtags.AddHashtag;
 import uk.ac.york.eng2.trending.cli.hashtags.GetHashtags;
+import uk.ac.york.eng2.trending.cli.hashtags.GetTrending;
+import uk.ac.york.eng2.trending.cli.health.HeartBeatCommand;
 
 @Command(name = "trending-hashtag-cli", description = "...",
         mixinStandardHelpOptions = true,
-        subcommands = {GetHashtags.class, AddHashtag.class})
+        subcommands = {GetHashtags.class, GetTrending.class, HeartBeatCommand.class})
 public class TrendingHashtagCliCommand implements Runnable {
 
     @Option(names = {"-v", "--verbose"}, description = "...")

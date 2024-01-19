@@ -1,0 +1,156 @@
+pre {
+	var relativePath : String;
+	relativePath = "../../../";
+}
+
+
+rule Model2App 
+	transform m : Microservice {
+
+	template : "applicationGen.egl"
+
+	parameters : Map{
+		"m" = m
+	}
+
+	target : relativePath + m.msName.toLowerCase() + "/src-gen/main/java/" + m.eContainer().packageName.replace("\\.", "/") + "/" + m.packagename + "/BaseApplication.java"
+	
+	} 
+
+rule HealthControllerGen
+	transform m : Microservice {
+	
+	template: "healthControllerGen.egl"
+	
+	parameters: Map {}
+	
+	target : relativePath + m.msName.toLowerCase() + "/src-gen/main/java/" + m.eContainer().packageName.replace("\\.", "/") + "/" + m.packagename + "/controllers/BaseHealthController.java"
+	
+	}
+
+
+rule ComposeGeneration
+	transform a : Assessment {
+	
+	template: "composeFileGen.egl"
+	
+	parameters: Map{}
+	
+	target: "other-generated-files/compose.yml"
+	
+	}
+
+rule BuildGradleGen
+	transform m : Microservice {
+	
+	template: "buildGradleGen.egl"
+	
+	parameters: Map {}
+	
+	target: "other-generated-files/" + m.msName +"-build.gradle"
+	
+	}
+
+rule DomainFile
+	transform d : Domain {
+	
+	template: "domainFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/domain/Base" + d.name.ftuc() + ".java"
+}
+
+rule DTOFile
+	transform d : Domain {
+	
+	template: "dtoFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/dto/Base" + d.name.ftuc() + "DTO.java" 
+	 
+}
+
+rule RepoFile
+	transform d : Domain {
+	
+	template: "repositoryFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/repositories/Base" + d.name.ftuc() + "sRepository.java" 
+	
+}
+
+rule ControllerFile
+	transform d : Domain {
+	
+	template: "controllersFileGen.egl"
+	
+	parameters: Map {
+		"m" = d.eContainer()
+	}
+	
+	target : relativePath + d.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + d.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + d.parentMS.packagename + "/controllers/Base" + d.name.ftuc() + "sController.java" 
+//	"src-gen/" + d.parentMS.msName + "/main/java/controllers/" + d.name.ftuc() + "sController.java"
+}
+
+rule StreamsFile
+	transform s : KafStream {
+	
+	template: "streamsFileGen.egl"
+	
+	parameters: Map {
+		"m" = s.eContainer()
+	}
+	
+	target: relativePath + s.parentMS.msName.toLowerCase() + "/src-gen/main/java/" + s.parentMS.eContainer().packageName.replace("\\.", "/") + "/" + s.parentMS.packagename + "/events/Base" + s.streamName.ftuc() + "Stream.java" 
+	
+}
+
+rule ProducerFile
+	transform p : KafProd {
+	
+	template: "producerFileGen.egl"
+	
+	parameters: Map {
+		"m" = p.eContainer()
+	}
+	
+	target: relativePath + p.eContainer().msName.toLowerCase() + "/src-gen/main/java/" + p.eContainer().eContainer().packageName.replace("\\.", "/") + "/" + p.eContainer().packagename + "/events/Base" + p.prodName.ftuc() + "Producer.java" 
+//	"src-gen/" + p.eContainer().msName.toLowerCase() + "/main/java/events/" + p.prodName.ftuc() + "Producer.java" 
+}
+
+rule ConsumerFile
+	transform c : KafCon {
+	
+	template: "consumerFileGen.egl"
+	
+	parameters: Map {
+		"m" = c.eContainer()
+	}
+	
+	target: relativePath + c.eContainer().msName.toLowerCase() + "/src-gen/main/java/" + c.eContainer().eContainer().packageName.replace("\\.", "/") + "/" + c.eContainer().packagename + "/events/Base" + c.conName.ftuc() + "Consumer.java" 
+//	"src-gen/" + c.eContainer().msName.toLowerCase() + "/main/java/events/" + c.conName.ftuc() + "Consumer.java" 
+}
+
+rule YMLFile
+	transform m : Microservice {
+	
+	template: "ymlFileGen.egl"
+	
+	parameters: Map {}
+	
+	target: "other-generated-files/" + m.msName.toLowerCase() +"-application.yml" 
+//	"src-gen/" + m.msName.toLowerCase() + "/main/resources/application.yml"
+	
+	
+	}
+

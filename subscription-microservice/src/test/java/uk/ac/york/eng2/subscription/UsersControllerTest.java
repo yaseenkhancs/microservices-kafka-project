@@ -22,10 +22,6 @@ import uk.ac.york.eng2.subscription.repositories.HashtagsRepository;
 import uk.ac.york.eng2.subscription.repositories.UsersRepository;
 import uk.ac.york.eng2.subscription.repositories.VideosRepository;
 
-import java.io.File;  // Import the File class
-import java.io.IOException;  // Import the IOException class to handle errors
-import java.io.FileWriter;   // Import the FileWriter class
-
 @MicronautTest
 public class UsersControllerTest {
 	
@@ -76,15 +72,6 @@ public class UsersControllerTest {
 		assertEquals(client.list().iterator().next().getUsername(), "greg", "Author username should be jack");
 		
 		HttpResponse<Void> response3 = client.deleteUser(1);
-		
-		try { //to check http response outputs.
-			FileWriter myWriter = new FileWriter("filename.txt");
-			myWriter.write(response3.getStatus().toString());
-		    myWriter.close();
-		} catch (IOException e) {
-			System.out.println("An error occurred.");
-		    e.printStackTrace();
-		}
 		
 		assertEquals(response3.getStatus(), HttpStatus.OK, "Delete should be successful");
 		

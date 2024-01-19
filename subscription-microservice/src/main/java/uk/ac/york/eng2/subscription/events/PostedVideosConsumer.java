@@ -14,8 +14,8 @@ import uk.ac.york.eng2.subscription.dto.UserDTO;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.helpers.HashtagUserPair;
 
-@KafkaListener(groupId="books-debug")
-public class PostedVideosConsumer {
+@KafkaListener(groupId="subscription-group")
+public class PostedVideosConsumer extends BaseSubscriptionConsumer {
 	
 	@Inject
 	VideosController controller;
@@ -60,6 +60,7 @@ public class PostedVideosConsumer {
 		hashtag.setName(h.getName());
 		hcontroller.add(h);
 	}
+		
 	
 	@Topic("another-hashtag")
 	public void anotherHashtag(@KafkaKey long videoId, long hashtagId) {

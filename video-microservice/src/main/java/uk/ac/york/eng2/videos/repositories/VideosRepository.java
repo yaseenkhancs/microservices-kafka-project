@@ -15,7 +15,7 @@ import uk.ac.york.eng2.videos.domain.Video;
 //import uk.ac.york.eng2.books.dto.BookDTO;
 
 @Repository
-public interface VideosRepository extends CrudRepository<Video, Long> {
+public interface VideosRepository extends BaseVideosRepository {
 
 	//@Join(value = "tags", type = Join.Type.LEFT_FETCH)
 	@Join(value = "watchers", type = Join.Type.LEFT_FETCH)

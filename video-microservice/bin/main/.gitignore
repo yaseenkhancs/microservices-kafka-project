@@ -1,1 +1,6 @@
+/BaseApplication.class
 /uk/
+/domain/
+/dto/
+/events/
+/repositories/
