@@ -26,7 +26,7 @@ public class GetTrending implements Runnable {
 	@Override
 	public void run() {
 		for (HashtagCount h : client.list()) {
-//			if (h.getTimeStamp() < (System.currentTimeMillis() - 300000)) {continue;}
+			if (h.getTimeStamp() < (System.currentTimeMillis() - 3600000)) {continue;}
 			if (aggregatedValues.containsKey(h.getName())) {
 				aggregatedValues.replace(h.getName(), aggregatedValues.get(h.getName()) + 1);
 			} else {
