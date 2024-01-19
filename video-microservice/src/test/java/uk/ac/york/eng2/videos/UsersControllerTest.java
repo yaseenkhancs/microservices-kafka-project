@@ -27,9 +27,6 @@ import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 
-import java.io.File;  // Import the File class
-import java.io.IOException;  // Import the IOException class to handle errors
-import java.io.FileWriter;   // Import the FileWriter class
 
 @MicronautTest(environments = "no_streams")
 public class UsersControllerTest {
@@ -102,15 +99,6 @@ public class UsersControllerTest {
 		
 		HttpResponse<Void> response = client.add(newuser);
 		
-		try { //to check http response outputs.
-			FileWriter myWriter = new FileWriter("filename2.txt");
-			myWriter.write(addedUsers.get((long)1).toString());
-		    myWriter.close();
-		} catch (IOException e) {
-			System.out.println("An error occurred.");
-		    e.printStackTrace();
-		}
-		
 		assertTrue(addedUsers.containsKey((long) 1));
 		assertEquals(HttpStatus.CREATED, response.getStatus(), "Creation should be successful");		
 		assertEquals(client.list().iterator().next().getId(), (long)1, "Author ID should be 1");		
@@ -124,15 +112,6 @@ public class UsersControllerTest {
 		assertEquals(client.list().iterator().next().getUsername(), "greg", "Author username should be jack");
 		
 		HttpResponse<Void> response3 = client.deleteUser(1);
-		
-//		try { //to check http response outputs.
-//			FileWriter myWriter = new FileWriter("filename.txt");
-//			myWriter.write(response3.getStatus().toString());
-//		    myWriter.close();
-//		} catch (IOException e) {
-//			System.out.println("An error occurred.");
-//		    e.printStackTrace();
-//		}
 		
 		assertEquals(response3.getStatus(), HttpStatus.OK, "Delete should be successful");
 		
