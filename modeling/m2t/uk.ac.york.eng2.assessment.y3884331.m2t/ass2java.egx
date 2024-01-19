@@ -17,6 +17,17 @@ rule Model2App
 	
 	} 
 
+rule HealthControllerGen
+	transform m : Microservice {
+	
+	template: "healthControllerGen.egl"
+	
+	parameters: Map {}
+	
+	target : relativePath + m.msName.toLowerCase() + "/src-gen/main/java/" + m.eContainer().packageName.replace("\\.", "/") + "/" + m.packagename + "/controllers/BaseHealthController.java"
+	
+	}
+
 
 rule ComposeGeneration
 	transform a : Assessment {

@@ -157,25 +157,6 @@ context Microservice {
 		
 	}
 	
-	constraint Health {
-	
-//	
-	
-		check {
-			for (x : Domain in self.domains) {			
-				for (hm : HttpMethod in x.httpMethods) {
-					if ((hm.parameters.size()==0) and (hm.httpType.getValue() == 0)) {
-						return true;
-					}	
-				}
-			}
-			return false;
-		}
-		
-		message: "At least one health resource for MS " + self.msName + " is needed - no parameters"
-	
-	
-	}
 }
 
 context KafStream {
