@@ -1,8 +1,8 @@
-package uk.ac.york.eng2.trending.cli.hashtags;
+package uk.ac.york.eng2.trending.cli.health;
 
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
-import uk.ac.york.eng2.trending.cli.hashtags.HealthClient;
+import uk.ac.york.eng2.trending.cli.health.HealthClient;
 
 @Command(name="heartbeat", description="Checks if service is alive", mixinStandardHelpOptions = true)
 public class HeartBeatCommand implements Runnable {

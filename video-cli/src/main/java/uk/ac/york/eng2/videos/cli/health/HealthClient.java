@@ -1,10 +1,10 @@
-package uk.ac.york.eng2.trending.cli.hashtags;
+package uk.ac.york.eng2.videos.cli.health;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.client.annotation.Client;
 
-@Client("http://localhost:8081")
+@Client("http://localhost:8080")
 public interface HealthClient {
 	
 	@Get("/")

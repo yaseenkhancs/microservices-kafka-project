@@ -10,6 +10,7 @@ import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.subscription.cli.hashtags.AddHashtagCommand;
 import uk.ac.york.eng2.subscription.cli.hashtags.GetHashtags;
 import uk.ac.york.eng2.subscription.cli.hashtags.ViewHashtagVideos;
+import uk.ac.york.eng2.subscription.cli.health.HeartBeatCommand;
 import uk.ac.york.eng2.subscription.cli.users.AddSubscriptionCommand;
 import uk.ac.york.eng2.subscription.cli.users.AddUserCommand;
 import uk.ac.york.eng2.subscription.cli.users.DeleteSubscriptionCommand;
@@ -22,7 +23,6 @@ import uk.ac.york.eng2.subscription.cli.videos.AddVideoHashtag;
 import uk.ac.york.eng2.subscription.cli.videos.AddVideoWatcherCommand;
 import uk.ac.york.eng2.subscription.cli.videos.DislikeVideoCommand;
 import uk.ac.york.eng2.subscription.cli.videos.GetVideosCommand;
-import uk.ac.york.eng2.subscription.cli.videos.HeartBeatCommand;
 import uk.ac.york.eng2.subscription.cli.videos.LikeVideoCommand;
 
 @Command(name = "subscription-cli", description = "...",

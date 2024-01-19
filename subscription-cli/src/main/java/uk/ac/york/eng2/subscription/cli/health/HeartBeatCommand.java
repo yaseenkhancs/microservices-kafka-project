@@ -1,4 +1,4 @@
-package uk.ac.york.eng2.subscription.cli.videos;
+package uk.ac.york.eng2.subscription.cli.health;
 
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
