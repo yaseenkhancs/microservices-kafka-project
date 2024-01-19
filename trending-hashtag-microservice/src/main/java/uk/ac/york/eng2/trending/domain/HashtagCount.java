@@ -9,7 +9,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Entity
 @Serdeable
-public class HashtagCount {
+public class HashtagCount extends BaseHashtagCount {
 	@Id
 	@GeneratedValue
 	private Long id;

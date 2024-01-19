@@ -15,7 +15,7 @@ import uk.ac.york.eng2.subscription.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.helpers.HashtagUserPair;
 
 @KafkaListener(groupId="books-debug")
-public class PostedVideosConsumer {
+public class PostedVideosConsumer extends BaseSubscriptionConsumer {
 	
 	@Inject
 	VideosController controller;

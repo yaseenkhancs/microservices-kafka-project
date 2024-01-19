@@ -11,7 +11,7 @@ import uk.ac.york.eng2.trending.controllers.HashtagCountsController;
 import uk.ac.york.eng2.trending.helpers.Hashtag;
 
 @KafkaListener(groupId = "books-debug")
-public class LikedVideosConsumer {	
+public class LikedVideosConsumer extends BaseTrendingConsumer {	
 	
 	@Inject
 	HashtagCountsController control;

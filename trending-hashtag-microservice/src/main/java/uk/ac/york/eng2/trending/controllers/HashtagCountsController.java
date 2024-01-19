@@ -13,7 +13,7 @@ import uk.ac.york.eng2.trending.domain.HashtagCount;
 import uk.ac.york.eng2.trending.repositories.HashtagCountsRepository;
 
 @Controller("/hashtagcounts")
-public class HashtagCountsController {
+public class HashtagCountsController extends BaseHashtagCountsController {
 
 	@Inject
 	HashtagCountsRepository repo;

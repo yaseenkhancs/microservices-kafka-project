@@ -1,3 +1,5 @@
+//BUILD GRADLE FOR MICRONAUT / JAVA 11. FOR ANY OTHER SETUP, OVERWRITE NECESSARY CONFIGS. 
+
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.7.10"
@@ -17,11 +19,13 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("io.micronaut.kafka:micronaut-kafka")
+    implementation("io.micronaut.kafka:micronaut-kafka-streams")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+    testImplementation("org.awaitility:awaitility:4.2.0")
 }
 
 
@@ -33,10 +37,7 @@ java {
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
-graalvmNative {
-  toolchainDetection = false
-}
-
+graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
     testRuntime("junit5")
@@ -46,8 +47,5 @@ micronaut {
     }
 }
 
-sourceSets {
-        main.java.srcDirs = ['src-gen/main/java', 'src/main/java']
-        main.resources.srcDirs = ['src/main/resources']
-}
+
 

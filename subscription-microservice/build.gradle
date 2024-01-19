@@ -44,5 +44,10 @@ micronaut {
     }
 }
 
+sourceSets {
+        main.java.srcDirs = ['src-gen/main/java', 'src/main/java']
+        main.resources.srcDirs = ['src/main/resources']
+}
+
 
 

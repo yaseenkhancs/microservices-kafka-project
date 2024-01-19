@@ -2,7 +2,7 @@ package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].control
 
 import io.micronaut.http.HttpResponse;
 
-public class HealthController {
+public class BaseHealthController {
 	
 	public HttpResponse<String> heartbeat() {
 		return HttpResponse.ok("SERVICE RESPONDED");

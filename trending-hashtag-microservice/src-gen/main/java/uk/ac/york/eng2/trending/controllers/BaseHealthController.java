@@ -1,4 +1,4 @@
-package uk.ac.york.eng2.subscription.controllers;
+package uk.ac.york.eng2.trending.controllers;
 
 import io.micronaut.http.HttpResponse;
 
