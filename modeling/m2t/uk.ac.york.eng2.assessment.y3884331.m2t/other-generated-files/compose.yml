@@ -24,6 +24,18 @@ services:
     ports:
       - 3307:3306
 
+  db3:
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: subscriptionmicroservicedb
+      MYSQL_USER: todo11
+      MYSQL_PASSWORD: todosecret11
+      MYSQL_ROOT_PASSWORD: todoroot11
+    volumes:
+      - mariadb_data3:/var/lib/mysql
+    ports:
+      - 3308:3306
+
  adminer:
     image: adminer:4-standalone
     ports:
@@ -121,6 +133,7 @@ services:
 volumes:
   mariadb_data1:
   mariadb_data2:
+  mariadb_data3:
   kafka_0_data:
   kafka_1_data:
   kafka_2_data:

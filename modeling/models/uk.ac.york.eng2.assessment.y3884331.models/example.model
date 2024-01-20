@@ -85,6 +85,43 @@
     </domains>
     <consumers xmi:id="_qIZM4LcpEe6NHM8e0Ef1qw" conName="Trending" consumedEvents="_gDRXALcpEe6NHM8e0Ef1qw"/>
   </microservices>
+  <microservices xmi:id="_fC97ILcqEe6NHM8e0Ef1qw" msName="subscription-microservice" packagename="subscription">
+    <domains xmi:id="_imY-kLcqEe6NHM8e0Ef1qw" name="Video">
+      <httpMethods xmi:id="_svZ18LcqEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Video>" path="/"/>
+      <httpMethods xmi:id="_wmbx4LcqEe6NHM8e0Ef1qw" name="getVideo" returnType="Video" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3HKT8LcqEe6NHM8e0Ef1qw" name="add" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.subscription.dto.VideoDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_-ll0YLcqEe6NHM8e0Ef1qw" name="updateVideo" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>Video</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BK1_YLcrEe6NHM8e0Ef1qw" name="deleteVideo" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_DQSB4LcrEe6NHM8e0Ef1qw" name="getWatchers" returnType="Iterable&lt;User>" path="/{id}/watchers">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_FYTeULcrEe6NHM8e0Ef1qw" name="getVideoAuthor" returnType="User" path="/{id}/author">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_Hg3tULcrEe6NHM8e0Ef1qw" name="getVideoHashtags" returnType="Collection&lt;Hashtag>" path="/{id}/hashtags" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_KN57ULcrEe6NHM8e0Ef1qw" name="addWatcher" httpType="Put" returnType="HttpResponse&lt;String>" path="/{videoId}/watchers/{userId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_L-bdwLcrEe6NHM8e0Ef1qw" name="addHashtag" returnType="HttpResponse&lt;String>" path="/{videoId}/hashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="_joFsILcqEe6NHM8e0Ef1qw" name="Hashtag"/>
+    <domains xmi:id="_kfUPELcqEe6NHM8e0Ef1qw" name="User"/>
+  </microservices>
   <topics xmi:id="_TMOv8LclEe6NHM8e0Ef1qw" topicName="video-watched" relatedEvents="_Mye_oLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
   <topics xmi:id="_Nd768LcmEe6NHM8e0Ef1qw" topicName="video-liked" relatedEvents="_vWSx8LclEe6NHM8e0Ef1qw _gDRXALcpEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
   <topics xmi:id="_Qyfb8LcmEe6NHM8e0Ef1qw" topicName="video-disliked" relatedEvents="_3CclULclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>

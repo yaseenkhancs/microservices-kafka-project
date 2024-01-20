@@ -24,7 +24,7 @@ import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 
 @Controller("/videos")
-public class VideosController {
+public class VideosController extends BaseVideosController {
 	
 	@Inject
 	VideosRepository repo;
