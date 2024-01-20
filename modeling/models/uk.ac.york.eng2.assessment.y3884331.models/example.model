@@ -119,7 +119,18 @@
         <parameters>long</parameters>
       </httpMethods>
     </domains>
-    <domains xmi:id="_joFsILcqEe6NHM8e0Ef1qw" name="Hashtag"/>
+    <domains xmi:id="_joFsILcqEe6NHM8e0Ef1qw" name="Hashtag">
+      <httpMethods xmi:id="_9pu-MLcsEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Hashtag>" path="/"/>
+      <httpMethods xmi:id="_9pu-MbcsEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>Hashtag</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9pu-MrcsEe6NHM8e0Ef1qw" name="getHashtag" returnType="uk.ac.york.eng2.subscription.dto.HashtagDTO" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9pu-M7csEe6NHM8e0Ef1qw" name="getHashtagVideos" returnType="Video[]" path="/{id}/videos">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
     <domains xmi:id="_kfUPELcqEe6NHM8e0Ef1qw" name="User">
       <httpMethods xmi:id="_3spKILcrEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;User>" path="/"/>
       <httpMethods xmi:id="_3spKIbcrEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">

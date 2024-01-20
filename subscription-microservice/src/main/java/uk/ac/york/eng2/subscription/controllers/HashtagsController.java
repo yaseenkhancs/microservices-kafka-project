@@ -19,7 +19,7 @@ import uk.ac.york.eng2.subscription.dto.HashtagDTO;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 
 @Controller("/hashtags")
-public class HashtagsController {
+public class HashtagsController extends BaseHashtagsController {
 	
 	@Inject
 	HashtagsRepository repo;
