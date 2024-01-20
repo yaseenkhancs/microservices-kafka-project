@@ -21,7 +21,7 @@ import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 
 /**
- * Controller for the hashtags microservice. Defines the interaction
+ * Controller for the hashtags in video MS. Defines the interaction
  * with the database. 
  * <p>
  * Also encapsulates the kafka producer interaction with the cluster

@@ -6,6 +6,13 @@ import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 import uk.ac.york.eng2.trending.domain.HashtagCount;
 
+/**
+ * Repository declaration for the hashtagcount entity in the trending MS 
+ * 
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Repository
 public interface HashtagCountsRepository extends BaseHashtagCountsRepository{
 	

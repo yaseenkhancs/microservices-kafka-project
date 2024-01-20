@@ -12,6 +12,17 @@ import uk.ac.york.eng2.trending.helpers.Hashtag;
 import uk.ac.york.eng2.trending.domain.HashtagCount;
 import uk.ac.york.eng2.trending.repositories.HashtagCountsRepository;
 
+/**
+ * Controller for the hashtagcounts in the trending MS. Defines the 
+ * interaction with the database. 
+ * <p>
+ * Also encapsulates the kafka producer interaction with the cluster
+ * depending various changes to database state. 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Controller("/hashtagcounts")
 public class HashtagCountsController extends BaseHashtagCountsController {
 

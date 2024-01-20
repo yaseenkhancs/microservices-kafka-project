@@ -13,6 +13,16 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.LinkedHashMap;
 
+/**
+ * Class which declares a command to get the trending hashtag.
+ * <p>
+ * Retrieves hashtag counts, gets totals of the ones not "expired", then
+ * sorts in descending order based on total until the 10th tag.
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Command(name="get-trending", description="Gets currently trending tags", mixinStandardHelpOptions=true)
 public class GetTrending implements Runnable {
 	

@@ -22,7 +22,7 @@ import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 
 /**
- * Controller for the users microservice. Defines the interaction
+ * Controller for the users in the video MS. Defines the interaction
  * with the database. 
  * <p>
  * Also encapsulates the kafka producer interaction with the cluster
