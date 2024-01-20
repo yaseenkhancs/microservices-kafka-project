@@ -120,7 +120,40 @@
       </httpMethods>
     </domains>
     <domains xmi:id="_joFsILcqEe6NHM8e0Ef1qw" name="Hashtag"/>
-    <domains xmi:id="_kfUPELcqEe6NHM8e0Ef1qw" name="User"/>
+    <domains xmi:id="_kfUPELcqEe6NHM8e0Ef1qw" name="User">
+      <httpMethods xmi:id="_3spKILcrEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;User>" path="/"/>
+      <httpMethods xmi:id="_3spKIbcrEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>User</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKIrcrEe6NHM8e0Ef1qw" name="getUser" returnType="User" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKI7crEe6NHM8e0Ef1qw" name="getWatchedVideos" returnType="Video[]" path="/{id}/watchedvideos">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKJLcrEe6NHM8e0Ef1qw" name="updateUser" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>uk.ac.york.eng2.subscription.dto.UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKJbcrEe6NHM8e0Ef1qw" name="deleteUser" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="__YNusLcrEe6NHM8e0Ef1qw" name="getSubscribedHashtags" returnType="Hashtag[]" path="/{id}/subscribedhashtags">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_EXpdILcsEe6NHM8e0Ef1qw" name="addSubHashtag" returnType="HttpResponse&lt;String>" path="/{userId}/subscribedhashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_b02HYLcsEe6NHM8e0Ef1qw" name="deleteSubHashtag" returnType="HttpResponse&lt;String>" path="/{userId}/subscribedhashtags/{hashtagId}/delete">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_hssEgLcsEe6NHM8e0Ef1qw" name="getUserTagVideos" returnType="Video[]" path="/{userId}/subscribedhashtags/{hashtagId}/videos">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
   </microservices>
   <topics xmi:id="_TMOv8LclEe6NHM8e0Ef1qw" topicName="video-watched" relatedEvents="_Mye_oLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
   <topics xmi:id="_Nd768LcmEe6NHM8e0Ef1qw" topicName="video-liked" relatedEvents="_vWSx8LclEe6NHM8e0Ef1qw _gDRXALcpEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>

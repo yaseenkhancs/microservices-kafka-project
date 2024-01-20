@@ -24,7 +24,7 @@ import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 
 @Controller("/users")
-public class UsersController {
+public class UsersController extends BaseUsersController {
 	
 	@Inject
 	UsersRepository repo;
