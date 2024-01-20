@@ -60,11 +60,13 @@ context Topic {
 	
 	}
 	
-	constraint OneProducerOneSubscriber {
+	critique OneProducerOneSubscriber {
+	
+		guard: self.satisfies("NamePresence")
 		
 		check: self.subscribers.size()>=1 and self.producers.size()>=1
 		
-		message: "A topic must have a related consumer and producer"
+		message: self.topicName + " must have a related consumer and producer"
 		
 	}
 }
@@ -81,6 +83,8 @@ context Event {
 	
 	constraint KeyPresence {
 	
+		guard: self.satisfies("NamePresence")
+	
 		check:  not (self.key==null)
 		
 		message: "Please give your event " + self.eventName + " a key." 
@@ -89,6 +93,8 @@ context Event {
 	
 	constraint ValuePresence {
 	
+		guard: self.satisfies("NamePresence")
+	
 		check:  not (self.value==null)
 		
 		message: "Please give your event " + self.eventName + " a value."
@@ -96,6 +102,8 @@ context Event {
 	}	
 
 	constraint UsedAtLeastOnce {
+	
+		guard: self.satisfies("NamePresence")
 	
 		check : self.relatedTopics.size() >= 1
 		
