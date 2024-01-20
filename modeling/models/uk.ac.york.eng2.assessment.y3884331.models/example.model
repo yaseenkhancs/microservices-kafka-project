@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_M8_kMLYtEe6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
-  <events xmi:id="_nHwn8LYtEe6wU4C-Rm5a6w" eventName="addedUser" key="long" value="User" relatedTopics="_lFxiELYtEe6wU4C-Rm5a6w"/>
-  <events xmi:id="_rs-CQLZeEe6wU4C-Rm5a6w" eventName="videoLikeMetric" key="long" value="uk.ac.york.eng2.trending.helpers.Hashtag" relatedTopics="_w0k1QLZeEe6wU4C-Rm5a6w"/>
-  <microservices xmi:id="_iVBRsLYtEe6wU4C-Rm5a6w" msName="subscription-microservice" packagename="subscription">
-    <domains xmi:id="_7YjAkLYtEe6wU4C-Rm5a6w" name="Hashtag"/>
-    <domains xmi:id="_9YgGILYtEe6wU4C-Rm5a6w" name="User"/>
-    <consumers xmi:id="_t_qT4LYtEe6wU4C-Rm5a6w" conName="Subscription" consumedEvents="_nHwn8LYtEe6wU4C-Rm5a6w"/>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_0cV_YLcdEe6NHM8e0Ef1qw" packageName="uk.ac.york.eng2">
+  <microservices xmi:id="_4sC6ALcdEe6NHM8e0Ef1qw" msName="video-microservice" packagename="videos">
+    <domains xmi:id="_6dtr8LcdEe6NHM8e0Ef1qw" name="Video">
+      <httpMethods xmi:id="_By6X4LceEe6NHM8e0Ef1qw" name="add" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>VideoDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3ht_cLceEe6NHM8e0Ef1qw" name="getVideo" returnType="Video" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9tch4LceEe6NHM8e0Ef1qw" name="updateVideo" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>Video</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_FdunULcfEe6NHM8e0Ef1qw" name="deleteVideo" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_MSWVwLcfEe6NHM8e0Ef1qw" name="getWatchers" returnType="Iterable&lt;User>" path="/{id}/watchers">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_Rl2PsLcfEe6NHM8e0Ef1qw" name="getVideoAuthor" returnType="User" path="/{id}/author">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_V4cGQLcfEe6NHM8e0Ef1qw" name="getVideoHashtags" returnType="Collection&lt;Hashtag>" path="/{id}/hashtags" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_b8EcoLcfEe6NHM8e0Ef1qw" name="addWatcher" httpType="Put" returnType="HttpResponse&lt;String>" path="/{videoId}/watchers/{userId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_UtFbgLchEe6NHM8e0Ef1qw" name="addHashtag" returnType="HttpResponse&lt;String>" path="/{videoId}/hashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="_-ioS4LcdEe6NHM8e0Ef1qw" name="Hashtag"/>
+    <domains xmi:id="__mJlYLcdEe6NHM8e0Ef1qw" name="User"/>
   </microservices>
-  <microservices xmi:id="_f7zhULZeEe6wU4C-Rm5a6w" msName="trending-hashtag-microservice" packagename="trending">
-    <domains xmi:id="_jvGz0LZeEe6wU4C-Rm5a6w" name="HashtagCount"/>
-    <consumers xmi:id="_of96wLZeEe6wU4C-Rm5a6w" conName="Trending" consumedEvents="_rs-CQLZeEe6wU4C-Rm5a6w"/>
-  </microservices>
-  <topics xmi:id="_lFxiELYtEe6wU4C-Rm5a6w" topicName="user-added" relatedEvents="_nHwn8LYtEe6wU4C-Rm5a6w" subscribers="_t_qT4LYtEe6wU4C-Rm5a6w"/>
-  <topics xmi:id="_w0k1QLZeEe6wU4C-Rm5a6w" topicName="video-liked" relatedEvents="_rs-CQLZeEe6wU4C-Rm5a6w" subscribers="_of96wLZeEe6wU4C-Rm5a6w"/>
 </Assessment>

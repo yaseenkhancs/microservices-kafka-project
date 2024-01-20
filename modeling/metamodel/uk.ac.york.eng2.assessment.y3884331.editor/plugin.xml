@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated assessment -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="assessment.presentation.AssessmentModelWizardID"
+            name="%_UI_AssessmentModelWizard_label"
+            class="assessment.presentation.AssessmentModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AssessmentModelFile.gif">
+         <description>%_UI_AssessmentModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated assessment -->
+      <editor
+            id="assessment.presentation.AssessmentEditorID"
+            name="%_UI_AssessmentEditor_label"
+            icon="icons/full/obj16/AssessmentModelFile.gif"
+            extensions="assessment"
+            class="assessment.presentation.AssessmentEditor"
+            contributorClass="assessment.presentation.AssessmentActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

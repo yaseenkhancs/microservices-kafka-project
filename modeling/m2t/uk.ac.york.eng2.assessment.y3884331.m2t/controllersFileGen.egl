@@ -4,12 +4,15 @@ package [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].control
 import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].repositories.[%=dom.name.ftuc()%]sRepository;
 [%}%]
 import jakarta.inject.Inject;
+import java.util.Collection;
+import javax.transaction.Transactional;
 [%for (method in d.httpMethods){%]
 import io.micronaut.http.annotation.[%=method.httpType%];
 [%}%]
 import io.micronaut.http.HttpResponse;
 [%for (dom in m.domains) {%]
 import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=dom.name.ftuc()%];
+import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].dto.[%=dom.name.ftuc()%]DTO;
 [%}%]
 
 public class Base[%=d.name.ftuc()%]sController {
@@ -36,7 +39,6 @@ public class Base[%=d.name.ftuc()%]sController {
 		}
 		varcount++;
 	}%]
-
 	public [%=method.returnType%] [%=method.name.replaceAll("[^a-zA-Z0-9]", "")%]([%=paramlist%]){
 	    return null;
 	}
