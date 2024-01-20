@@ -4,7 +4,6 @@ import picocli.CommandLine.Command;
 import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
 import uk.ac.york.eng2.subscription.cli.domain.User;
 import uk.ac.york.eng2.subscription.cli.domain.Video;
-import uk.ac.york.eng2.subscription.cli.videos.VideosClient;
 
 @Command(name="get-videos", description="Gets all the videos", mixinStandardHelpOptions = true)
 public class GetVideosCommand implements Runnable {

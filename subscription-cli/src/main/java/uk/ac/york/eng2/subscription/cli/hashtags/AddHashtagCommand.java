@@ -5,7 +5,6 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.subscription.cli.domain.Hashtag;
-import uk.ac.york.eng2.subscription.cli.hashtags.HashtagsClient;
 
 @Command(name="add-tag", description="Adds a tag", mixinStandardHelpOptions = true)
 public class AddHashtagCommand implements Runnable {

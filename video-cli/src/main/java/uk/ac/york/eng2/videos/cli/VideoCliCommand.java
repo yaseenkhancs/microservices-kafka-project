@@ -1,12 +1,9 @@
 package uk.ac.york.eng2.videos.cli;
 
 import io.micronaut.configuration.picocli.PicocliRunner;
-import io.micronaut.context.ApplicationContext;
 
-import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.hashtags.AddHashtag;
 import uk.ac.york.eng2.videos.cli.hashtags.GetHashtag;
 import uk.ac.york.eng2.videos.cli.hashtags.GetHashtags;

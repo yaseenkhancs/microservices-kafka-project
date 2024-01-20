@@ -1,12 +1,10 @@
 package uk.ac.york.eng2.videos.cli.videos;
 
-import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.domain.Video;
-import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="get-video", description="Gets a specific video", mixinStandardHelpOptions = true)
 public class GetVideoCommand implements Runnable {

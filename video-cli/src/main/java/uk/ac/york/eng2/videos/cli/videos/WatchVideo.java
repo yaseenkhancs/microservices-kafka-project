@@ -5,7 +5,6 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.Video;
-import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="watch-video", description="watches a video", mixinStandardHelpOptions = true)
 public class WatchVideo implements Runnable {

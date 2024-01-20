@@ -1,7 +1,5 @@
 package uk.ac.york.eng2.videos.events;
 
-import java.util.ArrayList;
-import java.util.Collection;
 
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
@@ -24,12 +22,6 @@ import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 @KafkaClient
 public interface VideosProducer extends BaseVideosProducer {
 	
-//	HashMap<String, Video> userVideo = new HashMap<String, Video>();
-
-	/*
-	 * NOTE: this topic has to be created before we start the program, or we will
-	 * have an error from Kafka Streams.
-	 */
 	String TOPIC_WATCHED = "video-watched";
 	String TOPIC_LIKED = "video-liked";
 	String TOPIC_DISLIKED = "video-disliked";

@@ -5,8 +5,6 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.dto.HashtagDTO;
-import uk.ac.york.eng2.videos.cli.dto.UserDTO;
-import uk.ac.york.eng2.videos.cli.hashtags.HashtagsClient;
 
 @Command(name="add-tag", description="Adds a tag", mixinStandardHelpOptions = true)
 public class AddHashtag implements Runnable {

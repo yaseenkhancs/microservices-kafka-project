@@ -1,6 +1,5 @@
 package uk.ac.york.eng2.videos.cli.videos;
 
-import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;

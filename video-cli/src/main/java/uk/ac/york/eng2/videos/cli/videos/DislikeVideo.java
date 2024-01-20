@@ -5,7 +5,6 @@ import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.Video;
-import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 
 @Command(name="dislike-video", description="dislikes a video", mixinStandardHelpOptions = true)
 public class DislikeVideo implements Runnable {

@@ -1,10 +1,7 @@
 package uk.ac.york.eng2.videos.cli.videos;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
 
 import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
@@ -14,7 +11,6 @@ import picocli.CommandLine.Parameters;
 import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 import uk.ac.york.eng2.videos.cli.domain.User;
 import uk.ac.york.eng2.videos.cli.domain.Video;
-import uk.ac.york.eng2.videos.cli.dto.VideoDTO;
 import uk.ac.york.eng2.videos.cli.hashtags.HashtagsClient;
 import uk.ac.york.eng2.videos.cli.users.UsersClient;
 
@@ -38,13 +34,6 @@ public class UpdateVideoCommand implements Runnable {
 	
 	@Option(names = {"--likes", "--l"}, description="likes of the video")
 	private Integer likes;
-	
-	private HashSet<String> stringToSet(String s) {
-		s = s.replaceAll("\\s", ""); //removes whitespace from the tags list
-		List<String> list = new ArrayList<String>(Arrays.asList(s.split(","))); //splits resulting string by commas
-		HashSet<String> output = new HashSet<>(list);
-		return output;
-	}
 
 	@Inject
 	private VideosClient client;

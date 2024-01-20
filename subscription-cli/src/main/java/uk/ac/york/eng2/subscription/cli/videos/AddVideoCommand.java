@@ -7,7 +7,6 @@ import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
-import uk.ac.york.eng2.subscription.cli.domain.Video;
 import uk.ac.york.eng2.subscription.cli.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.cli.hashtags.HashtagsClient;
 import uk.ac.york.eng2.subscription.cli.users.UsersClient;

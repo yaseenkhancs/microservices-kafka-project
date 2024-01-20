@@ -1,8 +1,5 @@
 package uk.ac.york.eng2.trending.events;
 
-import java.time.Instant;
-import java.util.ArrayList;
-
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
 import io.micronaut.configuration.kafka.annotation.Topic;

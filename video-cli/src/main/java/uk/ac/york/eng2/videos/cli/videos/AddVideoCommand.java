@@ -1,11 +1,7 @@
 package uk.ac.york.eng2.videos.cli.videos;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
@@ -38,13 +34,6 @@ public class AddVideoCommand implements Runnable {
 	@Parameters(index="2")
 	private Integer tag;
 	
-//	private HashSet<String> stringToSet(String s) {
-//		s = s.replaceAll("\\s", ""); //removes whitespace from the tags list
-//		List<String> list = new ArrayList<String>(Arrays.asList(s.split(","))); //splits resulting string by commas
-//		HashSet<String> output = new HashSet<>(list);
-//		return output;
-//	}
-
 	@Override
 	public void run() {
 		User usr = new User();

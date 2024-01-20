@@ -3,7 +3,6 @@ package uk.ac.york.eng2.subscription.events;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.KafkaKey;
 import io.micronaut.configuration.kafka.annotation.Topic;
-import uk.ac.york.eng2.subscription.domain.Video;
 
 /**
  * Kafka client for producing events in the subscription microservice 
@@ -17,9 +16,7 @@ import uk.ac.york.eng2.subscription.domain.Video;
 */
 @KafkaClient
 public interface VideosProducer extends BaseSubscriptionProducer {
-	
-	String TOPIC_LIKED = "video-liked";
-	String TOPIC_POSTED = "video-posted";
+
 	String TOPIC_SUBSCRIBED = "user-subscribed";
 	String TOPIC_UNSUBSCRIBED = "user-unsubscribed";
 		

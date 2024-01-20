@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Hashtable;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
-import java.util.LinkedHashMap;
 
 /**
  * Class which declares a command to get the trending hashtag.

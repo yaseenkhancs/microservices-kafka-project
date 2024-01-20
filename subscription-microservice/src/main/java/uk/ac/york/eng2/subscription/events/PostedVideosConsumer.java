@@ -10,7 +10,6 @@ import uk.ac.york.eng2.subscription.controllers.VideosController;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 import uk.ac.york.eng2.subscription.domain.User;
 import uk.ac.york.eng2.subscription.domain.Video;
-import uk.ac.york.eng2.subscription.dto.UserDTO;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.helpers.HashtagUserPair;
 

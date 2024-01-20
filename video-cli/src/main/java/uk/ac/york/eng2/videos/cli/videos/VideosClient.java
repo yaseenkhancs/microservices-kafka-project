@@ -1,6 +1,5 @@
 package uk.ac.york.eng2.videos.cli.videos;
 
-import java.net.URI;
 import java.util.Collection;
 
 import io.micronaut.http.HttpResponse;

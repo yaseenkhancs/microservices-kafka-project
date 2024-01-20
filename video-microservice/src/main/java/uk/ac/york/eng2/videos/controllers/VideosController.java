@@ -3,7 +3,6 @@ package uk.ac.york.eng2.videos.controllers;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -16,10 +15,8 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
 import jakarta.inject.Inject;
-import javafx.util.Pair;
 import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
-//import uk.ac.york.eng2.books.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.events.VideosProducer;
@@ -27,7 +24,6 @@ import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
-//import uk.ac.york.eng2.books.repositories.UsersRepository;
 
 /**
  * Controller for the videos microservice. Defines the interaction
@@ -87,7 +83,6 @@ public class VideosController extends BaseVideosController {
 	
 	@Get("/{id}")
 	public Video getVideo(long id) {
-//		System.out.println(repo.findOne(1));
 		return repo.findOne(id).orElse(null);
 	}
 	
@@ -104,42 +99,31 @@ public class VideosController extends BaseVideosController {
 			return HttpResponse.notFound();
 		}
 
-		Video v = video.get(); //v is of type Video, contains the received id thing
-		if (videoDetails.getTitle() != null) { //if the http argument provided...
+		Video v = video.get();
+		if (videoDetails.getTitle() != null) {
 			v.setTitle(videoDetails.getTitle());
 		}
-		if (videoDetails.getAuthor() != null) { //if the http argument provided...
-			v.setAuthor(videoDetails.getAuthor()); //set the author of the fetched v
+		if (videoDetails.getAuthor() != null) {
+			v.setAuthor(videoDetails.getAuthor());
 		}
-		if (videoDetails.getTags() != null) { //if the http argument provided...
-			v.setTags(videoDetails.getTags()); //set the tags of the fetched v
+		if (videoDetails.getTags() != null) {
+			v.setTags(videoDetails.getTags());
 		}
-		if (videoDetails.getNviews() != null) { //if the http argument provided...
-			v.setNviews(videoDetails.getNviews()); //set the views of the fetched v
-//			producer.watchVideo(id, "Username");		
+		if (videoDetails.getNviews() != null) {
+			v.setNviews(videoDetails.getNviews());	
 		}
-		if (videoDetails.getNlikes() != null) { //if the http argument provided...
-			v.setNlikes(videoDetails.getNlikes()); //set the views of the fetched v
-			System.out.println(v);
-			System.out.println(getVideoHashtags(id));
-			Hashtag x = (Hashtag) getVideoHashtags(id).toArray()[0];
-			System.out.println(x.getName());
-			String yo = "";
-			Hashtag ht =  (Hashtag) getVideoHashtags(id).toArray()[0];
-			yo = yo + v.toString() + ((Hashtag) getVideoHashtags(id).toArray()[0]).getName();
-			ArrayList<Hashtag> newlist = new ArrayList<>(getVideoHashtags(id));
-			
+		if (videoDetails.getNlikes() != null) {
+			v.setNlikes(videoDetails.getNlikes());
+			ArrayList<Hashtag> newlist = new ArrayList<>(getVideoHashtags(id));			
 			for (Hashtag thistag : newlist) {
 				producer.likeVideo((long) 1, thistag);
 			}
-			
-//			producer.likeVideo((long) 5, ht);
 		}
-		if (videoDetails.getNdislikes() != null) { //if the http argument provided...
-			v.setNdislikes(videoDetails.getNdislikes()); //set the views of the fetched v
+		if (videoDetails.getNdislikes() != null) {
+			v.setNdislikes(videoDetails.getNdislikes());
 			producer.dislikeVideo(id, v);
 		}
-		repo.update(v); //update the repo - will look at ID and put in correct place accordingly
+		repo.update(v);
 		return HttpResponse.ok();
 	}
 

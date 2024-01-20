@@ -1,7 +1,6 @@
 package uk.ac.york.eng2.videos.cli.dto;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import io.micronaut.serde.annotation.Serdeable;
@@ -53,16 +52,6 @@ public class VideoDTO {
 		this.tags = tags;
 	}
 
-//	private String tagsString() {
-//		String output = "[";
-//		for (String s : tags) {			
-//			output = output.concat(s + ", ");
-//		}
-//		output = output.substring(0,output.length() - 2);
-//		output = output.concat("]");
-//		return output;
-//	}
-
 	public Integer getNlikes() {
 		return nlikes;
 	}
@@ -93,19 +82,6 @@ public class VideoDTO {
 
 	public void setWatchers(Set<User> watchers) {
 		this.watchers = watchers;
-	}
-	
-	private String watchersString() {
-		if (watchers == null) {
-			return "NONE";
-		}
-		String output = "[";
-		for (User s : watchers) {			
-			output = output.concat(s.getUsername() + ", ");
-		}
-		output = output.substring(0,output.length() - 2);
-		output = output.concat("]");
-		return output;
 	}
 	
 	@Override

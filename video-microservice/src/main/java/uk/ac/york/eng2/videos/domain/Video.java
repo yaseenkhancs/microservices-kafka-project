@@ -1,25 +1,17 @@
 package uk.ac.york.eng2.videos.domain;
 
 import java.util.Collection;
-import java.util.HashSet;
-//import java.util.Set;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import io.micronaut.serde.annotation.Serdeable;
-import uk.ac.york.eng2.videos.controllers.VideosController;
 
 /**
  * Entity declaration for the Video in the video Microservice 
@@ -48,7 +40,6 @@ public class Video extends BaseVideo {
 	@Column(nullable = false)
 	private String title;
 	
-//	@ElementCollection
 	@JsonIgnore
 	@ManyToMany
 	private Collection<Hashtag> tags;
@@ -101,15 +92,6 @@ public class Video extends BaseVideo {
 	public void setTags(Collection<Hashtag> tags) {
 		this.tags = tags;
 	}
-	
-//	private String tagsString() {
-//		String output = "[";
-//		for (Hashtag s : tags) {			
-//			output = output.concat(s + ", ");
-//		}
-//		output = output.concat("]");
-//		return output;
-//	}
 
 	public Integer getNlikes() {
 		return nlikes;
@@ -141,19 +123,6 @@ public class Video extends BaseVideo {
 
 	public void setWatchers(Set<User> watchers) {
 		this.watchers = watchers;
-	}
-	
-	private String watchersString() {
-		if (watchers == null) {
-			return "NONE";
-		}
-		String output = "[";
-		for (User s : watchers) {			
-			output = output.concat(s.getUsername() + ", ");
-		}
-		output = output.substring(0,output.length() - 2);
-		output = output.concat("]");
-		return output;
 	}
 	
 	@Override

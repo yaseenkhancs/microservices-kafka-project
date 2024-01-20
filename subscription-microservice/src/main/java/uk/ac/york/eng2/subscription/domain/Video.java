@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -45,7 +44,6 @@ public class Video extends BaseVideo {
 	@Column(nullable = false)
 	private String title;
 	
-//	@ElementCollection
 	@JsonIgnore
 	@ManyToMany
 	private Collection<Hashtag> tags;
