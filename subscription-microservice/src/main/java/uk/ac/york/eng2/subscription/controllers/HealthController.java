@@ -5,7 +5,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 
 @Controller("/")
-public class HealthController {
+public class HealthController extends BaseHealthController {
 	
 	@Get("/")
 	public HttpResponse<String> heartbeat() {

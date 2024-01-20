@@ -16,7 +16,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Entity
 @Serdeable
-public class Video {
+public class Video extends BaseVideo {
 	
 	@Id
 	private Long id;
