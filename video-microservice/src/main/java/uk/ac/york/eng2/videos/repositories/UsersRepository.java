@@ -8,7 +8,7 @@ import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.dto.UserDTO;
 
 @Repository
-public interface UsersRepository extends CrudRepository<User, Long> {
+public interface UsersRepository extends BaseUsersRepository {
 
 	Optional<User> findOne(long id);
 

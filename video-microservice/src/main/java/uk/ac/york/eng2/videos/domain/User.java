@@ -15,7 +15,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Entity
 @Serdeable
-public class User {
+public class User extends BaseUser {
 
 	@Id
 	@GeneratedValue

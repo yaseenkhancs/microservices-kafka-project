@@ -5,6 +5,7 @@ import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import jakarta.inject.Inject;
 import java.util.Collection;
+import java.util.Set;
 import javax.transaction.Transactional;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
@@ -14,6 +15,7 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Put;
+import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.HttpResponse;
 import uk.ac.york.eng2.videos.domain.Video;
@@ -67,6 +69,10 @@ public class BaseVideosController {
 	}
 	
 	public HttpResponse<String> addHashtag(long var0, long var1){
+	    return null;
+	}
+	
+	public Iterable<Video> list(){
 	    return null;
 	}
 	

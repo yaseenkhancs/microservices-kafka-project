@@ -3,7 +3,7 @@ package uk.ac.york.eng2.videos.dto;
 import io.micronaut.serde.annotation.Serdeable;
 
 @Serdeable
-public class UserDTO {
+public class UserDTO extends BaseUserDTO {
 
 	private String username;
 

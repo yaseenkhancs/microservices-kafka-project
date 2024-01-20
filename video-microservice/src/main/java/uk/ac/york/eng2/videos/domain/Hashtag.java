@@ -15,7 +15,7 @@ import io.micronaut.serde.annotation.Serdeable;
 
 @Entity
 @Serdeable
-public class Hashtag {
+public class Hashtag extends BaseHashtag {
 	@Id
 	@GeneratedValue
 	private Long id;

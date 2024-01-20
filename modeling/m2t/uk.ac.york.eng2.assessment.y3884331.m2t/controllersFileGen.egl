@@ -5,6 +5,7 @@ import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].reposito
 [%}%]
 import jakarta.inject.Inject;
 import java.util.Collection;
+import java.util.Set;
 import javax.transaction.Transactional;
 [%for (method in d.httpMethods){%]
 import io.micronaut.http.annotation.[%=method.httpType%];

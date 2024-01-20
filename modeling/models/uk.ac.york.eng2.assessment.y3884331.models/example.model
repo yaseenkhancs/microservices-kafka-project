@@ -32,8 +32,38 @@
         <parameters>long</parameters>
         <parameters>long</parameters>
       </httpMethods>
+      <httpMethods xmi:id="_Wz6vsLciEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Video>" path="/"/>
     </domains>
-    <domains xmi:id="_-ioS4LcdEe6NHM8e0Ef1qw" name="Hashtag"/>
-    <domains xmi:id="__mJlYLcdEe6NHM8e0Ef1qw" name="User"/>
+    <domains xmi:id="_-ioS4LcdEe6NHM8e0Ef1qw" name="Hashtag">
+      <httpMethods xmi:id="_wZN5cLcjEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Hashtag>" path="/"/>
+      <httpMethods xmi:id="_0QUG0LcjEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>HashtagDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_6XgukLcjEe6NHM8e0Ef1qw" name="getHashtag" returnType="HashtagDTO" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BZOd0LckEe6NHM8e0Ef1qw" name="getHashtagVideos" returnType="Video[]" path="/{id}/videos">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="__mJlYLcdEe6NHM8e0Ef1qw" name="User">
+      <httpMethods xmi:id="_g4hoMLciEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;User>" path="/"/>
+      <httpMethods xmi:id="_mJZr8LciEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_yGTi0LciEe6NHM8e0Ef1qw" name="getUser" returnType="User" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_2VuJkLciEe6NHM8e0Ef1qw" name="getWatchedVideos" returnType="Video[]" path="/{id}/watchedvideos">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BWzRYLcjEe6NHM8e0Ef1qw" name="updateUser" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_HPuMkLcjEe6NHM8e0Ef1qw" name="deleteUser" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
   </microservices>
 </Assessment>

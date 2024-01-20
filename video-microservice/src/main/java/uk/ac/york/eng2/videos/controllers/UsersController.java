@@ -22,7 +22,7 @@ import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 
 @Controller("/users")
-public class UsersController {
+public class UsersController extends BaseUsersController {
 
 	@Inject
 	UsersRepository repo;

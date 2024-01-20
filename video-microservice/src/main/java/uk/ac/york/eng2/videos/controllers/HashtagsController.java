@@ -21,7 +21,7 @@ import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.HashtagsRepository;
 
 @Controller("/hashtags")
-public class HashtagsController {
+public class HashtagsController extends BaseHashtagsController {
 	
 	@Inject
 	HashtagsRepository repo;
