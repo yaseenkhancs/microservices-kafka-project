@@ -12,6 +12,18 @@ services:
     ports:
       - 3306:3306
 
+  db2:
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: trendinghashtagmicroservicedb
+      MYSQL_USER: todo8
+      MYSQL_PASSWORD: todosecret8
+      MYSQL_ROOT_PASSWORD: todoroot8
+    volumes:
+      - mariadb_data2:/var/lib/mysql
+    ports:
+      - 3307:3306
+
  adminer:
     image: adminer:4-standalone
     ports:
@@ -108,6 +120,7 @@ services:
 
 volumes:
   mariadb_data1:
+  mariadb_data2:
   kafka_0_data:
   kafka_1_data:
   kafka_2_data:

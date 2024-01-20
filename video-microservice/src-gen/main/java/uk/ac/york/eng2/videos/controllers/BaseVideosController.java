@@ -19,11 +19,8 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.HttpResponse;
 import uk.ac.york.eng2.videos.domain.Video;
-import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.domain.Hashtag;
-import uk.ac.york.eng2.videos.dto.HashtagDTO;
 import uk.ac.york.eng2.videos.domain.User;
-import uk.ac.york.eng2.videos.dto.UserDTO;
 
 public class BaseVideosController {
 	
@@ -34,7 +31,7 @@ public class BaseVideosController {
 	
 	UsersRepository usersRepo;	
 	
-	public HttpResponse<Void> add(VideoDTO var0){
+	public HttpResponse<Void> add(uk.ac.york.eng2.videos.dto.VideoDTO var0){
 	    return null;
 	}
 	

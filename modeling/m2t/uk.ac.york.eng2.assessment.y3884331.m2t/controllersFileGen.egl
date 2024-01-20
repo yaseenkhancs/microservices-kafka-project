@@ -13,7 +13,6 @@ import io.micronaut.http.annotation.[%=method.httpType%];
 import io.micronaut.http.HttpResponse;
 [%for (dom in m.domains) {%]
 import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].domain.[%=dom.name.ftuc()%];
-import [%=m.eContainer().packageName%].[%=m.packagename.toLowerCase()%].dto.[%=dom.name.ftuc()%]DTO;
 [%}%]
 
 public class Base[%=d.name.ftuc()%]sController {

@@ -13,11 +13,8 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.HttpResponse;
 import uk.ac.york.eng2.videos.domain.Video;
-import uk.ac.york.eng2.videos.dto.VideoDTO;
 import uk.ac.york.eng2.videos.domain.Hashtag;
-import uk.ac.york.eng2.videos.dto.HashtagDTO;
 import uk.ac.york.eng2.videos.domain.User;
-import uk.ac.york.eng2.videos.dto.UserDTO;
 
 public class BaseHashtagsController {
 	
@@ -32,11 +29,11 @@ public class BaseHashtagsController {
 	    return null;
 	}
 	
-	public HttpResponse<Void> add(HashtagDTO var0){
+	public HttpResponse<Void> add(uk.ac.york.eng2.videos.dto.HashtagDTO var0){
 	    return null;
 	}
 	
-	public HashtagDTO getHashtag(long var0){
+	public uk.ac.york.eng2.videos.dto.HashtagDTO getHashtag(long var0){
 	    return null;
 	}
 	
