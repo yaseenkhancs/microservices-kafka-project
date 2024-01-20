@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_0cV_YLcdEe6NHM8e0Ef1qw" packageName="uk.ac.york.eng2">
+  <events xmi:id="_Mye_oLclEe6NHM8e0Ef1qw" eventName="watchVideo" key="Long" value="Video" relatedTopics="_TMOv8LclEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_vWSx8LclEe6NHM8e0Ef1qw" eventName="likeVideo" key="long" value="Hashtag" relatedTopics="_Nd768LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_3CclULclEe6NHM8e0Ef1qw" eventName="dislikeVideo" key="Long" value="Video" relatedTopics="_Qyfb8LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_5MJcwLclEe6NHM8e0Ef1qw" eventName="postVideo" key="uk.ac.york.eng2.videos.helpers.HashtagUserPair" value="Video" relatedTopics="_VAj-4LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_9uDhsLclEe6NHM8e0Ef1qw" eventName="addUser" key="Long" value="User" relatedTopics="_WOS9ULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_AqalILcmEe6NHM8e0Ef1qw" eventName="addHashtag" key="Long" value="Hashtag" relatedTopics="_Xo7vULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_DtacELcmEe6NHM8e0Ef1qw" eventName="addAnotherHashtag" key="Long" value="Long" relatedTopics="_YxpD0LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_GIqWgLcmEe6NHM8e0Ef1qw" eventName="addWatcher" key="Long" value="Long" relatedTopics="_Z5WSwLcmEe6NHM8e0Ef1qw"/>
   <microservices xmi:id="_4sC6ALcdEe6NHM8e0Ef1qw" msName="video-microservice" packagename="videos">
     <domains xmi:id="_6dtr8LcdEe6NHM8e0Ef1qw" name="Video">
       <httpMethods xmi:id="_By6X4LceEe6NHM8e0Ef1qw" name="add" returnType="HttpResponse&lt;Void>" path="/">
@@ -65,5 +73,14 @@
         <parameters>long</parameters>
       </httpMethods>
     </domains>
+    <producers xmi:id="_KjIzMLclEe6NHM8e0Ef1qw" prodName="Videos" producedEvents="_Mye_oLclEe6NHM8e0Ef1qw _DtacELcmEe6NHM8e0Ef1qw _AqalILcmEe6NHM8e0Ef1qw _9uDhsLclEe6NHM8e0Ef1qw _GIqWgLcmEe6NHM8e0Ef1qw _3CclULclEe6NHM8e0Ef1qw _vWSx8LclEe6NHM8e0Ef1qw _5MJcwLclEe6NHM8e0Ef1qw"/>
   </microservices>
+  <topics xmi:id="_TMOv8LclEe6NHM8e0Ef1qw" topicName="video-watched" relatedEvents="_Mye_oLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Nd768LcmEe6NHM8e0Ef1qw" topicName="video-liked" relatedEvents="_vWSx8LclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Qyfb8LcmEe6NHM8e0Ef1qw" topicName="video-disliked" relatedEvents="_3CclULclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_VAj-4LcmEe6NHM8e0Ef1qw" topicName="video-posted" relatedEvents="_5MJcwLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_WOS9ULcmEe6NHM8e0Ef1qw" topicName="user-added" relatedEvents="_9uDhsLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Xo7vULcmEe6NHM8e0Ef1qw" topicName="hashtag-added" relatedEvents="_AqalILcmEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_YxpD0LcmEe6NHM8e0Ef1qw" topicName="another-hashtag" relatedEvents="_DtacELcmEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Z5WSwLcmEe6NHM8e0Ef1qw" topicName="watcher-added" relatedEvents="_GIqWgLcmEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw"/>
 </Assessment>

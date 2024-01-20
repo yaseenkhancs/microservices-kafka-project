@@ -15,6 +15,7 @@ public interface Base[%=p.prodName.ftuc()%]Producer {
 	
 	[%for (x in p.producedEvents) {%]
 	void [%=x.eventName.replaceAll("[^a-zA-Z0-9]", "")%](@KafkaKey [%=x.key%] k, [%=x.value%] v);
+	
 	[%}%]
 
 }
