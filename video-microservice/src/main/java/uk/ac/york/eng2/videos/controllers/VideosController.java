@@ -34,7 +34,7 @@ import uk.ac.york.eng2.videos.repositories.VideosRepository;
  * with the database. 
  * <p>
  * Also encapsulates the kafka producer interaction with the cluster
- * depending various changes to database state. * 
+ * depending various changes to database state. 
  *
  * @author Y3884331
  * @version 0.1
@@ -60,6 +60,11 @@ public class VideosController extends BaseVideosController {
 		return repo.findAll();
 	}
 
+	/**
+	 * Initialises a video with no likes, views, dislikes, or watchers
+	 * 
+	 * @param videoDetails contains information about a new video, sans ID	 * 
+	 */
 	@Post("/")
 	public HttpResponse<Void> add(@Body VideoDTO videoDetails) {
 		Video video = new Video();
@@ -86,6 +91,11 @@ public class VideosController extends BaseVideosController {
 		return repo.findOne(id).orElse(null);
 	}
 	
+	
+	
+	/**
+	 * updates a video depending on the presence of certain fields in videoDetails
+	 */
 	@Transactional
 	@Put("/{id}")
 	public HttpResponse<Void> updateVideo(long id, @Body Video videoDetails) {

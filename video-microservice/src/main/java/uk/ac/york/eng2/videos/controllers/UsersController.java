@@ -21,6 +21,17 @@ import uk.ac.york.eng2.videos.dto.UserDTO;
 import uk.ac.york.eng2.videos.events.VideosProducer;
 import uk.ac.york.eng2.videos.repositories.UsersRepository;
 
+/**
+ * Controller for the users microservice. Defines the interaction
+ * with the database. 
+ * <p>
+ * Also encapsulates the kafka producer interaction with the cluster
+ * depending various changes to database state. 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Controller("/users")
 public class UsersController extends BaseUsersController {
 
