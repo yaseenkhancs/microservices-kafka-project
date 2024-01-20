@@ -3,7 +3,7 @@ package uk.ac.york.eng2.videos.cli.domain;
 import io.micronaut.serde.annotation.Serdeable;
 
 /**
- * Video class which mirrors the same class in the microservice 
+ * Hashtag class which mirrors the same class in the microservice 
  * Serialised to that it can transfer information to the MS
  * 
  * @author Y3884331

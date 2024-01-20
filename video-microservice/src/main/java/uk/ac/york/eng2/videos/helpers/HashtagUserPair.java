@@ -18,7 +18,7 @@ import uk.ac.york.eng2.videos.domain.User;
  * Additionally:
  * micronaut.configuration.kafka.serde.SerdeRegeistry is also unable to 
  * serialise parameterized types, such as Pair<A, B>, so a custom
- * class is required for serialisation. * 
+ * class is required for serialisation. 
  *
  * @author Y3884331
  * @version 0.1

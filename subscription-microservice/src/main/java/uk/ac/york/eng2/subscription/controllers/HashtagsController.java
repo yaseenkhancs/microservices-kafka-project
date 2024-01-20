@@ -18,6 +18,18 @@ import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.dto.HashtagDTO;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 
+/**
+ * Controller for the hashtags in subscription MS. Defines the interaction
+ * with the database. 
+ * <p>
+ * Structure and methods of this class are similar to video
+ * with the exception that the ID is also explicitly taken
+ * in the parameters of methods that create new entity objects. 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Controller("/hashtags")
 public class HashtagsController extends BaseHashtagsController {
 	

@@ -5,7 +5,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 
 /**
- * Healthcontroller which handles heartbeat requests - 
+ * HealthController which handles heartbeat requests - 
  * should respond if the microservice is up.
  *  
  * @author Y3884331

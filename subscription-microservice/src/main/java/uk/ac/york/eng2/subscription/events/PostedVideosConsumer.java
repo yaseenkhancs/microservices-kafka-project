@@ -14,6 +14,28 @@ import uk.ac.york.eng2.subscription.dto.UserDTO;
 import uk.ac.york.eng2.subscription.dto.VideoDTO;
 import uk.ac.york.eng2.subscription.helpers.HashtagUserPair;
 
+/**
+ * Kafka client for consuming events in the subscription MS 
+ * <p>
+ * This single class handles all of the consumption, namely the 
+ * consuming of any and all state changes in the video MS, so
+ * the posting of users, videos, hashtags, and any changes in 
+ * the relationships between these entities such as the adding
+ * of hashtags to videos and the adding of watchers to videos.
+ * 
+ * Mirrors much of the functionality from the video CLI - whereas
+ * the video CLI handles getting input from the user and interacting
+ * with the controller with the received information, the subscription
+ * microservice instead handles the instantiation of video elements
+ * via the received kafka topics, so much of that functionality before
+ * the actual controller method is called is called here. For example,
+ * extracting video information from the kafka event in videopostedmetric,
+ * creating the appropriate DTO and then calling the video controller.
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @KafkaListener(groupId="subscription-group")
 public class PostedVideosConsumer extends BaseSubscriptionConsumer {
 	

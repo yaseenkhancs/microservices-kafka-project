@@ -3,7 +3,7 @@ package uk.ac.york.eng2.videos.cli.dto;
 import io.micronaut.serde.annotation.Serdeable;
 
 /**
- * Video data transfer object class which mirrors the same 
+ * Hashtag data transfer object class which mirrors the same 
  * class in the microservice. 
  * Serialised to that it can transfer information to the MS
  * 

@@ -11,6 +11,16 @@ import io.micronaut.data.repository.CrudRepository;
 import uk.ac.york.eng2.subscription.domain.Video;
 import uk.ac.york.eng2.subscription.domain.Hashtag;
 
+/**
+ * Repository declaration for the Video entity in the Subscription MS 
+ * <p>
+ * Creates several database joins to represent various relationships.
+ * 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Repository
 public interface VideosRepository extends BaseVideosRepository {
 	
