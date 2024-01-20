@@ -1,16 +1,188 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_M8_kMLYtEe6wU4C-Rm5a6w" packageName="uk.ac.york.eng2">
-  <events xmi:id="_nHwn8LYtEe6wU4C-Rm5a6w" eventName="addedUser" key="long" value="User" relatedTopics="_lFxiELYtEe6wU4C-Rm5a6w"/>
-  <events xmi:id="_rs-CQLZeEe6wU4C-Rm5a6w" eventName="videoLikeMetric" key="long" value="uk.ac.york.eng2.trending.helpers.Hashtag" relatedTopics="_w0k1QLZeEe6wU4C-Rm5a6w"/>
-  <microservices xmi:id="_iVBRsLYtEe6wU4C-Rm5a6w" msName="subscription-microservice" packagename="subscription">
-    <domains xmi:id="_7YjAkLYtEe6wU4C-Rm5a6w" name="Hashtag"/>
-    <domains xmi:id="_9YgGILYtEe6wU4C-Rm5a6w" name="User"/>
-    <consumers xmi:id="_t_qT4LYtEe6wU4C-Rm5a6w" conName="Subscription" consumedEvents="_nHwn8LYtEe6wU4C-Rm5a6w"/>
+<Assessment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://york.ac.uk/cs/eng2/assessment" xmi:id="_0cV_YLcdEe6NHM8e0Ef1qw" packageName="uk.ac.york.eng2">
+  <events xmi:id="_Mye_oLclEe6NHM8e0Ef1qw" eventName="watchVideo" key="Long" value="Video" relatedTopics="_TMOv8LclEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_vWSx8LclEe6NHM8e0Ef1qw" eventName="likeVideo" key="long" value="Hashtag" relatedTopics="_Nd768LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_3CclULclEe6NHM8e0Ef1qw" eventName="dislikeVideo" key="Long" value="Video" relatedTopics="_Qyfb8LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_5MJcwLclEe6NHM8e0Ef1qw" eventName="postVideo" key="uk.ac.york.eng2.videos.helpers.HashtagUserPair" value="Video" relatedTopics="_VAj-4LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_9uDhsLclEe6NHM8e0Ef1qw" eventName="addUser" key="Long" value="User" relatedTopics="_WOS9ULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_AqalILcmEe6NHM8e0Ef1qw" eventName="addHashtag" key="Long" value="Hashtag" relatedTopics="_Xo7vULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_DtacELcmEe6NHM8e0Ef1qw" eventName="addAnotherHashtag" key="Long" value="Long" relatedTopics="_YxpD0LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_GIqWgLcmEe6NHM8e0Ef1qw" eventName="addWatcher" key="Long" value="Long" relatedTopics="_Z5WSwLcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_gDRXALcpEe6NHM8e0Ef1qw" eventName="videoLikeMetric" key="long" value="uk.ac.york.eng2.trending.helpers.Hashtag" relatedTopics="_Nd768LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_o_LlQLctEe6NHM8e0Ef1qw" eventName="subscribed" key="long" value="long" relatedTopics="_wYfVILctEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_sEyEQLctEe6NHM8e0Ef1qw" eventName="unsubscribed" key="long" value="long" relatedTopics="_3HcgcLctEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_UwaJYLcuEe6NHM8e0Ef1qw" eventName="videoPostedMetric" key="uk.ac.york.eng2.subscription.helpers.HashtagUserPair" value="Video" relatedTopics="_VAj-4LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_eQ1WwLcuEe6NHM8e0Ef1qw" eventName="addedUser" key="long" value="User" relatedTopics="_WOS9ULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_hpWKsLcuEe6NHM8e0Ef1qw" eventName="addedHashtag" key="long" value="Hashtag" relatedTopics="_Xo7vULcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_jwdBILcuEe6NHM8e0Ef1qw" eventName="anotherHashtag" key="long" value="long" relatedTopics="_YxpD0LcmEe6NHM8e0Ef1qw"/>
+  <events xmi:id="_mSWWILcuEe6NHM8e0Ef1qw" eventName="watcherAdded" key="long" value="long" relatedTopics="_Z5WSwLcmEe6NHM8e0Ef1qw"/>
+  <microservices xmi:id="_4sC6ALcdEe6NHM8e0Ef1qw" msName="video-microservice" packagename="videos">
+    <domains xmi:id="_6dtr8LcdEe6NHM8e0Ef1qw" name="Video">
+      <httpMethods xmi:id="_By6X4LceEe6NHM8e0Ef1qw" name="add" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.videos.dto.VideoDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3ht_cLceEe6NHM8e0Ef1qw" name="getVideo" returnType="Video" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9tch4LceEe6NHM8e0Ef1qw" name="updateVideo" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>Video</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_FdunULcfEe6NHM8e0Ef1qw" name="deleteVideo" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_MSWVwLcfEe6NHM8e0Ef1qw" name="getWatchers" returnType="Iterable&lt;User>" path="/{id}/watchers">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_Rl2PsLcfEe6NHM8e0Ef1qw" name="getVideoAuthor" returnType="User" path="/{id}/author">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_V4cGQLcfEe6NHM8e0Ef1qw" name="getVideoHashtags" returnType="Collection&lt;Hashtag>" path="/{id}/hashtags" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_b8EcoLcfEe6NHM8e0Ef1qw" name="addWatcher" httpType="Put" returnType="HttpResponse&lt;String>" path="/{videoId}/watchers/{userId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_UtFbgLchEe6NHM8e0Ef1qw" name="addHashtag" returnType="HttpResponse&lt;String>" path="/{videoId}/hashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_Wz6vsLciEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Video>" path="/"/>
+    </domains>
+    <domains xmi:id="_-ioS4LcdEe6NHM8e0Ef1qw" name="Hashtag">
+      <httpMethods xmi:id="_wZN5cLcjEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Hashtag>" path="/"/>
+      <httpMethods xmi:id="_0QUG0LcjEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.videos.dto.HashtagDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_6XgukLcjEe6NHM8e0Ef1qw" name="getHashtag" returnType="uk.ac.york.eng2.videos.dto.HashtagDTO" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BZOd0LckEe6NHM8e0Ef1qw" name="getHashtagVideos" returnType="Video[]" path="/{id}/videos">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="__mJlYLcdEe6NHM8e0Ef1qw" name="User">
+      <httpMethods xmi:id="_g4hoMLciEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;User>" path="/"/>
+      <httpMethods xmi:id="_mJZr8LciEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.videos.dto.UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_yGTi0LciEe6NHM8e0Ef1qw" name="getUser" returnType="User" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_2VuJkLciEe6NHM8e0Ef1qw" name="getWatchedVideos" returnType="Video[]" path="/{id}/watchedvideos">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BWzRYLcjEe6NHM8e0Ef1qw" name="updateUser" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>uk.ac.york.eng2.videos.dto.UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_HPuMkLcjEe6NHM8e0Ef1qw" name="deleteUser" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <producers xmi:id="_KjIzMLclEe6NHM8e0Ef1qw" prodName="Videos" producedEvents="_Mye_oLclEe6NHM8e0Ef1qw _DtacELcmEe6NHM8e0Ef1qw _AqalILcmEe6NHM8e0Ef1qw _9uDhsLclEe6NHM8e0Ef1qw _GIqWgLcmEe6NHM8e0Ef1qw _3CclULclEe6NHM8e0Ef1qw _vWSx8LclEe6NHM8e0Ef1qw _5MJcwLclEe6NHM8e0Ef1qw"/>
   </microservices>
-  <microservices xmi:id="_f7zhULZeEe6wU4C-Rm5a6w" msName="trending-hashtag-microservice" packagename="trending">
-    <domains xmi:id="_jvGz0LZeEe6wU4C-Rm5a6w" name="HashtagCount"/>
-    <consumers xmi:id="_of96wLZeEe6wU4C-Rm5a6w" conName="Trending" consumedEvents="_rs-CQLZeEe6wU4C-Rm5a6w"/>
+  <microservices xmi:id="_jSU-4LcnEe6NHM8e0Ef1qw" msName="trending-hashtag-microservice" packagename="trending">
+    <domains xmi:id="_nCMi4LcnEe6NHM8e0Ef1qw" name="HashtagCount">
+      <httpMethods xmi:id="_z_Cz0LcnEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;HashtagCount>" path="/"/>
+      <httpMethods xmi:id="_C37ToLcoEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.trending.helpers.Hashtag</parameters>
+      </httpMethods>
+    </domains>
+    <consumers xmi:id="_qIZM4LcpEe6NHM8e0Ef1qw" conName="Trending" consumedEvents="_gDRXALcpEe6NHM8e0Ef1qw"/>
   </microservices>
-  <topics xmi:id="_lFxiELYtEe6wU4C-Rm5a6w" topicName="user-added" relatedEvents="_nHwn8LYtEe6wU4C-Rm5a6w" subscribers="_t_qT4LYtEe6wU4C-Rm5a6w"/>
-  <topics xmi:id="_w0k1QLZeEe6wU4C-Rm5a6w" topicName="video-liked" relatedEvents="_rs-CQLZeEe6wU4C-Rm5a6w" subscribers="_of96wLZeEe6wU4C-Rm5a6w"/>
+  <microservices xmi:id="_fC97ILcqEe6NHM8e0Ef1qw" msName="subscription-microservice" packagename="subscription">
+    <domains xmi:id="_imY-kLcqEe6NHM8e0Ef1qw" name="Video">
+      <httpMethods xmi:id="_svZ18LcqEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Video>" path="/"/>
+      <httpMethods xmi:id="_wmbx4LcqEe6NHM8e0Ef1qw" name="getVideo" returnType="Video" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3HKT8LcqEe6NHM8e0Ef1qw" name="add" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>uk.ac.york.eng2.subscription.dto.VideoDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_-ll0YLcqEe6NHM8e0Ef1qw" name="updateVideo" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>Video</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_BK1_YLcrEe6NHM8e0Ef1qw" name="deleteVideo" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_DQSB4LcrEe6NHM8e0Ef1qw" name="getWatchers" returnType="Iterable&lt;User>" path="/{id}/watchers">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_FYTeULcrEe6NHM8e0Ef1qw" name="getVideoAuthor" returnType="User" path="/{id}/author">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_Hg3tULcrEe6NHM8e0Ef1qw" name="getVideoHashtags" returnType="Collection&lt;Hashtag>" path="/{id}/hashtags" transactional="true">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_KN57ULcrEe6NHM8e0Ef1qw" name="addWatcher" httpType="Put" returnType="HttpResponse&lt;String>" path="/{videoId}/watchers/{userId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_L-bdwLcrEe6NHM8e0Ef1qw" name="addHashtag" returnType="HttpResponse&lt;String>" path="/{videoId}/hashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="_joFsILcqEe6NHM8e0Ef1qw" name="Hashtag">
+      <httpMethods xmi:id="_9pu-MLcsEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;Hashtag>" path="/"/>
+      <httpMethods xmi:id="_9pu-MbcsEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>Hashtag</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9pu-MrcsEe6NHM8e0Ef1qw" name="getHashtag" returnType="uk.ac.york.eng2.subscription.dto.HashtagDTO" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_9pu-M7csEe6NHM8e0Ef1qw" name="getHashtagVideos" returnType="Video[]" path="/{id}/videos">
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <domains xmi:id="_kfUPELcqEe6NHM8e0Ef1qw" name="User">
+      <httpMethods xmi:id="_3spKILcrEe6NHM8e0Ef1qw" name="list" returnType="Iterable&lt;User>" path="/"/>
+      <httpMethods xmi:id="_3spKIbcrEe6NHM8e0Ef1qw" name="add" httpType="Post" returnType="HttpResponse&lt;Void>" path="/">
+        <parameters>User</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKIrcrEe6NHM8e0Ef1qw" name="getUser" returnType="User" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKI7crEe6NHM8e0Ef1qw" name="getWatchedVideos" returnType="Video[]" path="/{id}/watchedvideos">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKJLcrEe6NHM8e0Ef1qw" name="updateUser" httpType="Put" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+        <parameters>uk.ac.york.eng2.subscription.dto.UserDTO</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_3spKJbcrEe6NHM8e0Ef1qw" name="deleteUser" httpType="Delete" returnType="HttpResponse&lt;Void>" path="/{id}">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="__YNusLcrEe6NHM8e0Ef1qw" name="getSubscribedHashtags" returnType="Hashtag[]" path="/{id}/subscribedhashtags">
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_EXpdILcsEe6NHM8e0Ef1qw" name="addSubHashtag" returnType="HttpResponse&lt;String>" path="/{userId}/subscribedhashtags/{hashtagId}">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_b02HYLcsEe6NHM8e0Ef1qw" name="deleteSubHashtag" returnType="HttpResponse&lt;String>" path="/{userId}/subscribedhashtags/{hashtagId}/delete">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+      <httpMethods xmi:id="_hssEgLcsEe6NHM8e0Ef1qw" name="getUserTagVideos" returnType="Video[]" path="/{userId}/subscribedhashtags/{hashtagId}/videos">
+        <parameters>long</parameters>
+        <parameters>long</parameters>
+      </httpMethods>
+    </domains>
+    <consumers xmi:id="_QiILELcuEe6NHM8e0Ef1qw" conName="Subscription" consumedEvents="_UwaJYLcuEe6NHM8e0Ef1qw _eQ1WwLcuEe6NHM8e0Ef1qw _hpWKsLcuEe6NHM8e0Ef1qw _jwdBILcuEe6NHM8e0Ef1qw _mSWWILcuEe6NHM8e0Ef1qw"/>
+    <producers xmi:id="_YtYKsLctEe6NHM8e0Ef1qw" prodName="Subscription" producedEvents="_o_LlQLctEe6NHM8e0Ef1qw _sEyEQLctEe6NHM8e0Ef1qw"/>
+  </microservices>
+  <topics xmi:id="_TMOv8LclEe6NHM8e0Ef1qw" topicName="video-watched" relatedEvents="_Mye_oLclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Nd768LcmEe6NHM8e0Ef1qw" topicName="video-liked" relatedEvents="_vWSx8LclEe6NHM8e0Ef1qw _gDRXALcpEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_qIZM4LcpEe6NHM8e0Ef1qw _QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Qyfb8LcmEe6NHM8e0Ef1qw" topicName="video-disliked" relatedEvents="_3CclULclEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_VAj-4LcmEe6NHM8e0Ef1qw" topicName="video-posted" relatedEvents="_5MJcwLclEe6NHM8e0Ef1qw _UwaJYLcuEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_WOS9ULcmEe6NHM8e0Ef1qw" topicName="user-added" relatedEvents="_9uDhsLclEe6NHM8e0Ef1qw _eQ1WwLcuEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Xo7vULcmEe6NHM8e0Ef1qw" topicName="hashtag-added" relatedEvents="_AqalILcmEe6NHM8e0Ef1qw _hpWKsLcuEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_YxpD0LcmEe6NHM8e0Ef1qw" topicName="another-hashtag" relatedEvents="_DtacELcmEe6NHM8e0Ef1qw _jwdBILcuEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_Z5WSwLcmEe6NHM8e0Ef1qw" topicName="watcher-added" relatedEvents="_GIqWgLcmEe6NHM8e0Ef1qw _mSWWILcuEe6NHM8e0Ef1qw" producers="_KjIzMLclEe6NHM8e0Ef1qw" subscribers="_QiILELcuEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_wYfVILctEe6NHM8e0Ef1qw" topicName="user-subscribed" relatedEvents="_o_LlQLctEe6NHM8e0Ef1qw" producers="_YtYKsLctEe6NHM8e0Ef1qw"/>
+  <topics xmi:id="_3HcgcLctEe6NHM8e0Ef1qw" topicName="user-unsubscribed" relatedEvents="_sEyEQLctEe6NHM8e0Ef1qw" producers="_YtYKsLctEe6NHM8e0Ef1qw"/>
 </Assessment>

@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -258,7 +258,7 @@ public class HttpMethodImpl extends MinimalEObjectImpl.Container implements Http
 	 */
 	public EList<String> getParameters() {
 		if (parameters == null) {
-			parameters = new EDataTypeUniqueEList<String>(String.class, this, AssessmentPackage.HTTP_METHOD__PARAMETERS);
+			parameters = new EDataTypeEList<String>(String.class, this, AssessmentPackage.HTTP_METHOD__PARAMETERS);
 		}
 		return parameters;
 	}
