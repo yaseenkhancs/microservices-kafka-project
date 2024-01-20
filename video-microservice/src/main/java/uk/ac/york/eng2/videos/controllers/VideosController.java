@@ -222,23 +222,4 @@ public class VideosController extends BaseVideosController {
 		return HttpResponse.ok(String.format("Hashtag %d added as hashtag of video %d", hashtagId, videoId));		
 	}
 
-//	@Transactional
-//	@Delete("/{bookId}/readers/{userId}")
-//	public HttpResponse<String> removeReader(long bookId, long userId) {
-//		Optional<Book> oBook = repo.findById(bookId);
-//		if (oBook.isEmpty()) {
-//			return HttpResponse.notFound(String.format("Book %d not found", bookId));
-//		}
-//
-//		/*
-//		 * DELETE should be idempotent, so it's OK if the mentioned
-//		 * user was not a reader of the book.
-//		 */ 
-//		Book book = oBook.get();
-//		book.getReaders().removeIf(u -> userId == u.getId());
-//		repo.update(book);
-//
-//		return HttpResponse.ok();
-//	}
-
 }
