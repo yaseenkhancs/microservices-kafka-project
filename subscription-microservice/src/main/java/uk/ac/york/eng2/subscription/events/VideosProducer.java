@@ -6,7 +6,7 @@ import io.micronaut.configuration.kafka.annotation.Topic;
 import uk.ac.york.eng2.subscription.domain.Video;
 
 @KafkaClient
-public interface VideosProducer {
+public interface VideosProducer extends BaseSubscriptionProducer {
 	
 //	HashMap<String, Video> userVideo = new HashMap<String, Video>();
 
@@ -18,14 +18,7 @@ public interface VideosProducer {
 	String TOPIC_POSTED = "video-posted";
 	String TOPIC_SUBSCRIBED = "user-subscribed";
 	String TOPIC_UNSUBSCRIBED = "user-unsubscribed";
-	
-	@Topic(TOPIC_POSTED)
-	void postVideo(@KafkaKey Long id, Video video);
-
-	@Topic(TOPIC_LIKED)
-	void likeVideo(@KafkaKey Long id, Video v);
-//	void likeVideo(@KafkaKey Long id, Hashtag h);
-	
+		
 	@Topic(TOPIC_SUBSCRIBED)
 	void subscribed(@KafkaKey long userId, long hashtagId);
 	
