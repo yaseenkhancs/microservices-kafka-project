@@ -8,6 +8,18 @@ import io.micronaut.serde.annotation.Serdeable;
 import uk.ac.york.eng2.videos.domain.Hashtag;
 import uk.ac.york.eng2.videos.domain.User;
 
+/**
+ * Data Transfer Object for the Video entity. 
+ * Tagged "Serialisable" so that it can be transferred via Kafka
+ *
+ * <p>
+ * Mirrors uk.ac.york.eng2.videos.domain.Video, no ID field as 
+ * this information should be obfuscated in certain cases.
+ * 
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Serdeable
 public class VideoDTO extends BaseVideoDTO {
 

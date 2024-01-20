@@ -21,6 +21,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.micronaut.serde.annotation.Serdeable;
 import uk.ac.york.eng2.videos.controllers.VideosController;
 
+/**
+ * Entity declaration for the Video in the video Microservice 
+ * Tagged "Serialisable" so that it can be transferred via Kafka
+ * 
+ * <p>
+ * Contains an ID field that is auto-generated, for the database. 
+ * Title, likes, dislikes and views are basic fields
+ * The hashtags it uses are contained in a collection, and also
+ * in a Many To Many relationship, likewise with the set of users
+ * that have watched this video. 
+ * Author is stored in a many to one relationship.
+ * 
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Entity
 @Serdeable
 public class Video extends BaseVideo {

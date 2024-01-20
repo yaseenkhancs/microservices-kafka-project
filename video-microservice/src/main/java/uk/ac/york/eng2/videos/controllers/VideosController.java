@@ -29,6 +29,17 @@ import uk.ac.york.eng2.videos.repositories.UsersRepository;
 import uk.ac.york.eng2.videos.repositories.VideosRepository;
 //import uk.ac.york.eng2.books.repositories.UsersRepository;
 
+/**
+ * Controller for the videos microservice. Defines the interaction
+ * with the database. 
+ * <p>
+ * Also encapsulates the kafka producer interaction with the cluster
+ * depending various changes to database state. * 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Controller("/videos")
 public class VideosController extends BaseVideosController {
 
@@ -74,15 +85,6 @@ public class VideosController extends BaseVideosController {
 //		System.out.println(repo.findOne(1));
 		return repo.findOne(id).orElse(null);
 	}
-	
-	
-	
-//	@Get("/{id}")
-//	public VideoDTO getVideoTrue(long id) {
-//		System.out.println(repo.findOne(1));
-//		return repo.findOne(id).orElse(null);
-//	}
-
 	
 	@Transactional
 	@Put("/{id}")

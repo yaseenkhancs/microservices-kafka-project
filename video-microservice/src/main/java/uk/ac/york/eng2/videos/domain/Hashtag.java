@@ -17,17 +17,19 @@ import io.micronaut.serde.annotation.Serdeable;
  * Entity declaration for the Hashtag in the video Microservice 
  * Tagged "Serialisable" so that it can be transferred via Kafka
  * 
- * @author Y3884331
- * @version 0.1
- * @since 0.1
  * 
  * ID is auto-generated so it can be appropriately saved in its
  * own database. name is a simple string and the set of tagged
  * videos is stored in a many to many relationship.
+ * 
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
  */
 @Entity
 @Serdeable
 public class Hashtag extends BaseHashtag {
+	
 	@Id
 	@GeneratedValue
 	private Long id;

@@ -11,6 +11,16 @@ import uk.ac.york.eng2.videos.domain.User;
 import uk.ac.york.eng2.videos.domain.Video;
 import uk.ac.york.eng2.videos.helpers.HashtagUserPair;
 
+/**
+ * Kafka client for producing events in the videos microservice 
+ * <p>
+ * This single class contains all the different methods, tagged
+ * with the topic that they all correspond to. 
+ *
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @KafkaClient
 public interface VideosProducer extends BaseVideosProducer {
 	
