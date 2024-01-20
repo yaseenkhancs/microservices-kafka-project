@@ -48,22 +48,6 @@ context Assessment {
 		message: "Each microservice for the model must have unique names"	
 	
 	}
-	
-	constraint UniqueTopicNames {
-		
-		check {
-			
-			var o : OrderedSet;
-			for (x : Topic in self.topics) {
-				o.add(x.topicName);
-			}
-			return (o.size()==self.microservices.size());
-		
-		}
-		
-		message: "Each topic for the model must have unique names"	
-	
-	}
 }
 
 context Topic {
@@ -78,7 +62,7 @@ context Topic {
 	
 	constraint OneProducerOneSubscriber {
 		
-		check: self.subscribers.size()>=1 and self.consumers.size()>=1
+		check: self.subscribers.size()>=1 and self.producers.size()>=1
 		
 		message: "A topic must have a related consumer and producer"
 		
@@ -147,16 +131,7 @@ context Microservice {
 		check: not (self.msName==null)
 		
 		message: "Give your microservice a name"
-	}
-	
-	constraint AtLeastOneKafkaStream {
-	
-		check: self.stream.size() >= 1
-		
-		message: "Your project must have at least one Kafka Stream, otherwise the Kafka topology will break."
-		
-	}
-	
+	}	
 }
 
 context KafStream {
