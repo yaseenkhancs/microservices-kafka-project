@@ -4,6 +4,14 @@ import java.util.Collection;
 import java.util.Set;
 import io.micronaut.serde.annotation.Serdeable;
 
+/**
+ * Video class which mirrors the same class in the microservice 
+ * Serialised to that it can transfer information to the MS
+ * 
+ * @author Y3884331
+ * @version 0.1
+ * @since 0.1
+*/
 @Serdeable
 public class Video {
 
