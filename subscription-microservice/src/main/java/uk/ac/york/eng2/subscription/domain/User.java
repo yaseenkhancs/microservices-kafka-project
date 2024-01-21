@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -45,7 +44,7 @@ public class User extends BaseUser {
 	private Set<Video> watchedVideos;
 	
 	@JsonIgnore
-	@OneToMany
+	@ManyToMany
 	private Set<Hashtag> subscribedHashtags;
 	
 	public Long getId() {
