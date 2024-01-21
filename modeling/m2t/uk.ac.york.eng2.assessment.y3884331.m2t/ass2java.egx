@@ -39,6 +39,17 @@ rule ComposeGeneration
 	target: "other-generated-files/compose.yml"
 	
 	}
+	
+rule TopicsFileGeneration
+	transform a : Assessment {
+	
+	template: "createTopicsGen.egl"
+	
+	parameters: Map{}
+	
+	target: "other-generated-files/compose.yml"
+	
+	}
 
 rule BuildGradleGen
 	transform m : Microservice {

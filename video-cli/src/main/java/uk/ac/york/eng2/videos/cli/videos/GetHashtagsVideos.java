@@ -24,7 +24,7 @@ public class GetHashtagsVideos implements Runnable  {
 		for (Video v : client.list()) {
 			for (Hashtag h : client.getVideoHashtags(v.getId())) {
 				if (h.getId() == hashtagId) {
-					System.out.printf("Video %d: %s", v.getId(), v.getTitle());
+					System.out.printf("Video %d: %s\n", v.getId(), v.getTitle());
 				}
 			}
 		}		
