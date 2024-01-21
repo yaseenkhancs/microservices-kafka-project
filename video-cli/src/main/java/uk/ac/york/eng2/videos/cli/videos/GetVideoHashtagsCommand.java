@@ -3,6 +3,7 @@ package uk.ac.york.eng2.videos.cli.videos;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import uk.ac.york.eng2.videos.cli.domain.Hashtag;
 
 @Command(name="get-video-hashtags", description="Gets the hashtags of a specific video", mixinStandardHelpOptions = true)
 public class GetVideoHashtagsCommand implements Runnable {
@@ -15,8 +16,9 @@ public class GetVideoHashtagsCommand implements Runnable {
 	
 	@Override
 	public void run() {
-		System.out.println(id);
-		System.out.println(client.getVideoHashtags(id));
+		for (Hashtag h : client.getVideoHashtags(id)) {
+			System.out.printf("Video %d: %s\n", h.getId(), h.getName());
+		}
 	}
 }
 

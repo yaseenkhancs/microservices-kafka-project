@@ -16,7 +16,7 @@ public class GetVideoAuthor implements Runnable {
 	@Override
 	public void run() {
 		User usr = client.getVideoAuthor(id);
-		System.out.println(usr);
+		System.out.printf("User %d: %s", usr.getId(), usr.getUsername());
 	}
 
 }

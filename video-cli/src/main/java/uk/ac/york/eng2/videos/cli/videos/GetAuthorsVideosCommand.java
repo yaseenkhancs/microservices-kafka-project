@@ -22,7 +22,7 @@ public class GetAuthorsVideosCommand implements Runnable {
 	public void run() {
 		for (Video v : client.list()) {
 			if (client.getVideoAuthor(v.getId()).getId() == uclient.getUser(author).getId()) {
-				System.out.println(v.getTitle());
+				System.out.printf("Video %d: %s\n", v.getId(), v.getTitle());
 			}
 		}
 	}

@@ -21,7 +21,7 @@ public class GetUserCommand implements Runnable {
 			System.err.println("User not found!");
 			System.exit(1);
 		} else {
-			System.out.println(user);
+			System.out.printf("User %d: %s", user.getId(), user.getUsername());
 		}
 	}
 

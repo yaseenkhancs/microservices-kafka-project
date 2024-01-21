@@ -13,7 +13,7 @@ public class GetUsersCommand implements Runnable {
 	@Override
 	public void run() {
 		for (User u : client.list()) {
-			System.out.println(u);
+			System.out.printf("User %d: %s\n", u.getId(), u.getUsername());
 		}
 	}
 

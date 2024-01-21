@@ -22,20 +22,7 @@ public class GetVideoCommand implements Runnable {
 			System.err.println("Video not found!");
 			System.exit(1);
 		} else {
-			System.out.print(video);
-			System.out.print("[");
-			for (User thisuser : client.getWatchers(id)) {
-				System.out.print(thisuser.getUsername() + ", ");
-			}
-			System.out.print("], ");
-			System.out.print("hashtags: [");
-			for (Hashtag thistag : client.getVideoHashtags(video.getId())) {
-				System.out.print(thistag.getName() + ", ");
-			}
-			System.out.print("], ");
-			System.out.print("author: ");
-			System.out.print(client.getVideoAuthor(id).getUsername());
-			System.out.print("] ");
+			System.out.printf("Video %d: %s", video.getId(), video.getTitle());
 		}
 	}	
 }

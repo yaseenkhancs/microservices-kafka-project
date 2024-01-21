@@ -13,7 +13,7 @@ public class GetHashtags implements Runnable {
 	@Override
 	public void run() {
 		for (Hashtag h : client.list()) {
-			System.out.println(h.getName());
+			System.out.printf("Hashtag %d: %s\n", h.getId(), h.getName());
 		}
 	}
 }

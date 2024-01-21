@@ -16,9 +16,8 @@ public class GetVideoWatchersCommand implements Runnable {
 
 	@Override
 	public void run() {
-		Iterable<User> users = client.getWatchers(id);
-		for (User user : users) {
-			System.out.println(user);
+		for (User user : client.getWatchers(id)) {
+			System.out.printf("User %d: %s\n", user.getId(), user.getUsername());
 		}
 	}
 	

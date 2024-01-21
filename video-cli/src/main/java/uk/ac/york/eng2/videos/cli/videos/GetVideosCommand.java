@@ -14,20 +14,7 @@ public class GetVideosCommand implements Runnable {
 	@Override
 	public void run() {
 		for (Video b : client.list()) {
-			System.out.print(b);
-			System.out.print("[");
-			for (User thisuser : client.getWatchers(b.getId())) {
-				System.out.print(thisuser.getUsername() + ", ");
-			}
-			System.out.print("] ");
-			System.out.print("hashtags: [");
-			for (Hashtag thistag : client.getVideoHashtags(b.getId())) {
-				System.out.print(thistag.getName() + ", ");
-			}
-			System.out.print("], ");
-			System.out.print("author: ");
-			System.out.print(client.getVideoAuthor(b.getId()).getUsername());
-			System.out.print("] ");
+			System.out.printf("Video %d: %s\n", b.getId(), b.getTitle());
 		}		
 	}
 }
