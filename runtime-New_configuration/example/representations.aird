@@ -7,7 +7,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_ZOlfsLdAEe6qfeNOoJFHwQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='CallCentreViewPoint']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_cQjb4LdAEe6qfeNOoJFHwQ" name="new Assessment Diagram" repPath="#_cQOrwLdAEe6qfeNOoJFHwQ" changeId="3faf317a-4c66-4320-900a-2161bc7992b7">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_cQjb4LdAEe6qfeNOoJFHwQ" name="new Assessment Diagram" repPath="#_cQOrwLdAEe6qfeNOoJFHwQ" changeId="2d64714c-1109-4f3a-adc3-f7d4cc869e20">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/my.project.design/description/project.odesign#//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']"/>
         <target xmi:type="Assessment" href="example.model#_0cV_YLcdEe6NHM8e0Ef1qw"/>
       </ownedRepresentationDescriptors>

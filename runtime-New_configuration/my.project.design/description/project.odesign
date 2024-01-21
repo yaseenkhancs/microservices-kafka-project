@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="project" version="12.0.0.2017041100">
-  <ownedViewpoints name="CallCentreViewPoint">
+  <ownedViewpoints name="AssessmentViewPoint">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Assessment Diagram" domainClass="assessment::Assessment" enablePopupBars="true">
       <metamodel href="http://york.ac.uk/cs/eng2/assessment#/"/>
       <defaultLayer name="Default">
@@ -35,7 +35,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="microserviceToDomain" label="microserviceToDomain" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='domainNode']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetFinderExpression="feature:domains">
+        <edgeMappings name="microserviceToDomain" label="microserviceToDomain" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='domainNode']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetFinderExpression="feature:domains">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -43,7 +43,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="microserviceToProducer" label="Microservice To Producer" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='producerNode']" targetFinderExpression="feature:eAllContents">
+        <edgeMappings name="microserviceToProducer" label="Microservice To Producer" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='producerNode']" targetFinderExpression="feature:eAllContents">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -51,7 +51,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="microserviceToConsumer" label="microserviceToConsumer" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='consumerName']" targetFinderExpression="feature:eAllContents">
+        <edgeMappings name="microserviceToConsumer" label="microserviceToConsumer" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='microserviceNode']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='consumerName']" targetFinderExpression="feature:eAllContents">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -68,7 +68,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="domainToMethod" label="domain to method" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='domainNode']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='MethodLayer']/@nodeMappings[name='methodNode']" targetFinderExpression="feature:httpMethods">
+        <edgeMappings name="domainToMethod" label="domain to method" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='domainNode']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='MethodLayer']/@nodeMappings[name='methodNode']" targetFinderExpression="feature:httpMethods">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_red']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -85,7 +85,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="producerToTopic" label="Producer To Topic" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='kafkaLayer']/@nodeMappings[name='topics']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='producerNode']" targetFinderExpression="feature:producers">
+        <edgeMappings name="producerToTopic" label="Producer To Topic" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='kafkaLayer']/@nodeMappings[name='topics']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='producerNode']" targetFinderExpression="feature:producers">
           <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription labelSize="12">
@@ -93,7 +93,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="consumerToTopic" label="Consumer To Topic" sourceMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='kafkaLayer']/@nodeMappings[name='topics']" targetMapping="//@ownedViewpoints[name='CallCentreViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='consumerName']" targetFinderExpression="feature:subscribers">
+        <edgeMappings name="consumerToTopic" label="Consumer To Topic" sourceMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@additionalLayers[name='kafkaLayer']/@nodeMappings[name='topics']" targetMapping="//@ownedViewpoints[name='AssessmentViewPoint']/@ownedRepresentations[name='Assessment%20Diagram']/@defaultLayer/@nodeMappings[name='consumerName']" targetFinderExpression="feature:subscribers">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             <centerLabelStyleDescription labelSize="12">
