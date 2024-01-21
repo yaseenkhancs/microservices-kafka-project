@@ -3,7 +3,7 @@ micronaut:
     name: videoMicroservice
 datasources:
   default:
-    url: jdbc:mariadb://localhost:3306/videos
+    url: jdbc:mariadb://${DB_HOST:db}/${DB_NAME:video}
     username: todo
     password: todosecret
     driver-class-name: org.mariadb.jdbc.Driver
