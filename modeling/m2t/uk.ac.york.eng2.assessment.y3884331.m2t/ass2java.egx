@@ -47,7 +47,7 @@ rule TopicsFileGeneration
 	
 	parameters: Map{}
 	
-	target: "other-generated-files/compose.yml"
+	target: "other-generated-files/topic-creation.bash"
 	
 	}
 
