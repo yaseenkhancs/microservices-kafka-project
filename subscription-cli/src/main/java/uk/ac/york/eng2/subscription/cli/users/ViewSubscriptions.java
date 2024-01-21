@@ -17,9 +17,8 @@ public class ViewSubscriptions implements Runnable {
 
 	@Override
 	public void run() {
-		Hashtag[] importedHashtags = client.getSubscribedHashtags(id);
-		for (Hashtag x : importedHashtags) {
-			System.out.println(x.getName());
+		for (Hashtag x : client.getSubscribedHashtags(id)) {
+			System.out.printf("Hashtag %d: %s\n", x.getId(), x.getName());
 		}
 	}
 

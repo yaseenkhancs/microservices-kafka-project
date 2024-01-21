@@ -18,7 +18,7 @@ public class ViewHashtagVideos implements Runnable {
 	public void run() {
 		Video[] importedArray = client.getHashtagVideos(id);
 		for (int i = 0;  i < importedArray.length; i++) {
-			System.out.println(importedArray[i].getTitle());
+			System.out.printf("Video %d: %s\n", importedArray[i].getId(), importedArray[i].getTitle());
 		}		
 	}	
 }

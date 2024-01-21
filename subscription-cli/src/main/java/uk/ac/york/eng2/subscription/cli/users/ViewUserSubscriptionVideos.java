@@ -53,7 +53,7 @@ public class ViewUserSubscriptionVideos implements Runnable {
 			if (ids.contains(v.getId())) {
 				continue;
 			}
-			System.out.println(v.getTitle());
+			System.out.printf("Video %d: %s", v.getId(), v.getTitle());
 			x--;
 		}
 		
