@@ -33,10 +33,6 @@ public class VideoCliCommandTest {
     		System.setOut(new PrintStream(baos));
     		PicocliRunner.run(VideoCliCommand.class, ctx, new String[] {"add-user", "WHAT"});
     		assertTrue(baos.toString().contains("CREATED"), "The new book was created");
-//            PicocliRunner.run(VideoCliCommand.class, ctx, args);
-
-            // video-cli
-//            assertTrue(baos.toString().contains("Hi!"));
     		
     		baos = new ByteArrayOutputStream();
     		System.setOut(new PrintStream(baos));
