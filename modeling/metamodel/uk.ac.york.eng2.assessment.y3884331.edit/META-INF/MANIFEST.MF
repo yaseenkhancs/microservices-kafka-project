@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: metamodel.edit;singleton:=true
-Automatic-Module-Name: metamodel.edit
+Bundle-SymbolicName: uk.ac.york.eng2.assessment.y3884331.edit;singleton:=true
+Automatic-Module-Name: uk.ac.york.eng2.assessment.y3884331.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: assessment.provider.AssessmentEditPlugin$Implementation
+Bundle-Activator: assessment.provider.Y3884331EditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: assessment.provider
 Require-Bundle: org.eclipse.core.runtime,
- metamodel;visibility:=reexport,
+ uk.ac.york.eng2.assessment.y3884331;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

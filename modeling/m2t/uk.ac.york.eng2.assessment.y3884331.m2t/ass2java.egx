@@ -1,6 +1,6 @@
 pre {
 	var relativePath : String;
-	relativePath = "../../../";
+	relativePath = "../../../microservices/";
 }
 
 

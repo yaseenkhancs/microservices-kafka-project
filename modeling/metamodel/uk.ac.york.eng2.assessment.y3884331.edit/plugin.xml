@@ -7,7 +7,7 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated assessment -->
+      <!-- @generated Y3884331 -->
       <factory
             uri="http://york.ac.uk/cs/eng2/assessment"
             class="assessment.provider.AssessmentItemProviderAdapterFactory"

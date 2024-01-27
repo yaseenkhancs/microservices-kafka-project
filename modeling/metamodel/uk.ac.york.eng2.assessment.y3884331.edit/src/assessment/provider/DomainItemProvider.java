@@ -193,7 +193,7 @@ public class DomainItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return AssessmentEditPlugin.INSTANCE;
+		return Y3884331EditPlugin.INSTANCE;
 	}
 
 }

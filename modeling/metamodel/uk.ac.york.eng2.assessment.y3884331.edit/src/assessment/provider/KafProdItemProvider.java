@@ -175,7 +175,7 @@ public class KafProdItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return AssessmentEditPlugin.INSTANCE;
+		return Y3884331EditPlugin.INSTANCE;
 	}
 
 }

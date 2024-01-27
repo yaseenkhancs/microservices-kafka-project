@@ -531,7 +531,7 @@ public class AssessmentEditor
 					}
 				}
 				catch (CoreException exception) {
-					AssessmentEditorPlugin.INSTANCE.log(exception);
+					Y3884331EditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -620,7 +620,7 @@ public class AssessmentEditor
 			BasicDiagnostic diagnostic =
 				new BasicDiagnostic
 					(Diagnostic.OK,
-					 "metamodel.editor",
+					 "uk.ac.york.eng2.assessment.y3884331.editor",
 					 0,
 					 null,
 					 new Object [] { editingDomain.getResourceSet() });
@@ -648,7 +648,7 @@ public class AssessmentEditor
 					showTabs();
 				}
 				catch (PartInitException exception) {
-					AssessmentEditorPlugin.INSTANCE.log(exception);
+					Y3884331EditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -657,7 +657,7 @@ public class AssessmentEditor
 					markerHelper.updateMarkers(diagnostic);
 				}
 				catch (CoreException exception) {
-					AssessmentEditorPlugin.INSTANCE.log(exception);
+					Y3884331EditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -981,7 +981,7 @@ public class AssessmentEditor
 			BasicDiagnostic basicDiagnostic =
 				new BasicDiagnostic
 					(hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING,
-					 "metamodel.editor",
+					 "uk.ac.york.eng2.assessment.y3884331.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object [] { exception == null ? (Object)resource : exception });
@@ -992,7 +992,7 @@ public class AssessmentEditor
 			return
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "metamodel.editor",
+					 "uk.ac.york.eng2.assessment.y3884331.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object[] { exception });
@@ -1527,7 +1527,7 @@ public class AssessmentEditor
 		catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			AssessmentEditorPlugin.INSTANCE.log(exception);
+			Y3884331EditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1731,7 +1731,7 @@ public class AssessmentEditor
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return AssessmentEditorPlugin.INSTANCE.getString(key);
+		return Y3884331EditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1741,7 +1741,7 @@ public class AssessmentEditor
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return AssessmentEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return Y3884331EditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
 	}
 
 	/**
