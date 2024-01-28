@@ -2,6 +2,8 @@
 
 ## Utilising Micronaut and Kafka to create a framework for a containerised social media platform.
 
+# The Epsilon suite of tools is utilised to facilitate the automated creation of similar microservices using a metamodel. Automated Java code generation is also facilitated using the EGX/EGL generation languages.
+
 1. How to run the microservices:
    1. Go to each Microservice root folder and build the docker image
    2. Navigate to /microservices
